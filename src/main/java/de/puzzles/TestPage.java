@@ -2,6 +2,7 @@ package de.puzzles;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.TextField;
 
 import java.util.Date;
 
@@ -16,5 +17,7 @@ public class TestPage extends WebPage {
 
     public TestPage() {
         add(new Label("test",new Date().toString()));
+
+        add(new TextField<String>("test2"));
     }
 }
