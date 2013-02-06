@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="puzzles-creditcheck:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="puzzles-creditcheck-1.0.war">
+      <element id="artifact" artifact-name="puzzles-creditcheck:war exploded" />
+    </root>
+  </artifact>
+</component>
