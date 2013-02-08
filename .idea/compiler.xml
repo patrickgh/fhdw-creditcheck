@@ -23,7 +23,6 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="fhdw-creditcheck" />
-        <module name="puzzles-creditcheck" />
       </profile>
     </annotationProcessing>
   </component>

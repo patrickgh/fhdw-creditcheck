@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/fhdw-creditcheck.iml" filepath="$PROJECT_DIR$/fhdw-creditcheck.iml" />
-      <module fileurl="file://$PROJECT_DIR$/puzzles-creditcheck.iml" filepath="$PROJECT_DIR$/puzzles-creditcheck.iml" />
     </modules>
   </component>
 </project>

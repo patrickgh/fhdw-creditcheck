@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="fhdw-creditcheck:war exploded">
-    <output-path>$PROJECT_DIR$/target/puzzles-creditcheck-1.0</output-path>
+    <output-path>$PROJECT_DIR$/target/fhdw-creditcheck-1.0</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="fhdw-creditcheck/web/Web" />
       <element id="directory" name="WEB-INF">
@@ -34,6 +34,7 @@
           <element id="library" level="project" name="Maven: com.vaynberg.wicket.select2:wicket-select2:2.0" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.6.4" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.16" />
+          <element id="library" level="project" name="Maven: javax.servlet:servlet-api:2.5" />
         </element>
       </element>
     </root>
