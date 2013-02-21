@@ -1,4 +1,4 @@
-package de.puzzles;
+package de.puzzles.webapp;
 
 import org.apache.wicket.Page;
 import org.apache.wicket.RuntimeConfigurationType;

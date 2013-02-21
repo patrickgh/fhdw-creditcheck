@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Puzzles Creditcheck</title>
+    <meta name="description" content="Puzzles Creditcheck">
+    <meta name="author" content="pgh">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+
+    <!-- styles -->
+    <link href="../resources/css/bootstrap.css" rel="stylesheet">
+
+    <!-- fav icons -->
+    <link rel="shortcut icon" type="image/x-icon" href="../resources/favicon.ico">
+</head>
+<body>
+
+<noscript>
+    <div id="noscript" class="error-panel-wrapper">
+        <div class="error-panel">
+            <h2>JavaScript wird benötigt <em>Bitte aktivieren Sie JavaScript in Ihrem Browser.</em></h2>
+
+            <p>Um Puzzles Creditcheck nutzen zu können aktivieren Sie JavaScript in Ihrem Browser und versuchen Sie es
+               erneut.</p>
+
+            <div class="further-actions"><a href="./">Zurück</a></div>
+        </div>
+    </div>
+</noscript>
+
+<!-- Navbar
+================================================== -->
+<div class="navbar navbar-fixed-top">
+    <div class="stripe"><span></span><em></em></div>
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="brand logo" href="#">
+                <span class="logo">Puzzles|Creditcheck</span>
+            </a>
+
+            <ul class="nav">
+                <li class="dropdown nav-dummy">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="nav-icon"></i>
+                        <span>Neuer Kreditantrag</span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="nav-dummy active">
+                            <a href="#"><i class="nav-icon"></i><span>Neuer Kreditantrag</span></a>
+                        </li>
+                        <li class="nav-dummy">
+                            <a href="#"><i class="nav-icon"></i><span>Beraterlogin</span></a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Content
+================================================== -->
+<div class="container">
+    <div class="row">
+        <div class="span10 offset1">
+
+            <form class="well form-search">
+                <input type="text" class="input-medium search-query">
+                <button type="submit" class="btn">Search</button>
+            </form>
+
+            <form class="well form-search">
+                <input type="text" class="input-small" placeholder="Email">
+                <input type="password" class="input-small" placeholder="Password">
+                <button type="submit" class="btn">Go</button>
+            </form>
+
+
+            <form class="form-horizontal well">
+                <fieldset>
+                    <legend>Controls Bootstrap supports</legend>
+                    <div class="control-group">
+                        <label class="control-label" for="input01">Text input</label>
+                        <div class="controls">
+                            <input type="text" class="input-xlarge" id="input01">
+                            <p class="help-block">In addition to freeform text, any HTML5 text-based input appears like so.</p>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="optionsCheckbox">Checkbox</label>
+                        <div class="controls">
+                            <label class="checkbox">
+                                <input type="checkbox" id="optionsCheckbox" value="option1">
+                                Option one is this and that—be sure to include why it's great
+                            </label>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="select01">Select list</label>
+                        <div class="controls">
+                            <select id="select01">
+                                <option>something</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="multiSelect">Multicon-select</label>
+                        <div class="controls">
+                            <select multiple="multiple" id="multiSelect">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="fileInput">File input</label>
+                        <div class="controls">
+                            <input class="input-file" id="fileInput" type="file">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="textarea">Textarea</label>
+                        <div class="controls">
+                            <textarea class="input-xlarge" id="textarea" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="focusedInput">Focused input</label>
+                        <div class="controls">
+                            <input class="input-xlarge focused" id="focusedInput" type="text" value="This is focused…">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Uneditable input</label>
+                        <div class="controls">
+                            <span class="input-xlarge uneditable-input">Some value here</span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="disabledInput">Disabled input</label>
+                        <div class="controls">
+                            <input class="input-xlarge disabled" id="disabledInput" type="text" placeholder="Disabled input here…" disabled="">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="optionsCheckbox2">Disabled checkbox</label>
+                        <div class="controls">
+                            <label class="checkbox">
+                                <input type="checkbox" id="optionsCheckbox2" value="option1" disabled="">
+                                This is a disabled checkbox
+                            </label>
+                        </div>
+                    </div>
+                    <div class="control-group warning">
+                        <label class="control-label" for="inputWarning">Input with warning</label>
+                        <div class="controls">
+                            <input type="text" id="inputWarning">
+                            <span class="help-inline">Something may have gone wrong</span>
+                        </div>
+                    </div>
+                    <div class="control-group error">
+                        <label class="control-label" for="inputError">Input with error</label>
+                        <div class="controls">
+                            <input type="text" id="inputError">
+                            <span class="help-inline">Please correct the error</span>
+                        </div>
+                    </div>
+                    <div class="control-group success">
+                        <label class="control-label" for="inputSuccess">Input with success</label>
+                        <div class="controls">
+                            <input type="text" id="inputSuccess">
+                            <span class="help-inline">Woohoo!</span>
+                        </div>
+                    </div>
+                    <div class="control-group success">
+                        <label class="control-label" for="selectError">Select with success</label>
+                        <div class="controls">
+                            <select id="selectError">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <span class="help-inline">Woohoo!</span>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="reset" class="btn">Cancel</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Loader
+================================================== -->
+<div class="loader hide">
+    <div class="inner">
+        <div class="loader-content"><span class="loading-message">Lädt …</span></div>
+    </div>
+</div>
+
+<!-- Error dialog
+================================================== -->
+<div class="modal modal-error hide fade" data-backdrop="true" data-keyboard="true">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+
+        <h3>JavaScript Error</h3>
+    </div>
+    <div class="modal-body"></div>
+</div>
+<!-- /.modal-error -->
+
+<!--  Javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<script src="../resources/js/bootstrap.js"></script>
+
+</body>
+</html>
