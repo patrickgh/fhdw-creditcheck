@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.25a)
 # Datenbank: puzzles
-# Erstellungsdauer: 2013-02-20 16:20:52 +0100
+# Erstellungsdauer: 2013-02-26 20:08:32 +0100
 # ************************************************************
 
 
@@ -38,9 +38,9 @@ LOCK TABLES `config` WRITE;
 
 INSERT INTO `config` (`id`, `category`, `value`, `description`)
 VALUES
-	(1,'LHKP','450','1-Personen-Haushalt'),
-	(2,'LHKP','700','2-Personen-Haushalt'),
-	(3,'LHKP','150','jede weitere Person'),
+	(1,'LHKP1','450','1-Personen-Haushalt'),
+	(2,'LHKP2','700','2-Personen-Haushalt'),
+	(3,'LHKP3','150','jede weitere Person'),
 	(4,'KFZ','175','PKW bis 100PS'),
 	(5,'KFZ','250','PKW über 100PS'),
 	(6,'KFZ','125','Motorrad'),
@@ -65,6 +65,19 @@ CREATE TABLE `consultants` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `consultants` WRITE;
+/*!40000 ALTER TABLE `consultants` DISABLE KEYS */;
+
+INSERT INTO `consultants` (`id`, `firstname`, `lastname`, `username`, `password`)
+VALUES
+	(1,'Barnery','Stinson','bstinson','098f6bcd4621d373cade4e832627b4f6'),
+	(2,'Ted','Mosby','tmosby','098f6bcd4621d373cade4e832627b4f6'),
+	(3,'Moritz','Barnick','mbarnick','098f6bcd4621d373cade4e832627b4f6'),
+	(4,'Hermann','Mels','hmels','098f6bcd4621d373cade4e832627b4f6'),
+	(5,'Patrick','Groß-Holtwick','pgrossholtwick','098f6bcd4621d373cade4e832627b4f6');
+
+/*!40000 ALTER TABLE `consultants` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle creditrequests
@@ -122,7 +135,8 @@ CREATE TABLE `transactions` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `request_id` int(11) unsigned NOT NULL,
   `description` varchar(30) DEFAULT NULL,
-  `type` int(11) DEFAULT NULL,
+  `description1` varchar(30) DEFAULT NULL,
+  `description2` varchar(30) DEFAULT NULL,
   `value` float DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `request_id` (`request_id`),
