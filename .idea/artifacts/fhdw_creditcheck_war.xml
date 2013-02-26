@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="fhdw-creditcheck:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="fhdw-creditcheck-1.0.war">
-      <element id="artifact" artifact-name="fhdw-creditcheck:war exploded" />
-    </root>
-  </artifact>
-</component>
