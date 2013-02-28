@@ -1,1 +1,8 @@
 /*File for own Css-Rules*/
+
+hr {
+    margin: 50px 0;
+    border: 0;
+    border-top: 1px solid #dddddd;
+    border-bottom: 1px solid #eeeeee;
+}
