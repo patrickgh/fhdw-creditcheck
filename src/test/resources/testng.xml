@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd" >
+<suite name="Puzzles Webapp Tests" >
+    <test name="ShortTests" parallel="false" >
+        <packages>
+            <package name="de.puzzles.core.*"/>
+            <package name="de.puzzles.webapp.*"/>
+
+        </packages>
+    </test>
+
+</suite>
