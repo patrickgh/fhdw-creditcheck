@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 /**
  * Created with IntelliJ IDEA.
- * User: pgh
+ * @author Patrick Groß-Holtwick
  * Date: 28.02.13
  * Time: 12:15
  * To change this template use File | Settings | File Templates.
@@ -41,18 +41,18 @@ public class DatabaseConnector {
         return INSTANCE;
     }
 
-    public boolean checkLogin(String user, String pw) {
+    public Integer checkLogin(String user, String pw) {
         String cryptedPassword = MD5(pw);
         if (cryptedPassword != null) {
             try {
                 // use PreparedStatement to prevent SQL-Injection (hopefully :))
-                PreparedStatement stmt = dbConnection.prepareStatement("SELECT username, password FROM consultants WHERE username LIKE ?");
+                PreparedStatement stmt = dbConnection.prepareStatement("SELECT id, password FROM consultants WHERE username LIKE ?");
                 stmt.setString(1, user);
                 stmt.execute();
                 ResultSet result = stmt.getResultSet();
                 if (result.next() && result.isLast()) {
                     if (result.getString(2).equals(cryptedPassword)) {
-                        return true;
+                        return result.getInt(1);
                     }
                 }
             }
@@ -60,7 +60,7 @@ public class DatabaseConnector {
                 e.printStackTrace();
             }
         }
-        return false;
+        return null;
     }
 
     private String MD5(String md5) {

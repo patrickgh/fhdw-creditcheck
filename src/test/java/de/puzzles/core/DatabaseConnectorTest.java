@@ -15,8 +15,8 @@ public class DatabaseConnectorTest {
     @Test
     public void testLogin() {
         DatabaseConnector conn = DatabaseConnector.getInstance();
-        Assert.assertTrue(conn.checkLogin("bstinson", "test"));
-        Assert.assertFalse(conn.checkLogin("bstinson", "legendary"));
+        Assert.assertNotNull(conn.checkLogin("bstinson", "test"));
+        Assert.assertNull(conn.checkLogin("bstinson", "legendary"));
     }
 
 }

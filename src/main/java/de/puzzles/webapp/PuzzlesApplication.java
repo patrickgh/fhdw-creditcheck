@@ -1,5 +1,6 @@
 package de.puzzles.webapp;
 
+import de.puzzles.webapp.page.LoginPage;
 import org.apache.wicket.Page;
 import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.core.util.file.WebApplicationPath;
@@ -11,18 +12,19 @@ import org.apache.wicket.util.string.Strings;
 
 /**
  * Created with IntelliJ IDEA.
- * User: pgh
+ * @author Patrick Groß-Holtwick
  * Date: 25.01.13
  * Time: 14:08
  * To change this template use File | Settings | File Templates.
  */
-public class Application extends WebApplication{
+public class PuzzlesApplication extends WebApplication{
 
     @Override
     protected void init() {
         super.init();
         if (RuntimeConfigurationType.DEVELOPMENT.equals(getConfigurationType())) {
             getDebugSettings().setDevelopmentUtilitiesEnabled(true);
+            getDebugSettings().setAjaxDebugModeEnabled(true);
             getDebugSettings().setOutputComponentPath(true);
             String resourceFolder = System.getProperty("application.resource.src");
             String webResourceFolder = System.getProperty("application.webresource.src");
@@ -42,6 +44,8 @@ public class Application extends WebApplication{
 
     @Override
     public Class<? extends Page> getHomePage() {
-        return TestPage.class;
+        return LoginPage.class;
     }
+
+
 }

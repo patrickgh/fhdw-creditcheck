@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+<wicket:extend>
+    <div class="span6">
+        <form class="form-horizontal well">
+
+            <fieldset>
+
+                <legend>Neuer Kreditantrag</legend>
+
+                <p>Hier gelangen Sie zu dem Kreditantrag-Formular</p>
+                <br>
+                <div align="center">
+                    <button type="button" class="btn" wicket:id="newcredit">Neuer Kreditantrag</button>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="span6">
+
+
+
+
+
+        <div class="form-horizontal well">
+            <fieldset>
+
+                <legend>Beraterlogin</legend>
+
+                <p>Bitte loggen Sie sich ein um in den Beraterbereich zu gelangen.</p>
+                <br>
+                <form class="form-search" wicket:id="loginform">
+                    <input type="text" class="input-small" placeholder="Berater" wicket:id="user">
+                    <input type="password" class="input-small" placeholder="Passwort" wicket:id="password">
+                    <button type="submit" class="btn" wicket:id="submit">Login</button>
+                </form>
+
+
+
+            </fieldset>
+        </div>
+    </div>
+</wicket:extend>
+
+</body>
+</html>
