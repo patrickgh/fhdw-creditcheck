@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<head xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+    <meta charset="utf-8">
+    <title>Puzzles Creditcheck</title>
+    <meta name="description" content="Puzzles Creditcheck">
+    <meta name="author" content="pgh">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+
+    <!-- styles -->
+    <link href="../resources/css/bootstrap.css" rel="stylesheet">
+    <link href="../resources/css/puzzles.css" rel="stylesheet">
+
+
+    <!-- fav icons -->
+    <link rel="shortcut icon" type="image/x-icon" href="../resources/favicon.ico">
+</head>
+<body>
+
+<noscript>
+    <div id="noscript" class="error-panel-wrapper">
+        <div class="error-panel">
+            <h2>JavaScript wird benötigt <em>Bitte aktivieren Sie JavaScript in Ihrem Browser.</em></h2>
+
+            <p>Um Puzzles Creditcheck nutzen zu können aktivieren Sie JavaScript in Ihrem Browser und versuchen Sie es
+                erneut.</p>
+
+            <div class="further-actions"><a href="./">Zurück</a></div>
+        </div>
+    </div>
+</noscript>
+
+
+
+<!-- Navbar
+================================================== -->
+<div class="navbar navbar-fixed-top">
+    <div class="stripe"><span></span><em></em></div>
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="brand logo" href="#">
+                <span class="logo">Puzzles|Creditcheck</span>
+            </a>
+
+            <p class="navbar-text pull-right">Neuer Kreditantrag</p>
+
+            <!-- <ul class="nav">
+                <li class="dropdown nav-dummy">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="nav-icon"></i>
+                        <span>Neuer Kreditantrag</span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="nav-dummy active">
+                            <a href="#"><i class="nav-icon"></i><span>Neuer Kreditantrag</span></a>
+                        </li>
+                        <li class="nav-dummy">
+                            <a href="#"><i class="nav-icon"></i><span>Beraterlogin</span></a>
+                        </li>
+                    </ul>
+                </li>
+            </ul> -->
+        </div>
+    </div>
+</div>
+
+<!-- Content
+================================================== -->
+<div class="container">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <div class="row">
+
+
+
+        <form align="center" class="form-horizontal well">
+            <div align="center" class="span11">
+                <div class="progress progress-striped active" >
+                    <div class="bar bar-success" style="width: 60%;"></div>
+                </div>
+            </div>
+
+            <fieldset>
+
+
+                <legend>Schritt 3 von 5 - allg. Ausgaben</legend>
+
+                <!--    <p>Hier gelangen Sie zu dem Kreditantrag-Formular</p>
+                    <br>
+                    <div class="span3 offset1">
+                    <button type="submit" class="btn">Neuer Kreditantrag</button>
+                    </div>    -->
+
+                <br>
+                <p>Geben Sie Ihre Ausgaben ein (in €):</p>
+                <br>
+
+                <div class="span1 offset1">
+                    <p>Miete</p><br><br>
+                    <p>Wohnnebenkosten</p><br><br>
+                    <p>Lebenshaltungskosten</p><br><br>
+                    <p>KFZ-Kosten</p><br><br>
+                    <p>Telefon</p><br><br>
+                    <p>Sparverträge</p><br><br>
+                </div>
+
+                <div class="span1">
+                    <br><br><br><br>
+                    <br><br><br>
+                    <div class="control-group">
+                        <label class="control-label" for="inputPersons">Personen</label>
+
+                        <div class="controls">
+                            <select id="inputPersons">
+                                <option></option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class>
+                    <div class="controls">
+                        <select id="inputCostForKFZ">
+                            <option>PKW>100PS</option>
+                            <option>PKW<100PS</option>
+                            <option>Motorrad</option>
+                        </select>
+                    </div>
+                    </div>
+                    <br><br><br><br><br><br>
+                </div>
+
+                <div class="span1 offset2">
+                    <div class="controls">
+                        <input type="text" id="inputRent" placeholder="Miete">
+                    </div>
+                </div>
+
+                <br><br><br>
+
+                <div class="span1 offset2">
+                    <div class="controls">
+                        <input type="text" id="inputIncidentials" placeholder="Wohnnebenkosten">
+                    </div>
+                </div>
+
+                <br><br><br>
+
+                <div class="span1 offset2">
+                    <div class="controls">
+                        <input type="text" id="inputCostOfLiving" placeholder="Lebenshaltungskosten">
+                    </div>
+                </div>
+
+                <br><br><br><br>
+
+                <div class="span1 offset2">
+                    <div class="controls">
+                        <input type="text" id="inputCostOfKFZ" placeholder="KFZ-Kosten">
+                    </div>
+                </div>
+
+                <br><br><br><br>
+
+                <div class="span1 offset2">
+                    <div class="controls">
+                        <input type="text" id="inputCostOfPhone" placeholder="Telefon">
+                    </div>
+                </div>
+
+                <br><br><br>
+
+                <div class="span1 offset2">
+                    <div class="controls">
+                        <input type="text" id="inputSavingsPlans" placeholder="Sparverträge">
+                    </div>
+                </div>
+
+            </fieldset>
+
+            <fieldset>
+
+                <div class="span2 offset1">
+                    <p>sonstige Ausgaben</p>
+                </div>
+
+                <br><br>
+
+          <!--      <div class>
+                    <div class="control-group">
+                        <label class="control-label" for="inputDescriptionOtherCosts">Beschreibung</label>
+                    </div>
+                </div>
+
+                <div class="offset5">
+                    <div class="controls">
+                        <input type="text" id="inputDescriptionOtherCosts" placeholder="sonstige Kosten">
+                    </div>
+                </div>        -->
+
+                <div class="span2 offset2">
+                    <div class="controls">
+                        <input type="text" id="inputDescriptionOther" placeholder="Beschreibung">
+                    </div>
+                </div>
+
+                <div class="span2 offset1">
+                    <div class="controls">
+                        <input type="text" id="inputValueOther" placeholder="Wert">
+                    </div>
+                </div>
+
+            </fieldset>
+
+            <hr color="grey" width="915" align="center">
+
+
+            <div class="span3 offset1">
+                <p>Gesamtausgaben</p>
+            </div>
+
+            <div class="span2 offset1">
+                <div class="controls">
+                    <input type="text" id="inputValueTotal" placeholder="Wert">
+                </div>
+            </div>
+
+            <br><br><br>
+
+
+            <div class="row">
+                <div class="span12">
+                    <div class="span5" align="left">
+                        <button class="btn" type="button">Zurück</button>
+                    </div>
+
+                    <div class="span1 offset5" align="right">
+                        <button class="btn btn-success" type="button" align="right">Weiter</button>
+                    </div>
+                </div>
+
+
+
+        </form>
+    </div>
+</div>
+
+
+    <!-- Loader
+    ================================================== -->
+    <div class="loader hide">
+        <div class="inner">
+            <div class="loader-content"><span class="loading-message">Lädt …</span></div>
+        </div>
+    </div>
+
+    <!-- Error dialog
+    ================================================== -->
+    <div class="modal modal-error hide fade" data-backdrop="true" data-keyboard="true">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">×</a>
+
+            <h3>JavaScript Error</h3>
+        </div>
+        <div class="modal-body"></div>
+    </div>
+    <!-- /.modal-error -->
+
+    <!--  Javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="../resources/js/bootstrap.js"></script>
+
+</body>
+</html>
