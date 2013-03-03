@@ -6,3 +6,11 @@ hr {
     border-top: 1px solid #dddddd;
     border-bottom: 1px solid #eeeeee;
 }
+
+#kasten {
+    border-width: 1.9px;
+    border-style: solid;
+    border-color: #cccccc;
+    padding: 1em;
+    text-align: justify;
+}
