@@ -7,12 +7,12 @@ package de.puzzles.webapp.page;
  * Time: 14:48
  * To change this template use File | Settings | File Templates.
  */
-public class RequiresLoginPage extends BasePage {
+public abstract class RequiresLoginPage extends BasePage {
 
     public RequiresLoginPage() {
         super();
         if(getSession().getAttribute("userId") == null) {
-            setResponsePage(LoginPage.class);
+            setResponsePage(getApplication().getHomePage());
         }
     }
 }

@@ -1,11 +1,16 @@
 package de.puzzles.core;
 
+import de.puzzles.core.util.PuzzlesUtils;
+import org.joda.time.DateTime;
+
 import java.nio.charset.Charset;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Created with IntelliJ IDEA.
@@ -42,11 +47,11 @@ public class DatabaseConnector {
     }
 
     public Integer checkLogin(String user, String pw) {
-        String cryptedPassword = MD5(pw);
+        String cryptedPassword = PuzzlesUtils.md5(pw);
         if (cryptedPassword != null) {
             try {
                 // use PreparedStatement to prevent SQL-Injection (hopefully :))
-                PreparedStatement stmt = dbConnection.prepareStatement("SELECT id, password FROM consultants WHERE username LIKE ?");
+                PreparedStatement stmt = dbConnection.prepareStatement("select id, password from consultants where username like ?");
                 stmt.setString(1, user);
                 stmt.execute();
                 ResultSet result = stmt.getResultSet();
@@ -63,21 +68,47 @@ public class DatabaseConnector {
         return null;
     }
 
-    private String MD5(String md5) {
+    public Boolean saveCreditrequest(CreditRequest req) {
+        Customer customer = req.getCustomer();
         try {
-            java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
-            byte[] array = md.digest(md5.getBytes(Charset.forName("UTF-8")));
-            StringBuilder sb = new StringBuilder();
-            for (byte anArray : array) {
-                sb.append(Integer.toHexString((anArray & 0xFF) | 0x100).substring(1, 3));
+            String sql = "insert into customer values (null,?,?,?,?,?,?,?,?,?,?)";
+            PreparedStatement stmt = dbConnection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1,customer.getFirstname());
+            stmt.setString(2,customer.getLastname());
+            stmt.setDate(3, new Date(customer.getBirthday().getMillis()));
+            stmt.setString(4,customer.getStreet());
+            stmt.setString(5,customer.getCity());
+            stmt.setString(6, customer.getZipcode());
+            stmt.setString(7, customer.getTelephone());
+            stmt.setString(8, customer.getEmail());
+            stmt.setString(9, customer.getAccountnumber());
+            stmt.setString(10, customer.getBankcode());
+
+            stmt.executeUpdate();
+            ResultSet result = stmt.getGeneratedKeys();
+            if (result.next() && result.isLast()) {
+                int customerId = result.getInt(1);
+
+                sql = "insert into creditrequests values(null,?,?,?,?,?,?,?,?)";
+                stmt = dbConnection.prepareStatement(sql);
+                stmt.setInt(1,customerId);
+                stmt.setInt(2,req.getConsultantId());
+                stmt.setDate(3, new Date(System.currentTimeMillis()));
+                stmt.setInt(4, req.getState().ordinal());
+                stmt.setFloat(5, req.getAmount().floatValue());
+                stmt.setBoolean(6, req.hasFixedLength());
+                stmt.setFloat(7, req.getRate().floatValue());
+                stmt.setObject(8, req.getDuration());
+
+                stmt.execute();
+                //TODO: save transactions
+                return true;
             }
-            return sb.toString();
         }
-        catch (java.security.NoSuchAlgorithmException e) {
-            System.out.println("NoSuchAlgorithmException while creating MD5 hash");
-            System.out.println(e);
+        catch (SQLException e) {
+            e.printStackTrace();
         }
-        return null;
+        return false;
     }
 
 }

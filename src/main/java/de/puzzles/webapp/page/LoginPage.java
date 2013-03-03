@@ -3,6 +3,7 @@ package de.puzzles.webapp.page;
 import de.puzzles.core.DatabaseConnector;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.StatelessForm;
@@ -31,7 +32,9 @@ public class LoginPage extends BasePage {
         });
 
         final TextField<String> userField = new TextField<String>("user", new Model<String>());
+        userField.setRequired(false);
         final PasswordTextField passwordField = new PasswordTextField("password", new Model<String>());
+        passwordField.setRequired(false);
 
         final Form loginForm = new Form("loginform");
         loginForm.add(userField);
@@ -47,10 +50,32 @@ public class LoginPage extends BasePage {
                     getSession().setAttribute("userId", userId);
                     if (getSession().isTemporary()) { getSession().bind(); }
                     setResponsePage(DashboardPage.class);
+                } else {
+                    target.appendJavaScript("shake();");
                 }
             }
         });
-        add(loginForm);
+        final WebMarkupContainer loginContainer = new WebMarkupContainer("login") {
+            @Override
+            public boolean isVisible() {
+                return getSession().getAttribute("userId") == null;
+            }
+        };
+        loginContainer.add(loginForm);
+        add(loginContainer);
 
+        final WebMarkupContainer dashboardContainer = new WebMarkupContainer("dashboard") {
+            @Override
+            public boolean isVisible() {
+                return !loginContainer.isVisible();
+            }
+        };
+        dashboardContainer.add(new Link("dashboardLink"){
+            @Override
+            public void onClick() {
+                setResponsePage(DashboardPage.class);
+            }
+        });
+        add(dashboardContainer);
     }
 }

@@ -15,8 +15,9 @@
 
                 <p>Hier gelangen Sie zu dem Kreditantrag-Formular</p>
                 <br>
+
                 <div align="center">
-                    <button type="button" class="btn" wicket:id="newcredit">Neuer Kreditantrag</button>
+                    <button type="button" class="btn btn-inverse" wicket:id="newcredit">Neuer Kreditantrag</button>
                 </div>
 
             </fieldset>
@@ -26,24 +27,42 @@
     <div class="span6">
 
 
-
-
-
         <div class="form-horizontal well">
             <fieldset>
 
                 <legend>Beraterlogin</legend>
+                <div wicket:id="login">
+                    <p>Bitte loggen Sie sich ein um in den Beraterbereich zu gelangen.</p>
+                    <br>
 
-                <p>Bitte loggen Sie sich ein um in den Beraterbereich zu gelangen.</p>
-                <br>
-                <form class="form-search" wicket:id="loginform">
-                    <input type="text" class="input-small" placeholder="Berater" wicket:id="user">
-                    <input type="password" class="input-small" placeholder="Passwort" wicket:id="password">
-                    <button type="submit" class="btn" wicket:id="submit">Login</button>
-                </form>
+                    <form class="form-search login-credentials" wicket:id="loginform">
 
+                        <div class="control-group ">
+                            <label class="control-label" for="inputUser">Benutzername</label>
 
+                            <div class="controls">
+                                <input type="text" id="inputUser" wicket:id="user">
+                            </div>
+                        </div>
 
+                        <div class="control-group">
+                            <label class="control-label" for="inputPassword">Passwort</label>
+
+                            <div class="controls">
+                                <input type="password" id="inputPassword" wicket:id="password">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-inverse pull-right" wicket:id="submit">Login</button>
+                    </form>
+                </div>
+                <div wicket:id="dashboard">
+                    <p>Hier gelangen Sie zum Beraterbereich</p>
+                    <br>
+
+                    <div align="center">
+                        <button type="button" class="btn btn-inverse" wicket:id="dashboardLink">Beraterbereich</button>
+                    </div>
+                </div>
             </fieldset>
         </div>
     </div>
