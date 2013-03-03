@@ -6,10 +6,11 @@ import java.io.Serializable;
 
 /**
  * Created with IntelliJ IDEA.
+ *
  * @author Patrick Groß-Holtwick
- * Date: 03.03.13
- * Time: 17:07
- * To change this template use File | Settings | File Templates.
+ *         Date: 03.03.13
+ *         Time: 17:07
+ *         To change this template use File | Settings | File Templates.
  */
 public class Customer implements Serializable {
 

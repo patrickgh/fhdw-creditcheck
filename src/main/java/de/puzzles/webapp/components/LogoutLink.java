@@ -4,10 +4,11 @@ import org.apache.wicket.markup.html.link.Link;
 
 /**
  * Created with IntelliJ IDEA.
+ *
  * @author Patrick Groß-Holtwick
- * Date: 03.03.13
- * Time: 15:26
- * To change this template use File | Settings | File Templates.
+ *         Date: 03.03.13
+ *         Time: 15:26
+ *         To change this template use File | Settings | File Templates.
  */
 public class LogoutLink extends Link {
 

@@ -1,9 +1,7 @@
 package de.puzzles.core;
 
 import de.puzzles.core.util.PuzzlesUtils;
-import org.joda.time.DateTime;
 
-import java.nio.charset.Charset;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -14,10 +12,11 @@ import java.sql.Statement;
 
 /**
  * Created with IntelliJ IDEA.
+ *
  * @author Patrick Groß-Holtwick
- * Date: 28.02.13
- * Time: 12:15
- * To change this template use File | Settings | File Templates.
+ *         Date: 28.02.13
+ *         Time: 12:15
+ *         To change this template use File | Settings | File Templates.
  */
 public class DatabaseConnector {
 
@@ -73,11 +72,11 @@ public class DatabaseConnector {
         try {
             String sql = "insert into customer values (null,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement stmt = dbConnection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            stmt.setString(1,customer.getFirstname());
-            stmt.setString(2,customer.getLastname());
+            stmt.setString(1, customer.getFirstname());
+            stmt.setString(2, customer.getLastname());
             stmt.setDate(3, new Date(customer.getBirthday().getMillis()));
-            stmt.setString(4,customer.getStreet());
-            stmt.setString(5,customer.getCity());
+            stmt.setString(4, customer.getStreet());
+            stmt.setString(5, customer.getCity());
             stmt.setString(6, customer.getZipcode());
             stmt.setString(7, customer.getTelephone());
             stmt.setString(8, customer.getEmail());
@@ -91,8 +90,8 @@ public class DatabaseConnector {
 
                 sql = "insert into creditrequests values(null,?,?,?,?,?,?,?,?)";
                 stmt = dbConnection.prepareStatement(sql);
-                stmt.setInt(1,customerId);
-                stmt.setInt(2,req.getConsultantId());
+                stmt.setInt(1, customerId);
+                stmt.setInt(2, req.getConsultantId());
                 stmt.setDate(3, new Date(System.currentTimeMillis()));
                 stmt.setInt(4, req.getState().ordinal());
                 stmt.setFloat(5, req.getAmount().floatValue());

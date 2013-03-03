@@ -8,10 +8,11 @@ import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
+ *
  * @author Patrick Groß-Holtwick
- * Date: 03.03.13
- * Time: 16:58
- * To change this template use File | Settings | File Templates.
+ *         Date: 03.03.13
+ *         Time: 16:58
+ *         To change this template use File | Settings | File Templates.
  */
 public class CreditRequest implements Serializable {
 

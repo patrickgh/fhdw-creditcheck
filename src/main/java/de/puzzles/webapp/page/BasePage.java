@@ -9,18 +9,16 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.request.resource.PackageResourceReference;
 import webresources.ImportResourceLocator;
 
-import java.util.Date;
-
 /**
  * Created with IntelliJ IDEA.
+ *
  * @author Patrick Groß-Holtwick
- * Date: 25.01.13
- * Time: 14:06
- * To change this template use File | Settings | File Templates.
+ *         Date: 25.01.13
+ *         Time: 14:06
+ *         To change this template use File | Settings | File Templates.
  */
 public abstract class BasePage extends WebPage implements IAjaxIndicatorAware {
 

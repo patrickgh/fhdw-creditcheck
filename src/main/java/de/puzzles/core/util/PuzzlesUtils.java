@@ -4,10 +4,11 @@ import java.nio.charset.Charset;
 
 /**
  * Created with IntelliJ IDEA.
+ *
  * @author Patrick Groß-Holtwick
- * Date: 03.03.13
- * Time: 17:14
- * To change this template use File | Settings | File Templates.
+ *         Date: 03.03.13
+ *         Time: 17:14
+ *         To change this template use File | Settings | File Templates.
  */
 public final class PuzzlesUtils {
 
