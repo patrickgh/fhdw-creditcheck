@@ -1,5 +1,6 @@
 package de.puzzles.webapp.components;
 
+import de.puzzles.webapp.page.RequiresLoginPage;
 import org.apache.wicket.markup.html.link.Link;
 
 /**
@@ -19,6 +20,9 @@ public class LogoutLink extends Link {
     @Override
     public void onClick() {
         getSession().setAttribute("userId", null);
+        if(getPage() instanceof RequiresLoginPage) {
+            setResponsePage(getApplication().getHomePage());
+        }
     }
 
     @Override

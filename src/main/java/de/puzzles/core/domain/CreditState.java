@@ -1,4 +1,4 @@
-package de.puzzles.core;
+package de.puzzles.core.domain;
 
 /**
  * Created with IntelliJ IDEA.

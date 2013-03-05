@@ -1,5 +1,8 @@
 package de.puzzles.core;
 
+import de.puzzles.core.domain.CreditRequest;
+import de.puzzles.core.domain.Customer;
+import de.puzzles.core.domain.Transaction;
 import de.puzzles.core.util.PuzzlesUtils;
 
 import java.sql.Connection;
@@ -89,7 +92,7 @@ public class DatabaseConnector {
                 int customerId = result.getInt(1);
 
                 sql = "insert into creditrequests values(null,?,?,?,?,?,?,?,?)";
-                stmt = dbConnection.prepareStatement(sql);
+                stmt = dbConnection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
                 stmt.setInt(1, customerId);
                 stmt.setInt(2, req.getConsultantId());
                 stmt.setDate(3, new Date(System.currentTimeMillis()));
@@ -100,7 +103,21 @@ public class DatabaseConnector {
                 stmt.setObject(8, req.getDuration());
 
                 stmt.execute();
-                //TODO: save transactions
+                result = stmt.getGeneratedKeys();
+                if (result.next() && result.isLast()) {
+                    int requestId = result.getInt(1);
+
+                    for (Transaction transaction : req.getTransactions()) {
+                        sql = "insert into transactions values (null,?,?,?,?,?)";
+                        stmt = dbConnection.prepareStatement(sql);
+                        stmt.setInt(1, requestId);
+                        stmt.setString(2, transaction.getDescription());
+                        stmt.setString(3, transaction.getDescription1());
+                        stmt.setString(4, transaction.getDescription2());
+                        stmt.setDouble(5, transaction.getValue());
+                        stmt.execute();
+                    }
+                }
                 return true;
             }
         }

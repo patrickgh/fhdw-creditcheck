@@ -1,5 +1,9 @@
 package de.puzzles.core;
 
+import de.puzzles.core.domain.CreditRequest;
+import de.puzzles.core.domain.CreditState;
+import de.puzzles.core.domain.Customer;
+import de.puzzles.core.domain.Transaction;
 import org.joda.time.DateTime;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -42,6 +46,9 @@ public class DatabaseConnectorTest {
         req.setConsultantId(1);
         req.setState(CreditState.PENDING);
         req.setRate(100.0);
+
+        req.addTransaction(new Transaction(null,null,"Lohn/Gehalt","Laudert Gmbh+Co KG","",450.0));
+        req.addTransaction(new Transaction(null,null,"Miete","Wohnung Bielefeld","", -300.0));
 
         Assert.assertTrue(conn.saveCreditrequest(req));
     }

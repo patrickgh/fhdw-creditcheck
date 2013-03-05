@@ -1,4 +1,4 @@
-package de.puzzles.core;
+package de.puzzles.core.domain;
 
 import org.joda.time.DateTime;
 
@@ -115,5 +115,9 @@ public class CreditRequest implements Serializable {
         if (trans != null) {
             transactions.add(trans);
         }
+    }
+
+    public List<Transaction> getTransactions() {
+        return new ArrayList<Transaction>(transactions);
     }
 }
