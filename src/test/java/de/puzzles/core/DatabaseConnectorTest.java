@@ -50,7 +50,17 @@ public class DatabaseConnectorTest {
         req.addTransaction(new Transaction(null,null,"Lohn/Gehalt","Laudert Gmbh+Co KG","",450.0));
         req.addTransaction(new Transaction(null,null,"Miete","Wohnung Bielefeld","", -300.0));
 
-        Assert.assertTrue(conn.saveCreditrequest(req));
+
+        Integer resultId = conn.saveCreditrequest(req);
+        Assert.assertNotNull(resultId);
+
+        req = conn.getCreditRequestById(resultId);
+        Assert.assertNotNull(req);
+        Assert.assertNotNull(req.getCustomer());
+        Assert.assertEquals(req.getCustomer().getFirstname(),"Patrick");
+        Assert.assertEquals(req.getAmount(),10000.0);
+        Assert.assertNotNull(req.getTransactions());
+        Assert.assertEquals(req.getTransactions().size(),2);
     }
 
 }

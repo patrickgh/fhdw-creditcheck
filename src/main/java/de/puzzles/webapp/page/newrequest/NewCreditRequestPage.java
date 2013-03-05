@@ -1,4 +1,6 @@
-package de.puzzles.webapp.page;
+package de.puzzles.webapp.page.newrequest;
+
+import de.puzzles.webapp.page.BasePage;
 
 /**
  * Created with IntelliJ IDEA.

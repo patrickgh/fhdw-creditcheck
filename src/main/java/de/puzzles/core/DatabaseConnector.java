@@ -1,9 +1,11 @@
 package de.puzzles.core;
 
 import de.puzzles.core.domain.CreditRequest;
+import de.puzzles.core.domain.CreditState;
 import de.puzzles.core.domain.Customer;
 import de.puzzles.core.domain.Transaction;
 import de.puzzles.core.util.PuzzlesUtils;
+import org.joda.time.DateTime;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -12,6 +14,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -70,7 +74,84 @@ public class DatabaseConnector {
         return null;
     }
 
-    public Boolean saveCreditrequest(CreditRequest req) {
+    public Customer getCustomerById(int id) {
+        String sql = "SELECT * FROM customer WHERE id=?";
+        try {
+            PreparedStatement stmt = dbConnection.prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.execute();
+            ResultSet result = stmt.getResultSet();
+            if (result.next() && result.isLast()) {
+                Customer customer = new Customer();
+                customer.setFirstname(result.getString(2));
+                customer.setLastname(result.getString(3));
+                customer.setBirthday(new DateTime(result.getDate(4)));
+                customer.setStreet(result.getString(5));
+                customer.setCity(result.getString(6));
+                customer.setZipcode(result.getString(7));
+                customer.setTelephone(result.getString(8));
+                customer.setEmail(result.getString(9));
+                customer.setAccountnumber(result.getString(10));
+                customer.setBankcode(result.getString(11));
+                return customer;
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public CreditRequest getCreditRequestById(int id) {
+        String sql = "SELECT * FROM creditrequests WHERE id=?";
+        try {
+            PreparedStatement stmt = dbConnection.prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.execute();
+            ResultSet result = stmt.getResultSet();
+            if (result.next() && result.isLast()) {
+                CreditRequest request = new CreditRequest();
+                request.setConsultantId(result.getInt("consultant_id"));
+                request.setCreationDate(new DateTime(result.getDate("creationdate")));
+                request.setState(PuzzlesUtils.getCreditStateByValue(result.getInt("state")));
+                request.setAmount(result.getDouble("creditamount"));
+                request.setRate(result.getDouble("rate"));
+                request.setDuration(result.getInt("duration"));
+                request.setCustomer(getCustomerById(result.getInt("customer_id")));
+                request.setTransactions(getTransactionsByRequestId(id));
+                return request;
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<Transaction> getTransactionsByRequestId(int id) {
+        List<Transaction> transactions = new ArrayList<Transaction>();
+        String sql = "SELECT * FROM transactions WHERE request_id=?";
+        try {
+            PreparedStatement stmt = dbConnection.prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.execute();
+            ResultSet result = stmt.getResultSet();
+            while (result.next()) {
+                transactions.add(new Transaction(null,
+                                                 id,
+                                                 result.getString("description"),
+                                                 result.getString("description1"),
+                                                 result.getString("description2"),
+                                                 result.getDouble("value")));
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return transactions;
+    }
+
+    public Integer saveCreditrequest(CreditRequest req) {
         Customer customer = req.getCustomer();
         try {
             String sql = "insert into customer values (null,?,?,?,?,?,?,?,?,?,?)";
@@ -117,14 +198,14 @@ public class DatabaseConnector {
                         stmt.setDouble(5, transaction.getValue());
                         stmt.execute();
                     }
+                    return requestId;
                 }
-                return true;
             }
         }
         catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        return null;
     }
 
 }

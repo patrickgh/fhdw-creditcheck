@@ -120,4 +120,8 @@ public class CreditRequest implements Serializable {
     public List<Transaction> getTransactions() {
         return new ArrayList<Transaction>(transactions);
     }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
 }

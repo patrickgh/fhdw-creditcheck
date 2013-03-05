@@ -1,5 +1,7 @@
 package de.puzzles.core.util;
 
+import de.puzzles.core.domain.CreditState;
+
 import java.nio.charset.Charset;
 
 /**
@@ -29,6 +31,16 @@ public final class PuzzlesUtils {
         catch (java.security.NoSuchAlgorithmException e) {
             System.out.println("NoSuchAlgorithmException while creating MD5 hash");
             System.out.println(e);
+        }
+        return null;
+    }
+
+    public static CreditState getCreditStateByValue(Integer value) {
+        if (value != null) {
+            CreditState[] states = CreditState.values();
+            if (value < states.length) {
+                return states[value];
+            }
         }
         return null;
     }

@@ -1,6 +1,8 @@
 package de.puzzles.webapp.page;
 
 import de.puzzles.core.DatabaseConnector;
+import de.puzzles.webapp.page.dashboard.DashboardPage;
+import de.puzzles.webapp.page.newrequest.NewCreditRequestPage;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
 import org.apache.wicket.markup.html.WebMarkupContainer;

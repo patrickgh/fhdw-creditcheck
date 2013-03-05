@@ -1,5 +1,6 @@
-package de.puzzles.webapp.page;
+package de.puzzles.webapp.page.dashboard;
 
+import de.puzzles.webapp.page.RequiresLoginPage;
 import org.apache.wicket.markup.html.basic.Label;
 
 /**
