@@ -35,7 +35,7 @@ public class DatabaseConnector {
             // einen JDBC-Treiber registrieren und über den registrierten
             // Treiber das Programm mit der DB verbinden:
             Class.forName("com.mysql.jdbc.Driver");
-            dbConnection = DriverManager.getConnection("jdbc:mysql://localhost/puzzles", "root", "");
+            dbConnection = DriverManager.getConnection("jdbc:mysql://localhost/puzzles", "root", "root");
         }
         catch (ClassNotFoundException err) {
             System.out.println("DB-Driver nicht gefunden!");

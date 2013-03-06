@@ -7,10 +7,18 @@ hr {
     border-bottom: 1px solid #eeeeee;
 }
 
-#kasten {
+#box {
     border-width: 1.9px;
     border-style: solid;
     border-color: #cccccc;
     padding: 1em;
     text-align: justify;
+}
+
+
+hr .vertical {
+    width:1px;
+    height:200px;
+    margin:2px;
+    float:left;
 }
