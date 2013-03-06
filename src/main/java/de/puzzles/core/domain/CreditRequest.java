@@ -19,7 +19,7 @@ import java.util.List;
 public class CreditRequest implements Serializable {
 
     private Integer id;
-    private Customer customer;
+    private Customer customer = new Customer();
     private Integer consultantId;
     private DateTime creationDate;
     private CreditState state;
