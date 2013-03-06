@@ -4,9 +4,10 @@ import de.puzzles.core.domain.CreditRequest;
 import de.puzzles.core.domain.CreditState;
 import de.puzzles.core.domain.Customer;
 import de.puzzles.core.domain.Transaction;
-import org.joda.time.DateTime;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -34,7 +35,7 @@ public class DatabaseConnectorTest {
         customer.setLastname("Groß-Holtwick");
         customer.setAccountnumber("22334545");
         customer.setBankcode("blz");
-        customer.setBirthday(new DateTime());
+        customer.setBirthday(new Date());
         customer.setCity("Bocholt");
         customer.setZipcode("46399");
         customer.setEmail("patrickgh@web.de");
@@ -47,9 +48,8 @@ public class DatabaseConnectorTest {
         req.setState(CreditState.PENDING);
         req.setRate(100.0);
 
-        req.addTransaction(new Transaction(null,null,"Lohn/Gehalt","Laudert Gmbh+Co KG","",450.0));
-        req.addTransaction(new Transaction(null,null,"Miete","Wohnung Bielefeld","", -300.0));
-
+        req.addTransaction(new Transaction(null, null, "Lohn/Gehalt", "Laudert Gmbh+Co KG", "", 450.0));
+        req.addTransaction(new Transaction(null, null, "Miete", "Wohnung Bielefeld", "", -300.0));
 
         Integer resultId = conn.saveCreditrequest(req);
         Assert.assertNotNull(resultId);
@@ -57,10 +57,10 @@ public class DatabaseConnectorTest {
         req = conn.getCreditRequestById(resultId);
         Assert.assertNotNull(req);
         Assert.assertNotNull(req.getCustomer());
-        Assert.assertEquals(req.getCustomer().getFirstname(),"Patrick");
-        Assert.assertEquals(req.getAmount(),10000.0);
+        Assert.assertEquals(req.getCustomer().getFirstname(), "Patrick");
+        Assert.assertEquals(req.getAmount(), 10000.0);
         Assert.assertNotNull(req.getTransactions());
-        Assert.assertEquals(req.getTransactions().size(),2);
+        Assert.assertEquals(req.getTransactions().size(), 2);
     }
 
 }

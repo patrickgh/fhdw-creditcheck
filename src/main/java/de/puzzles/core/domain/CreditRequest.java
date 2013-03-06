@@ -4,6 +4,7 @@ import org.joda.time.DateTime;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,7 +22,7 @@ public class CreditRequest implements Serializable {
     private Integer id;
     private Customer customer = new Customer();
     private Integer consultantId;
-    private DateTime creationDate;
+    private Date creationDate;
     private CreditState state;
     private Double amount;
     private Double rate;
@@ -43,11 +44,11 @@ public class CreditRequest implements Serializable {
      * @param duration
      * @param transactions
      */
-    public CreditRequest(Integer id, Customer customer, Integer consultantId, DateTime creationDate, CreditState state, Double amount, Double rate, Integer duration, List<Transaction> transactions) {
+    public CreditRequest(Integer id, Customer customer, Integer consultantId, Date creationDate, CreditState state, Double amount, Double rate, Integer duration, List<Transaction> transactions) {
         this.id = id;
         this.customer = customer;
         this.consultantId = consultantId;
-        this.creationDate = new DateTime(creationDate);
+        this.creationDate = new Date(creationDate.getTime());
         this.state = state;
         this.amount = amount;
         this.rate = rate;
@@ -81,12 +82,12 @@ public class CreditRequest implements Serializable {
         this.consultantId = consultantId;
     }
 
-    public DateTime getCreationDate() {
+    public Date getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(DateTime creationDate) {
-        this.creationDate = new DateTime(creationDate);
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = new Date(creationDate.getTime());
     }
 
     public CreditState getState() {

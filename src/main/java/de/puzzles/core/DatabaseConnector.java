@@ -5,7 +5,6 @@ import de.puzzles.core.domain.CreditState;
 import de.puzzles.core.domain.Customer;
 import de.puzzles.core.domain.Transaction;
 import de.puzzles.core.util.PuzzlesUtils;
-import org.joda.time.DateTime;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -85,7 +84,7 @@ public class DatabaseConnector {
                 Customer customer = new Customer();
                 customer.setFirstname(result.getString(2));
                 customer.setLastname(result.getString(3));
-                customer.setBirthday(new DateTime(result.getDate(4)));
+                customer.setBirthday(new Date(result.getDate(4).getTime()));
                 customer.setStreet(result.getString(5));
                 customer.setCity(result.getString(6));
                 customer.setZipcode(result.getString(7));
@@ -112,7 +111,7 @@ public class DatabaseConnector {
             if (result.next() && result.isLast()) {
                 CreditRequest request = new CreditRequest();
                 request.setConsultantId(result.getInt("consultant_id"));
-                request.setCreationDate(new DateTime(result.getDate("creationdate")));
+                request.setCreationDate(result.getDate("creationdate"));
                 request.setState(PuzzlesUtils.getCreditStateByValue(result.getInt("state")));
                 request.setAmount(result.getDouble("creditamount"));
                 request.setRate(result.getDouble("rate"));
@@ -171,7 +170,7 @@ public class DatabaseConnector {
             PreparedStatement stmt = dbConnection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, customer.getFirstname());
             stmt.setString(2, customer.getLastname());
-            stmt.setDate(3, new Date(customer.getBirthday().getMillis()));
+            stmt.setDate(3, new Date(customer.getBirthday().getTime()));
             stmt.setString(4, customer.getStreet());
             stmt.setString(5, customer.getCity());
             stmt.setString(6, customer.getZipcode());

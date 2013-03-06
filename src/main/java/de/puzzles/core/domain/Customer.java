@@ -1,8 +1,7 @@
 package de.puzzles.core.domain;
 
-import org.joda.time.DateTime;
-
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * This class represents the <code>customer</code> object.
@@ -20,7 +19,7 @@ public class Customer implements Serializable {
     private Integer id;
     private String firstname;
     private String lastname;
-    private DateTime birthday;
+    private Date birthday;
     private String street;
     private String city;
     private String zipcode;
@@ -32,11 +31,11 @@ public class Customer implements Serializable {
     public Customer() {
     }
 
-    public Customer(Integer id, String firstname, String lastname, DateTime birthday, String street, String city, String zipcode, String telephone, String email, String accountnumber, String bankcode) {
+    public Customer(Integer id, String firstname, String lastname, Date birthday, String street, String city, String zipcode, String telephone, String email, String accountnumber, String bankcode) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.birthday = birthday;
+        this.birthday = new Date(birthday.getTime());
         this.street = street;
         this.city = city;
         this.zipcode = zipcode;
@@ -70,12 +69,12 @@ public class Customer implements Serializable {
         this.lastname = lastname;
     }
 
-    public DateTime getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(DateTime birthday) {
-        this.birthday = birthday;
+    public void setBirthday(Date birthday) {
+        this.birthday = new Date(birthday.getTime());
     }
 
     public String getStreet() {
