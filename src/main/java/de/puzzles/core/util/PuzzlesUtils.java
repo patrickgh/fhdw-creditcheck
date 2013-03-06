@@ -5,18 +5,22 @@ import de.puzzles.core.domain.CreditState;
 import java.nio.charset.Charset;
 
 /**
- * Created with IntelliJ IDEA.
+ * This class provides help-methods for the webapplication.
  *
  * @author Patrick Groß-Holtwick
  *         Date: 03.03.13
- *         Time: 17:14
- *         To change this template use File | Settings | File Templates.
+ *
  */
 public final class PuzzlesUtils {
 
     private PuzzlesUtils() {
     }
 
+    /**
+     * This Method generates a md5 hash of a given String.
+     * @param input (String)
+     * @return  (String)
+     */
     public static String md5(String input) {
         String md5 = (input == null) ? "" : input;
         try {
@@ -35,6 +39,12 @@ public final class PuzzlesUtils {
         return null;
     }
 
+    /**
+     * This Method returns the enum value from a given integer value.
+     * This method also checks if the integer is related to a enum value.
+     * @param value
+     * @return enum value
+     */
     public static CreditState getCreditStateByValue(Integer value) {
         if (value != null) {
             CreditState[] states = CreditState.values();
