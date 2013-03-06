@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
+ * This class represents the creditrequest object.
+ * This class is a model class. Instances of this class represent creditrequest objects.
+ * The instance of the object stores the data of an creditrequest during the runtime.
  *
  * @author Patrick Groß-Holtwick
  *         Date: 03.03.13
- *         Time: 16:58
- *         To change this template use File | Settings | File Templates.
+ *
+ *
  */
 public class CreditRequest implements Serializable {
 
@@ -29,6 +31,18 @@ public class CreditRequest implements Serializable {
     public CreditRequest() {
     }
 
+    /**
+     * Constructor
+     * @param id
+     * @param customer
+     * @param consultantId
+     * @param creationDate
+     * @param state
+     * @param amount
+     * @param rate
+     * @param duration
+     * @param transactions
+     */
     public CreditRequest(Integer id, Customer customer, Integer consultantId, DateTime creationDate, CreditState state, Double amount, Double rate, Integer duration, List<Transaction> transactions) {
         this.id = id;
         this.customer = customer;
@@ -107,10 +121,20 @@ public class CreditRequest implements Serializable {
         this.duration = duration;
     }
 
+    /**
+     * This method checks if the creditrequest has a fixed lenght (duration) or a fixed rate.
+     * If the duration of the creditrequest is fix, the rate will be automatically calculated.
+     * If the rate of the creditrequest is fix, the duration will be automatically calculated.
+     * @return  true or false. Returns true if the creditrequest has a fixed length. Returns true if the creditrequest has a fixed rate.
+     */
     public boolean hasFixedLength() {
         return duration != null;
     }
 
+    /**
+     * This method adds a transaction to the list of the transactions, which are related to the creditrequest.
+     * @param trans
+     */
     public void addTransaction(Transaction trans) {
         if (trans != null) {
             transactions.add(trans);

@@ -151,6 +151,19 @@ public class DatabaseConnector {
         return transactions;
     }
 
+    public void changeRequestState(int id, CreditState state) {
+        try {
+            String sql = "UPDATE creditrequests SET state=? WHERE id =?";
+            PreparedStatement stmt = dbConnection.prepareStatement(sql);
+            stmt.setInt(1,state.ordinal());
+            stmt.setInt(2,id);
+            stmt.execute();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public Integer saveCreditrequest(CreditRequest req) {
         Customer customer = req.getCustomer();
         try {

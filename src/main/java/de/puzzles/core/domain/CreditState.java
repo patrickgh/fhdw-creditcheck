@@ -1,12 +1,12 @@
 package de.puzzles.core.domain;
 
 /**
- * Created with IntelliJ IDEA.
+ * This class is a enum class. The enum contains the states which the creditrequest can assume.
  *
  * @author Patrick Groß-Holtwick
  *         Date: 03.03.13
- *         Time: 17:03
- *         To change this template use File | Settings | File Templates.
+ *
+ *
  */
 public enum CreditState {
     PENDING, ACCEPTED, REJECTED
