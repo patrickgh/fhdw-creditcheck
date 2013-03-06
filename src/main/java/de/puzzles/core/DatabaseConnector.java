@@ -14,7 +14,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,15 +28,24 @@ import java.util.List;
  */
 public class DatabaseConnector {
 
+    public static final String DEFAULT_URL = "jdbc:mysql://localhost/puzzles";
+    public static final String DEFAULT_USER = "root";
+    public static final String DEFAULT_PASSWORD = "";
     private static DatabaseConnector INSTANCE = new DatabaseConnector();
     private Connection dbConnection = null; // connection vorbereiten
 
+
+
     private DatabaseConnector() {
         try {
+            //Default Werte nutzen, falls keine Parameter mitgegeben werden
+            String url = System.getProperty("db.url") != null ? System.getProperty("db.url") : DEFAULT_URL;
+            String user = System.getProperty("db.user") != null ? System.getProperty("db.user") : DEFAULT_USER;
+            String password = System.getProperty("db.password") != null ? System.getProperty("db.password") : DEFAULT_PASSWORD;
             // einen JDBC-Treiber registrieren und über den registrierten
             // Treiber das Programm mit der DB verbinden:
             Class.forName("com.mysql.jdbc.Driver");
-            dbConnection = DriverManager.getConnection("jdbc:mysql://localhost/puzzles", "root", "root");
+            dbConnection = DriverManager.getConnection(url, user, password);
         }
         catch (ClassNotFoundException err) {
             System.out.println("DB-Driver nicht gefunden!");
@@ -161,6 +172,23 @@ public class DatabaseConnector {
         catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public Map<String,Integer> getConsultantNames()  {
+        Map<String,Integer> names = new HashMap<String,Integer>();
+        try {
+            String sql = "SELECT CONCAT(firstname, ' ', lastname) AS name, id FROM consultants ORDER BY name";
+            PreparedStatement stmt = dbConnection.prepareStatement(sql);
+            stmt.execute();
+            ResultSet result = stmt.getResultSet();
+            while (result.next()) {
+                names.put(result.getString("name"),result.getInt("id"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return names;
     }
 
     public Integer saveCreditrequest(CreditRequest req) {

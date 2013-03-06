@@ -1,6 +1,15 @@
 package de.puzzles.webapp.page.newrequest;
 
+import de.puzzles.core.domain.CreditRequest;
 import de.puzzles.webapp.page.BasePage;
+import de.puzzles.webapp.page.newrequest.steps.EarningsStep;
+import de.puzzles.webapp.page.newrequest.steps.PersonalInformationStep;
+import de.puzzles.webapp.page.newrequest.wizard.NewCreditRequestWizard;
+import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.extensions.wizard.IWizardStep;
+import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.model.Model;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,4 +21,32 @@ import de.puzzles.webapp.page.BasePage;
  */
 public class NewCreditRequestPage extends BasePage {
 
+    WebMarkupContainer progressBar = new WebMarkupContainer("progress");
+
+    public NewCreditRequestPage() {
+        super();
+
+        updateProgressBar(20);
+
+        add(progressBar);
+        add(new NewCreditRequestWizard("content"){
+            @Override
+            public void onActiveStepChanged(IWizardStep newStep) {
+                super.onActiveStepChanged(newStep);
+                int percent = 0;
+                if(newStep instanceof PersonalInformationStep) percent = 20;
+                if(newStep instanceof EarningsStep) percent = 40;
+
+                updateProgressBar(percent);
+            }
+        });
+    }
+
+    public void updateProgressBar(Integer percent) {
+        progressBar.add(new AttributeModifier("style", "width: "+ percent+"%"));
+        AjaxRequestTarget target = getRequestCycle().find(AjaxRequestTarget.class);
+        if (target != null) {
+            target.add(progressBar);
+        }
+    }
 }
