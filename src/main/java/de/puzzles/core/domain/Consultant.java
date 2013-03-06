@@ -3,9 +3,9 @@ package de.puzzles.core.domain;
 import java.io.Serializable;
 
 /**
- * This class represents the consultant object.
- * This class is a model class. Instances of this class represent consultant objects.
- * The instance of the object stores the data of an consultant during the runtime.
+ * This class represents the <code>consultant</code> object.
+ * This class is a model class. Instances of this class represent <code>consultant</code> objects.
+ * The instance of the object stores the data of an <code>consultant</code> during the runtime.
  *
  * @author Patrick Groß-Holtwick
  *         Date: 03.03.13

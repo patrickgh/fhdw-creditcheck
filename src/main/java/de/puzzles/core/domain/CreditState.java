@@ -1,7 +1,7 @@
 package de.puzzles.core.domain;
 
 /**
- * This class is a enum class. The enum contains the states which the creditrequest can assume.
+ * This class is a <code>enum</code> class. The <code>enum</code> contains the states which the creditrequest can assume.
  *
  * @author Patrick Groß-Holtwick
  *         Date: 03.03.13

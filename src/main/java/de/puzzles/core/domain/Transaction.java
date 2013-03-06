@@ -3,9 +3,9 @@ package de.puzzles.core.domain;
 import java.io.Serializable;
 
 /**
- * This class represents the transaction object.
- * This class is a model class. Instances of this class represent transaction objects.
- * The instance of the object stores the data of an transaction during the runtime.
+ * This class represents the <code>transaction</code> object.
+ * This class is a model class. Instances of this class represent <code>transaction</code> objects.
+ * The instance of the object stores the data of an <code>transaction</code> during the runtime.
  *
  * @author Patrick Groß-Holtwick
  *         Date: 03.03.13

@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class represents the creditrequest object.
- * This class is a model class. Instances of this class represent creditrequest objects.
- * The instance of the object stores the data of an creditrequest during the runtime.
+ * This class represents the <code>creditrequest</code> object.
+ * This class is a model class. Instances of this class represent <code>creditrequest</code> objects.
+ * The instance of the object stores the data of an <code>creditrequest</code> during the runtime.
  *
  * @author Patrick Groß-Holtwick
  *         Date: 03.03.13
@@ -19,7 +19,7 @@ import java.util.List;
 public class CreditRequest implements Serializable {
 
     private Integer id;
-    private Customer customer;
+    private Customer customer = new Customer();
     private Integer consultantId;
     private DateTime creationDate;
     private CreditState state;

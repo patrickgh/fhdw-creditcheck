@@ -5,9 +5,9 @@ import org.joda.time.DateTime;
 import java.io.Serializable;
 
 /**
- * This class represents the customer object.
- * This class is a model class. Instances of this class represent customer objects.
- * The instance of the object stores the data of a customer during the runtime.
+ * This class represents the <code>customer</code> object.
+ * This class is a model class. Instances of this class represent <code>customer</code> objects.
+ * The instance of the object stores the data of a <code>customer</code> during the runtime.
  *
  * @author Patrick Groß-Holtwick
  *         Date: 03.03.13
