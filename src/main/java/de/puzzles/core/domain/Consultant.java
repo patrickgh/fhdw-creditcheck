@@ -3,12 +3,14 @@ package de.puzzles.core.domain;
 import java.io.Serializable;
 
 /**
- * Created with IntelliJ IDEA.
+ * This class represents the consultant object.
+ * This class is a model class. Instances of this class represent consultant objects.
+ * The instance of the object stores the data of an consultant during the runtime.
  *
  * @author Patrick Groß-Holtwick
  *         Date: 03.03.13
- *         Time: 17:12
- *         To change this template use File | Settings | File Templates.
+ *
+ *
  */
 public class Consultant implements Serializable {
 
@@ -16,6 +18,8 @@ public class Consultant implements Serializable {
     private String firstname;
     private String lastname;
     private String username;
+
+
     private String passwordHash;
 
     public Consultant(Integer id, String firstname, String lastname, String username, String passwordHash) {

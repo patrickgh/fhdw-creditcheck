@@ -3,12 +3,14 @@ package de.puzzles.core.domain;
 import java.io.Serializable;
 
 /**
- * Created with IntelliJ IDEA.
+ * This class represents the transaction object.
+ * This class is a model class. Instances of this class represent transaction objects.
+ * The instance of the object stores the data of an transaction during the runtime.
  *
  * @author Patrick Groß-Holtwick
  *         Date: 03.03.13
- *         Time: 18:38
- *         To change this template use File | Settings | File Templates.
+ *
+ *
  */
 public class Transaction implements Serializable {
 
