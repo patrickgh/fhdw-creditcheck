@@ -37,8 +37,12 @@
             <a class="brand logo" href="/">
                 <span class="logo">Puzzles|Creditcheck</span>
             </a>
+
             <div wicket:id="debugbar"/>
-            <p class="navbar-text pull-right">Startseite</p>
+            <p class="navbar-text pull-left">Startseite</p>
+            <a class="btn pull-right" wicket:id="logoutLink">
+                <i class="icon-off"></i> Logout
+            </a>
         </div>
     </div>
 </div>
@@ -57,11 +61,10 @@
 
     <div class="row">
 
-                  <wicket:child></wicket:child>
+        <wicket:child></wicket:child>
 
     </div>
 </div>
-
 
 
 <!-- Loader

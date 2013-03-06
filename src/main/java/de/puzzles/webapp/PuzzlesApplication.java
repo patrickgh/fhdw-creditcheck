@@ -12,12 +12,13 @@ import org.apache.wicket.util.string.Strings;
 
 /**
  * Created with IntelliJ IDEA.
+ *
  * @author Patrick Groß-Holtwick
- * Date: 25.01.13
- * Time: 14:08
- * To change this template use File | Settings | File Templates.
+ *         Date: 25.01.13
+ *         Time: 14:08
+ *         To change this template use File | Settings | File Templates.
  */
-public class PuzzlesApplication extends WebApplication{
+public class PuzzlesApplication extends WebApplication {
 
     @Override
     protected void init() {
@@ -34,7 +35,8 @@ public class PuzzlesApplication extends WebApplication{
             if (!Strings.isEmpty(webResourceFolder)) {
                 getResourceSettings().getResourceFinders().add(new WebApplicationPath(getServletContext(), webResourceFolder));
             }
-        } else {
+        }
+        else {
             getResourceSettings().setCachingStrategy(new FilenameWithVersionResourceCachingStrategy(new LastModifiedResourceVersion()));
             getResourceSettings().setJavaScriptCompressor(new NoOpTextCompressor());
             getMarkupSettings().setStripComments(true);
@@ -46,6 +48,5 @@ public class PuzzlesApplication extends WebApplication{
     public Class<? extends Page> getHomePage() {
         return LoginPage.class;
     }
-
 
 }

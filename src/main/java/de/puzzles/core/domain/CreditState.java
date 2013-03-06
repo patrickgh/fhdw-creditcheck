@@ -1,13 +1,13 @@
-package webresources;
+package de.puzzles.core.domain;
 
 /**
  * Created with IntelliJ IDEA.
  *
  * @author Patrick Groß-Holtwick
- *         Date: 02.03.13
- *         Time: 13:48
+ *         Date: 03.03.13
+ *         Time: 17:03
  *         To change this template use File | Settings | File Templates.
  */
-public class ImportResourceLocator {
-
+public enum CreditState {
+    PENDING, ACCEPTED, REJECTED
 }
