@@ -19,7 +19,7 @@ public class Transaction implements Serializable {
     private String description;
     private String description1;
     private String description2;
-    private Double value;
+    private Double value = 0.0;
 
     public Transaction() {
     }
