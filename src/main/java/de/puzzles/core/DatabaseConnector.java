@@ -72,8 +72,8 @@ public class DatabaseConnector {
                 stmt.execute();
                 ResultSet result = stmt.getResultSet();
                 if (result.next() && result.isLast()) {
-                    if (result.getString(2).equals(cryptedPassword)) {
-                        return result.getInt(1);
+                    if (result.getString("password").equals(cryptedPassword)) {
+                        return result.getInt("id");
                     }
                 }
             }
@@ -93,16 +93,16 @@ public class DatabaseConnector {
             ResultSet result = stmt.getResultSet();
             if (result.next() && result.isLast()) {
                 Customer customer = new Customer();
-                customer.setFirstname(result.getString(2));
-                customer.setLastname(result.getString(3));
-                customer.setBirthday(new Date(result.getDate(4).getTime()));
-                customer.setStreet(result.getString(5));
-                customer.setCity(result.getString(6));
-                customer.setZipcode(result.getString(7));
-                customer.setTelephone(result.getString(8));
-                customer.setEmail(result.getString(9));
-                customer.setAccountnumber(result.getString(10));
-                customer.setBankcode(result.getString(11));
+                customer.setFirstname(result.getString("firstname"));
+                customer.setLastname(result.getString("lastname"));
+                customer.setBirthday(new Date(result.getDate("birthdate").getTime()));
+                customer.setStreet(result.getString("street"));
+                customer.setCity(result.getString("city"));
+                customer.setZipcode(result.getString("zipcode"));
+                customer.setTelephone(result.getString("telephone"));
+                customer.setEmail(result.getString("email"));
+                customer.setAccountnumber(result.getString("accountnumber"));
+                customer.setBankcode(result.getString("bankcode"));
                 return customer;
             }
         }

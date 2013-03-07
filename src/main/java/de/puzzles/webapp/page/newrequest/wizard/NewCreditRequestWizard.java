@@ -2,7 +2,10 @@ package de.puzzles.webapp.page.newrequest.wizard;
 
 import de.puzzles.core.domain.CreditRequest;
 import de.puzzles.webapp.page.newrequest.steps.EarningsStep;
+import de.puzzles.webapp.page.newrequest.steps.InsuranceStep;
+import de.puzzles.webapp.page.newrequest.steps.OverviewStep;
 import de.puzzles.webapp.page.newrequest.steps.PersonalInformationStep;
+import de.puzzles.webapp.page.newrequest.steps.SpendingsStep;
 import org.apache.wicket.extensions.wizard.Wizard;
 import org.apache.wicket.extensions.wizard.WizardModel;
 import org.apache.wicket.model.CompoundPropertyModel;
@@ -21,6 +24,9 @@ public class NewCreditRequestWizard extends Wizard {
         WizardModel wizardModel = new WizardModel();
         wizardModel.add(new PersonalInformationStep(model));
         wizardModel.add(new EarningsStep());
+        wizardModel.add(new SpendingsStep());
+        wizardModel.add(new InsuranceStep());
+        wizardModel.add(new OverviewStep());
         init(wizardModel);
     }
 

@@ -3,7 +3,10 @@ package de.puzzles.webapp.page.newrequest;
 import de.puzzles.core.domain.CreditRequest;
 import de.puzzles.webapp.page.BasePage;
 import de.puzzles.webapp.page.newrequest.steps.EarningsStep;
+import de.puzzles.webapp.page.newrequest.steps.InsuranceStep;
+import de.puzzles.webapp.page.newrequest.steps.OverviewStep;
 import de.puzzles.webapp.page.newrequest.steps.PersonalInformationStep;
+import de.puzzles.webapp.page.newrequest.steps.SpendingsStep;
 import de.puzzles.webapp.page.newrequest.wizard.NewCreditRequestWizard;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -36,7 +39,9 @@ public class NewCreditRequestPage extends BasePage {
                 int percent = 0;
                 if(newStep instanceof PersonalInformationStep) percent = 20;
                 if(newStep instanceof EarningsStep) percent = 40;
-
+                if(newStep instanceof SpendingsStep) percent = 60;
+                if(newStep instanceof InsuranceStep) percent = 80;
+                if(newStep instanceof OverviewStep) percent = 100;
                 updateProgressBar(percent);
             }
         });

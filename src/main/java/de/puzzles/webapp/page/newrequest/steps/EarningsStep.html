@@ -18,19 +18,24 @@
 
             <br><br>
 
+            <div wicket:id="income">
             <div class="span2 offset2">
                 <div class="controls">
-                    <input type="text" id="inputDescriptionIncome" placeholder="Beschreibung">
+                    <input type="text" id="inputDescriptionIncome" placeholder="Firma" wicket:id="descriptionIncome">
                 </div>
             </div>
+
 
             <div class="span2 offset1">
-                <div class="controls">
-                    <input type="text" id="inputValueIncome" placeholder="Wert">
+                <div class="controls input-append">
+                    <input type="text" id="inputValueIncome" placeholder="Betrag" wicket:id="valueIncome">
+                    <span class="add-on">€</span>
                 </div>
             </div>
+            </div>
 
-
+            <input type="submit" class="btn pull-right" wicket:id="addIncome" value="Zeile hinzufügen">
+            </input>
             <br><br><br>
 
             <div class="span2 offset2">
@@ -38,19 +43,22 @@
             </div>
 
             <br><br>
-
+            <div wicket:id="additionalIncome">
             <div class="span2 offset2">
                 <div class="controls">
-                    <input type="text" id="inputDescriptionOther" placeholder="Beschreibung">
+                    <input type="text" id="inputDescriptionOther" placeholder="Beschreibung" wicket:id="descriptionAdditional">
                 </div>
             </div>
 
             <div class="span2 offset1">
-                <div class="controls">
-                    <input type="text" id="inputValueOther" placeholder="Wert">
+                <div class="controls input-append">
+                    <input type="text" id="inputValueOther" placeholder="Betrag" wicket:id="valueAdditional">
+                    <span class="add-on">€</span>
                 </div>
             </div>
-
+            </div>
+            <input type="submit" class="btn pull-right" wicket:id="addAdditionalIncome" value="Zeile hinzufügen">
+            </input>
 
         <br><br>
         <hr color="grey" width="915" align="center">
@@ -62,8 +70,9 @@
         </div>
 
         <div class="span2 offset1">
-            <div class="controls">
-                <input type="text" id="inputValueTotal" placeholder="Wert">
+            <div class="controls input-append">
+                <input type="text" id="inputValueTotal" placeholder="0.00" disabled wicket:id="total">
+                <span class="add-on">€</span>
             </div>
         </div>
 
