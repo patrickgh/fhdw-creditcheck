@@ -119,7 +119,7 @@ public class RepaymentPlan implements Serializable {
         interestPayments[0]=0.0;
         double[] restDebtAmount = calculateRestDebtAmount();
         for (int i = 0; i < duration; i++){
-            interestPayments[i]=restDebtAmount[i]+interest;
+            interestPayments[i]=restDebtAmount[i]*interest;
         }
         return interestPayments;
 
