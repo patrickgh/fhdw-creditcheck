@@ -28,6 +28,7 @@ public class CreditRequest implements Serializable {
     private Double rate;
     private Integer duration;
     private List<Transaction> transactions = new ArrayList<Transaction>();
+    RepaymentPlan repaymentPlan;
 
     public CreditRequest() {
     }
@@ -148,5 +149,31 @@ public class CreditRequest implements Serializable {
 
     public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
+    }
+
+    public RepaymentPlan getRepaymentPlanFixedDuration(double amount, double interest, int duration){
+        if (repaymentPlan == null)
+            repaymentPlan = new RepaymentPlan();
+            repaymentPlan.setAmount(amount);
+            repaymentPlan.setInterest(interest);
+            repaymentPlan.setDuration(duration);
+            repaymentPlan.generateRepaymentPlan();
+            return repaymentPlan;
+    }
+
+    public RepaymentPlan getRepaymentPlanFixedRate(double amount, double interest, double rate){
+        if (repaymentPlan == null)
+            repaymentPlan = new RepaymentPlan();
+            repaymentPlan.setAmount(amount);
+            repaymentPlan.setInterest(interest);
+            repaymentPlan.setRate(rate);
+            double duration = repaymentPlan.calculateDuration();
+            repaymentPlan.setDuration((int)duration);
+            if (repaymentPlan.getDuration() <= 0){
+                return repaymentPlan;
+            }
+            getRepaymentPlanFixedDuration(amount, interest, repaymentPlan.getDuration());
+            return repaymentPlan;
+
     }
 }
