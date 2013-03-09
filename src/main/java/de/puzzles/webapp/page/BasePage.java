@@ -1,6 +1,5 @@
 package de.puzzles.webapp.page;
 
-import de.puzzles.webapp.components.LogoutLink;
 import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.ajax.IAjaxIndicatorAware;
 import org.apache.wicket.devutils.debugbar.DebugBar;
@@ -9,6 +8,7 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.request.resource.PackageResourceReference;
 import webresources.ImportResourceLocator;
 
@@ -30,7 +30,20 @@ public abstract class BasePage extends WebPage implements IAjaxIndicatorAware {
         WebMarkupContainer globalAjaxIndicator = new WebMarkupContainer("globalAjaxIndicator");
         globalAjaxIndicator.setOutputMarkupId(true);
         add(globalAjaxIndicator);
-        add(new LogoutLink("logoutLink"));
+        add(new Link("logoutLink") {
+            @Override
+            public void onClick() {
+                getSession().setAttribute("userId", null);
+                if(getPage() instanceof RequiresLoginPage) {
+                    setResponsePage(getApplication().getHomePage());
+                }
+            }
+
+            @Override
+            public boolean isVisible() {
+                return getSession().getAttribute("userId") != null;
+            }
+        });
     }
 
     @Override

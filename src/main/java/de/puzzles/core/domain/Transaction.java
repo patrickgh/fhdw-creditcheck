@@ -74,7 +74,7 @@ public class Transaction implements Serializable {
     }
 
     public Double getValue() {
-        return value;
+        return value == null ? 0.0 : value;
     }
 
     public void setValue(Double value) {

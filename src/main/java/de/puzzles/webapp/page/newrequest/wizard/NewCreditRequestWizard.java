@@ -30,4 +30,8 @@ public class NewCreditRequestWizard extends Wizard {
         init(wizardModel);
     }
 
+    @Override
+    public void onFinish() {
+        super.onFinish();
+    }
 }

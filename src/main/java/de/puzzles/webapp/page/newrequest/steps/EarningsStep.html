@@ -6,19 +6,21 @@
 <body>
 <wicket:panel>
 
-            <legend>Schritt 2 von 5 - Einkünfte</legend>
+    <legend>Schritt 2 von 5 - Einkünfte</legend>
 
-            <br>
-            <p>Geben Sie Ihre Nebeneinkünfte ein (in €):</p>
-            <br>
+    <br>
 
-            <div class="span2 offset2">
-                <p>Lohn/Gehalt</p>
-            </div>
+    <p>Geben Sie Ihre Nebeneinkünfte ein (in €):</p>
+    <br>
 
-            <br><br>
-            <div wicket:id="incomeContainer">
-            <div wicket:id="income">
+    <div class="span2 offset2">
+        <p>Lohn/Gehalt</p>
+    </div>
+
+    <br><br>
+
+    <div wicket:id="incomeContainer">
+        <div wicket:id="income">
             <div class="span2 offset2">
                 <div class="controls">
                     <input type="text" id="inputDescriptionIncome" placeholder="Firma" wicket:id="descriptionIncome">
@@ -32,19 +34,22 @@
                     <span class="add-on">€</span>
                 </div>
             </div>
-            </div>
-            </div>
+        </div>
+    </div>
 
-            <a wicket:id="incomeAdd">add</a>
-            <br><br><br>
+    <a class="btn offset7" wicket:id="incomeAdd">
+        <i class="icon-plus-sign"></i> weitere Zeile hinzufügen
+    </a>
+    <br><br><br>
 
-            <div class="span2 offset2">
-                <p>Sonstige Einnahmen</p>
-            </div>
+    <div class="span2 offset2">
+        <p>Sonstige Einnahmen</p>
+    </div>
 
-            <br><br>
-            <div wicket:id="additionalIncomeContainer">
-            <div wicket:id="additionalIncome">
+    <br><br>
+
+    <div wicket:id="additionalIncomeContainer">
+        <div wicket:id="additionalIncome">
             <div class="span2 offset2">
                 <div class="controls">
                     <input type="text" id="inputDescriptionOther" placeholder="Beschreibung" wicket:id="descriptionAdditional">
@@ -57,28 +62,31 @@
                     <span class="add-on">€</span>
                 </div>
             </div>
-            </div>
-            </div>
-            <a wicket:id="additionalAdd">add</a>
-
-
-        <br><br>
-        <hr color="grey" width="915" align="center">
-        <br>
-
-
-        <div class="span2 offset2">
-            <p>Gesamteinkünfte</p>
         </div>
+    </div>
+    <a class="btn offset7" wicket:id="additionalAdd">
+        <i class="icon-plus-sign"></i> weitere Zeile hinzufügen
+    </a>
 
-        <div class="span2 offset1">
-            <div class="controls input-append">
-                <input type="text" id="inputValueTotal" placeholder="0.00" disabled wicket:id="total">
-                <span class="add-on">€</span>
-            </div>
+
+
+    <br><br>
+    <hr color="grey" width="915" align="center">
+    <br>
+
+
+    <div class="span2 offset2">
+        <p>Gesamteinkünfte</p>
+    </div>
+
+    <div class="span2 offset1">
+        <div class="controls input-append">
+            <input type="text" id="inputValueTotal" placeholder="0.00" disabled wicket:id="total">
+            <span class="add-on">€</span>
         </div>
+    </div>
 
-        <br><br><br>
+    <br><br><br>
 
 </wicket:panel>
 </body>
