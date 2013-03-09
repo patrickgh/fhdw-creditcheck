@@ -14,6 +14,7 @@
     <link href="../resources/webresources/css/bootstrap.css" rel="stylesheet">
     <link href="../resources/webresources/css/puzzles.css" rel="stylesheet">
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="../resources/webresources/js/bootstrap.js"></script>
     <script src="../resources/webresources/js/puzzles.js"></script>
 
@@ -183,8 +184,31 @@
                         </div>
 
                         <div class="span1 offset5" align="right">
-                            <button class="btn btn-success" type="button" align="right">Absenden</button>
+                            <button href="#lastStepModal" data-toggle="modal" class="btn btn-success" type="button" align="right">Absenden</button>
                         </div>
+
+
+                        <!-- Modal -->
+                                    <div id="lastStepModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            <h3 id="myModalLabel">Kreditantrag abgesendet</h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <p>Ihr Kreditantrag wurde erfolgreich abgesendet.</p>
+                                            <br>
+                                            <p>Ihr Bankberater wird sich in Kürze mit Ihnen in Verbindung setzten, um den Kreditantrag persönlich zu besprechen.</p>
+                                            <br>
+                                            <br>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                                            <button class="btn btn-primary">Fertig</button>
+                                        </div>
+                                    </div>
                     </div>
 
 
