@@ -100,7 +100,8 @@ public class RepaymentPlan implements Serializable {
         double tempDuration = (-(Math.log(1 - (interest * amount) / rate) / Math.log(1 + interest)));
         int duration = 0;
         if (tempDuration > 0) {
-            duration = (int) tempDuration + 1;
+            duration = (int) tempDuration;
+            //duration = (int) tempDuration + 1;
         }
         return duration;
     }
