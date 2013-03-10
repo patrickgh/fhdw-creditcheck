@@ -6,6 +6,8 @@ import de.puzzles.core.domain.Customer;
 import de.puzzles.webapp.components.choiceprovider.ConsultantChoiceProvider;
 import org.apache.wicket.extensions.markup.html.form.DateTextField;
 import org.apache.wicket.extensions.wizard.WizardStep;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
@@ -18,6 +20,7 @@ import java.util.Date;
  *         Date: 06.03.13
  */
 public class PersonalInformationStep extends WizardStep {
+    private DateTextField birthdayField;
 
     public PersonalInformationStep(IModel<CreditRequest> defaultModel) {
         super();
@@ -30,7 +33,7 @@ public class PersonalInformationStep extends WizardStep {
         TextField lastName = new TextField("lastName",customerModel.bind("lastname"));
         add(lastName);
 
-        DateTextField birthdayField = new DateTextField("birthday", customerModel.<Date>bind("birthday"));
+        birthdayField = new DateTextField("birthday", customerModel.<Date>bind("birthday"), "dd.MM.yyyy");
         add(birthdayField);
 
         TextField street = new TextField("street",customerModel.bind("street"));
@@ -59,5 +62,11 @@ public class PersonalInformationStep extends WizardStep {
         consultant.setRequired(true);
         add(consultant);
 
+    }
+
+    @Override
+    public void renderHead(IHeaderResponse response) {
+        super.renderHead(response);
+        response.render(OnDomReadyHeaderItem.forScript("$('#"+birthdayField.getMarkupId()+"').datepicker({format:'dd.mm.yyyy', language:'de',autoclose:true,startView:2});"));
     }
 }

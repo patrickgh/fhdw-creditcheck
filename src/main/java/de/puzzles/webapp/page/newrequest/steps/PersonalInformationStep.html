@@ -27,8 +27,12 @@
                 <div class="control-group">
                     <label class="control-label" for="inputDateOfBirth">Geburtstag</label>
 
+
                     <div class="controls">
-                        <input type="text" id="inputDateOfBirth" placeholder="Geburtstag" wicket:id="birthday">
+                        <div class="input-append date"  data-date-format="dd.mm.yyyy">
+                            <input type="text" placeholder="Geburtstag" wicket:id="birthday">
+                            <span class="add-on"><i class="icon-calendar"></i></span>
+                        </div>
                     </div>
                 </div>
                 <div class="control-group">
@@ -90,7 +94,7 @@
                     <label class="control-label" for="inputConsultant">Berater</label>
 
                     <div class="controls">
-                        <input type="hidden" style="width:206px;" data-placeholder="Bitte wählen..."  id="inputConsultant" wicket:id="consultant"/>
+                        <input type="hidden" class="span5" data-placeholder="Bitte wählen..."  id="inputConsultant" wicket:id="consultant"/>
                     </div>
                 </div>
 

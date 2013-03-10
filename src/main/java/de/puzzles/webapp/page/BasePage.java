@@ -54,11 +54,13 @@ public abstract class BasePage extends WebPage implements IAjaxIndicatorAware {
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
         response.render(CssHeaderItem.forReference(new PackageResourceReference(ImportResourceLocator.class, "css/bootstrap.css")));
+        response.render(CssHeaderItem.forReference(new PackageResourceReference(ImportResourceLocator.class, "css/bootstrap-datepicker.css")));
         response.render(CssHeaderItem.forReference(new PackageResourceReference(ImportResourceLocator.class, "css/puzzles.css")));
 
         response.render(JavaScriptHeaderItem.forReference(new PackageResourceReference(ImportResourceLocator.class, "js/bootstrap.js")));
         response.render(JavaScriptHeaderItem.forReference(new PackageResourceReference(ImportResourceLocator.class, "js/jquery-ui-1.10.1.custom.js")));
         response.render(JavaScriptHeaderItem.forReference(new PackageResourceReference(ImportResourceLocator.class, "js/puzzles.js")));
+        response.render(JavaScriptHeaderItem.forReference(new PackageResourceReference(ImportResourceLocator.class, "js/bootstrap-datepicker.js")));
     }
 
     @Override
