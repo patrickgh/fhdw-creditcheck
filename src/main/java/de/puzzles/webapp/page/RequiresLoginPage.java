@@ -16,4 +16,8 @@ public abstract class RequiresLoginPage extends BasePage {
             setResponsePage(getApplication().getHomePage());
         }
     }
+
+    protected int getUserId() {
+        return (Integer) getSession().getAttribute("userId");
+    }
 }

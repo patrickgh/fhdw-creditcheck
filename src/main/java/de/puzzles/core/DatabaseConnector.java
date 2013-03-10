@@ -5,6 +5,7 @@ import de.puzzles.core.domain.CreditState;
 import de.puzzles.core.domain.Customer;
 import de.puzzles.core.domain.Transaction;
 import de.puzzles.core.util.PuzzlesUtils;
+import org.joda.time.DateTime;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -33,7 +34,7 @@ public class DatabaseConnector {
     public static final String DEFAULT_USER = "root";
     public static final String DEFAULT_PASSWORD = "";
     private static DatabaseConnector INSTANCE = new DatabaseConnector();
-    private Connection dbConnection = null; // connection vorbereiten
+    private Connection dbConnection; // connection vorbereiten
 
     private DatabaseConnector() {
         try {
@@ -120,6 +121,7 @@ public class DatabaseConnector {
             ResultSet result = stmt.getResultSet();
             if (result.next() && result.isLast()) {
                 CreditRequest request = new CreditRequest();
+                request.setId(result.getInt("id"));
                 request.setConsultantId(result.getInt("consultant_id"));
                 request.setCreationDate(result.getDate("creationdate"));
                 request.setState(PuzzlesUtils.getCreditStateByValue(result.getInt("state")));
@@ -191,10 +193,87 @@ public class DatabaseConnector {
         return names;
     }
 
+    public List<CreditRequest> getCreditRequest(int id, String customer, java.util.Date start, java.util.Date end, Integer skip, Integer limit, String sort) {
+        List<CreditRequest> resultList = new ArrayList<CreditRequest>();
+        if (start == null) {
+            start = new DateTime().minusYears(10).toDate();
+        }
+        if (end == null) {
+            end = new java.util.Date();
+        }
+        if (limit == null) {
+            limit = 1000;
+        }
+        if (skip == null) {
+            skip = 0;
+        }
+        if(sort == null) {
+            sort = "creationdate ASC";
+        }
+        String sql;
+        PreparedStatement stmt;
+        try {
+            if (customer != null && customer.length() > 0) {
+                sql = "SELECT * " +
+                      "FROM creditrequests LEFT JOIN customer ON creditrequests.customer_id = customer.id " +
+                      "WHERE consultant_id=? " +
+                      "AND (" +
+                      "customer.firstname LIKE ? OR customer.lastname LIKE ? " +
+                      ")" +
+                      "AND creationdate < ? AND creationdate > ? " +
+                      "ORDER BY ? " +
+                      "LIMIT ?,?";
+                stmt = dbConnection.prepareStatement(sql);
+                stmt.setInt(1, id);
+                stmt.setString(2,"%"+customer+"%");
+                stmt.setString(3,"%"+customer+"%");
+                stmt.setDate(4, new Date(end.getTime()));
+                stmt.setDate(5, new Date(start.getTime()));
+                stmt.setString(6, sort);
+                stmt.setInt(7,skip);
+                stmt.setInt(8,limit);
+            }
+            else {
+                sql = "SELECT * " +
+                      "FROM creditrequests LEFT JOIN customer ON creditrequests.customer_id = customer.id " +
+                      "WHERE consultant_id=? " +
+                      "AND creationdate < ? AND creationdate > ? " +
+                      "ORDER BY ? " +
+                      "LIMIT ?,?";
+                stmt = dbConnection.prepareStatement(sql);
+                stmt.setInt(1, id);
+                stmt.setDate(2, new Date(end.getTime()));
+                stmt.setDate(3, new Date(start.getTime()));
+                stmt.setString(4, sort);
+                stmt.setInt(5,skip);
+                stmt.setInt(6,limit);
+            }
+            stmt.execute();
+            ResultSet result = stmt.getResultSet();
+            while(result.next()) {
+                CreditRequest request = new CreditRequest();
+                request.setId(result.getInt("id"));
+                request.setConsultantId(result.getInt("consultant_id"));
+                request.setCreationDate(result.getDate("creationdate"));
+                request.setState(PuzzlesUtils.getCreditStateByValue(result.getInt("state")));
+                request.setAmount(result.getDouble("creditamount"));
+                request.setRate(result.getDouble("rate"));
+                request.setDuration(result.getInt("duration"));
+                request.setCustomer(getCustomerById(result.getInt("customer_id")));
+                request.setTransactions(getTransactionsByRequestId(id));
+                resultList.add(request);
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultList;
+    }
+
     public Double getLivingCosts(Integer persons) {
         Double result = 0.0;
         try {
-            String sql ="SELECT value FROM config WHERE category LIKE ?";
+            String sql = "SELECT value FROM config WHERE category LIKE ?";
             PreparedStatement stmt;
             ResultSet resultSet;
             if (persons == 1) {
@@ -214,7 +293,7 @@ public class DatabaseConnector {
                 if (resultSet.next() && resultSet.isLast()) {
                     result += Double.valueOf(resultSet.getString("value"));
                 }
-                if(persons > 2) {
+                if (persons > 2) {
                     stmt = dbConnection.prepareStatement(sql);
                     stmt.setString(1, "LHKP3");
                     stmt.execute();
@@ -239,7 +318,7 @@ public class DatabaseConnector {
             stmt.execute(sql);
             ResultSet resultSet = stmt.getResultSet();
             while (resultSet.next()) {
-                result.put(resultSet.getString("description"),Double.valueOf(resultSet.getString("value")));
+                result.put(resultSet.getString("description"), Double.valueOf(resultSet.getString("value")));
             }
         }
         catch (SQLException e) {
@@ -247,7 +326,6 @@ public class DatabaseConnector {
         }
         return result;
     }
-
 
     public Integer saveCreditrequest(CreditRequest req) {
         Customer customer = req.getCustomer();

@@ -4,6 +4,61 @@
     <title></title>
 </head>
 <body>
-<wicket:extend>logged in :) userID=<span wicket:id="id"></span></wicket:extend>
+<wicket:extend>
+<div align="left" class="form-horizontal well">
+    <fieldset>
+
+        <legend align="left">Übersicht der Kreditanträge</legend>
+
+        <br>
+
+        <div class>
+            <b><p align="left">Liste der Kreditanträge:</p></b>
+        </div>
+        <br>
+
+        <div class="span6">
+
+            <table class="table table-striped table-list-view" wicket:id="table">
+
+            </table>
+        </div>
+
+
+        <div class="span4">
+
+            <p align="center"><b>Suche:</b></p>
+            <br>
+
+            <div class="control-group">
+                <label class="control-label" for="inputCustomer">Kunde</label>
+
+                <div class="controls">
+                    <input type="text" id="inputCustomer" placeholder="Kunde">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputDateFrom">Datum ab</label>
+
+                <div class="controls">
+                    <input type="date" id="inputDateFrom">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputDateTo">Datum bis</label>
+
+                <div class="controls">
+                    <input type="date" id="inputDateTo">
+                </div>
+            </div>
+            <hr width="430">
+            <br>
+
+            <!--<p align="center"><b>Statistik:</b></p>-->
+        </div>
+
+</fieldset>
+</div>
+</wicket:extend>
 </body>
 </html>
