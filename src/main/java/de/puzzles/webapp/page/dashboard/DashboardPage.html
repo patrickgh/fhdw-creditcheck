@@ -29,28 +29,36 @@
 
             <p align="center"><b>Suche:</b></p>
             <br>
-
+            <form wicket:id="filterForm">
             <div class="control-group">
                 <label class="control-label" for="inputCustomer">Kunde</label>
 
                 <div class="controls">
-                    <input type="text" id="inputCustomer" placeholder="Kunde">
+                    <input type="text" id="inputCustomer" placeholder="Kunde" wicket:id="customer">
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="inputDateFrom">Datum ab</label>
+                <label class="control-label">Datum ab</label>
 
                 <div class="controls">
-                    <input type="date" id="inputDateFrom">
+                    <div class="input-append date"  data-date-format="dd.mm.yyyy">
+                        <input type="text" placeholder="von" wicket:id="start">
+                        <span class="add-on"><i class="icon-calendar"></i></span>
+                    </div>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="inputDateTo">Datum bis</label>
+                <label class="control-label">Datum bis</label>
 
                 <div class="controls">
-                    <input type="date" id="inputDateTo">
+                    <div class="input-append date"  data-date-format="dd.mm.yyyy">
+                        <input type="text" placeholder="bis" wicket:id="end">
+                        <span class="add-on"><i class="icon-calendar"></i></span>
+                    </div>
                 </div>
             </div>
+            <input type="submit" class="btn btn-submit pull-right"  wicket:id="submit" value="Filtern"></input>
+            </form>
             <hr width="430">
             <br>
 
