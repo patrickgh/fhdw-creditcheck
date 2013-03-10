@@ -1,5 +1,7 @@
 package de.puzzles.webapp.page;
 
+import de.puzzles.core.DatabaseConnector;
+import de.puzzles.core.domain.Consultant;
 import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.ajax.IAjaxIndicatorAware;
 import org.apache.wicket.devutils.debugbar.DebugBar;
@@ -8,7 +10,9 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.request.resource.PackageResourceReference;
 import webresources.ImportResourceLocator;
 

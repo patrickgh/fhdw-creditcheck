@@ -6,6 +6,7 @@ import de.puzzles.webapp.page.newrequest.steps.InsuranceStep;
 import de.puzzles.webapp.page.newrequest.steps.OverviewStep;
 import de.puzzles.webapp.page.newrequest.steps.PersonalInformationStep;
 import de.puzzles.webapp.page.newrequest.steps.SpendingsStep;
+import org.apache.wicket.Component;
 import org.apache.wicket.extensions.wizard.Wizard;
 import org.apache.wicket.extensions.wizard.WizardModel;
 import org.apache.wicket.model.CompoundPropertyModel;
@@ -33,5 +34,10 @@ public class NewCreditRequestWizard extends Wizard {
     @Override
     public void onFinish() {
         super.onFinish();
+    }
+
+    @Override
+    protected Component newButtonBar(String id) {
+        return new NewCreditRequestButtonBar(id, this);
     }
 }

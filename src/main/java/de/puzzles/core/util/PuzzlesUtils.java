@@ -54,4 +54,13 @@ public final class PuzzlesUtils {
         }
         return null;
     }
+
+    public static Integer parseInt(String number) {
+        try {
+            return Integer.valueOf(number);
+        }
+        catch (NumberFormatException e) {
+            return null;
+        }
+    }
 }

@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -33,8 +34,6 @@ public class DatabaseConnector {
     public static final String DEFAULT_PASSWORD = "";
     private static DatabaseConnector INSTANCE = new DatabaseConnector();
     private Connection dbConnection = null; // connection vorbereiten
-
-
 
     private DatabaseConnector() {
         try {
@@ -165,8 +164,8 @@ public class DatabaseConnector {
         try {
             String sql = "UPDATE creditrequests SET state=? WHERE id =?";
             PreparedStatement stmt = dbConnection.prepareStatement(sql);
-            stmt.setInt(1,state.ordinal());
-            stmt.setInt(2,id);
+            stmt.setInt(1, state.ordinal());
+            stmt.setInt(2, id);
             stmt.execute();
         }
         catch (SQLException e) {
@@ -174,22 +173,81 @@ public class DatabaseConnector {
         }
     }
 
-    public Map<String,Integer> getConsultantNames()  {
-        Map<String,Integer> names = new HashMap<String,Integer>();
+    public Map<String, Integer> getConsultantNames() {
+        Map<String, Integer> names = new HashMap<String, Integer>();
         try {
             String sql = "SELECT CONCAT(firstname, ' ', lastname) AS name, id FROM consultants ORDER BY name";
             PreparedStatement stmt = dbConnection.prepareStatement(sql);
             stmt.execute();
             ResultSet result = stmt.getResultSet();
             while (result.next()) {
-                names.put(result.getString("name"),result.getInt("id"));
+                names.put(result.getString("name"), result.getInt("id"));
             }
 
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) {
             e.printStackTrace();
         }
         return names;
     }
+
+    public Double getLivingCosts(Integer persons) {
+        Double result = 0.0;
+        try {
+            String sql ="SELECT value FROM config WHERE category LIKE ?";
+            PreparedStatement stmt;
+            ResultSet resultSet;
+            if (persons == 1) {
+                stmt = dbConnection.prepareStatement(sql);
+                stmt.setString(1, "LHKP1");
+                stmt.execute();
+                resultSet = stmt.getResultSet();
+                if (resultSet.next() && resultSet.isLast()) {
+                    result += Double.valueOf(resultSet.getString("value"));
+                }
+            }
+            else if (persons > 1) {
+                stmt = dbConnection.prepareStatement(sql);
+                stmt.setString(1, "LHKP2");
+                stmt.execute();
+                resultSet = stmt.getResultSet();
+                if (resultSet.next() && resultSet.isLast()) {
+                    result += Double.valueOf(resultSet.getString("value"));
+                }
+                if(persons > 2) {
+                    stmt = dbConnection.prepareStatement(sql);
+                    stmt.setString(1, "LHKP3");
+                    stmt.execute();
+                    resultSet = stmt.getResultSet();
+                    if (resultSet.next() && resultSet.isLast()) {
+                        result += (Double.valueOf(resultSet.getString("value")) * (persons - 2));
+                    }
+                }
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public Map<String, Double> getCarCostTypes() {
+        LinkedHashMap<String, Double> result = new LinkedHashMap<String, Double>();
+        String sql = "SELECT * FROM config WHERE category LIKE 'KFZ'";
+        try {
+            Statement stmt = dbConnection.createStatement();
+            stmt.execute(sql);
+            ResultSet resultSet = stmt.getResultSet();
+            while (resultSet.next()) {
+                result.put(resultSet.getString("description"),Double.valueOf(resultSet.getString("value")));
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
 
     public Integer saveCreditrequest(CreditRequest req) {
         Customer customer = req.getCustomer();

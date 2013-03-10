@@ -63,4 +63,13 @@ public class DatabaseConnectorTest {
         Assert.assertEquals(req.getTransactions().size(), 2);
     }
 
+
+    @Test
+    public void testGetLivingCost() {
+        Assert.assertEquals(DatabaseConnector.getInstance().getLivingCosts(0),0.0);
+        Assert.assertEquals(DatabaseConnector.getInstance().getLivingCosts(1),450.0);
+        Assert.assertEquals(DatabaseConnector.getInstance().getLivingCosts(2),700.0);
+        Assert.assertEquals(DatabaseConnector.getInstance().getLivingCosts(3),850.0);
+        Assert.assertEquals(DatabaseConnector.getInstance().getLivingCosts(5),1150.0);
+    }
 }

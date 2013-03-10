@@ -19,7 +19,7 @@
          </div>
 
          <div class="span1 controls">
-             <input type="text" id="inputRent" placeholder="Miete">
+             <input type="text" id="inputRent" placeholder="Miete" wicket:id="rent">
          </div>
      </div>
 
@@ -30,7 +30,7 @@
          </div>
 
          <div class="span1 controls">
-             <input type="text" id="inputIncidentials" placeholder="Wohnnebenkosten">
+             <input type="text" id="inputIncidentials" placeholder="Wohnnebenkosten" wicket:id="incidentials">
          </div>
      </div>
 
@@ -38,22 +38,11 @@
          <label class="control-label" for="inputCostOfLiving">Lebenshaltungskosten</label>
 
          <div class="span1 controls">
-             <select>
-                 <option></option>
-                 <option>1 Person</option>
-                 <option>2 Personen</option>
-                 <option>3 Personen</option>
-                 <option>4 Personen</option>
-                 <option>5 Personen</option>
-                 <option>6 Personen</option>
-                 <option>7 Personen</option>
-                 <option>8 Personen</option>
-                 <option>9 Personen</option>
-             </select>
+             <input type="number" value=0 min=0 wicket:id="persons"> Personen
          </div>
 
          <div class="span1 controls">
-             <input type="text" id="inputCostOfLiving" placeholder="Lebenshaltungskosten">
+             <input type="text" id="inputCostOfLiving" placeholder="Lebenshaltungskosten" wicket:id="personsResult">
          </div>
      </div>
 
@@ -61,17 +50,11 @@
          <label class="control-label" for="inputCostOfKFZ">KFZ-Kosten</label>
 
          <div class="span1 controls">
-             <select>
-                 <option></option>
-                 <option>Bitte wählen</option>
-                 <option>PKW mehr als 100PS</option>
-                 <option>PKW weniger als 100PS</option>
-                 <option>Motorrad</option>
-             </select>
+             <input type="hidden" style="width:206px;" data-placeholder="Bitte wählen..."  id="inputCostOfKFZDropdown" wicket:id="carcost"/>
          </div>
 
          <div class="span1 controls">
-             <input type="text" id="inputCostOfKFZ" placeholder="KFZ-Kosten">
+             <input type="text" id="inputCostOfKFZ" placeholder="KFZ-Kosten" wicket:id="carcostlabel">
          </div>
      </div>
 
@@ -82,7 +65,7 @@
          </div>
 
          <div class="span1 controls">
-             <input type="text" id="inputCostOfPhone" placeholder="Telefon">
+             <input type="text" id="inputCostOfPhone" placeholder="Telefon" wicket:id="phone">
          </div>
      </div>
 
@@ -93,7 +76,7 @@
          </div>
 
          <div class="span1 controls">
-             <input type="text" id="inputSavingsPlans" placeholder="Sparverträge">
+             <input type="text" id="inputSavingsPlans" placeholder="Sparverträge" wicket:id="savingplans">
          </div>
      </div>
 
@@ -101,11 +84,11 @@
          <label class="control-label">sonstige Ausgaben</label>
 
          <div class="span1 controls">
-             <input type="text" id="inputDescriptionOther" placeholder="Beschreibung">
+             <input type="text" id="inputDescriptionOther" placeholder="Beschreibung" wicket:id="additionalDescription">
          </div>
 
          <div class="span1 controls">
-             <input type="text" id="inputValueOhter" placeholder="Wert">
+             <input type="text" id="inputValueOhter" placeholder="Wert" wicket:id="additionalValue">
          </div>
      </div>
 
@@ -119,7 +102,7 @@
 
      <div class="span2 offset1">
          <div class="controls">
-             <input type="text" id="inputValueTotal" placeholder="Wert">
+             <input type="text" id="inputValueTotal" placeholder="Summe" wicket:id="total">
          </div>
      </div>
 
