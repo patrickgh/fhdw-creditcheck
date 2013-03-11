@@ -12,6 +12,9 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Patrick Groß-Holtwick
  *         Date: 07.03.13
@@ -114,7 +117,6 @@ public class SpendingsStep extends WizardStep {
                 updateResultField(ajaxRequestTarget);
             }
         });
-        add(carcost);
 
         resultField = new TextField<Double>("total", new Model<Double>(0.0));
         resultField.setOutputMarkupId(true);
@@ -132,6 +134,18 @@ public class SpendingsStep extends WizardStep {
         sum += additional.getValue();
         resultField.setDefaultModelObject(sum);
         target.add(resultField);
+    }
+
+    public List<Transaction> getTransactions() {
+        List<Transaction> list = new ArrayList<Transaction>();
+        list.add(rent);
+        list.add(incidentials);
+        list.add(savingplans);
+        list.add(phone);
+        list.add(livingcosts);
+        list.add(additional);
+        list.add(carcosts);
+        return list;
     }
 
 }

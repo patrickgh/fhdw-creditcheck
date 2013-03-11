@@ -346,7 +346,7 @@ public class DatabaseConnector {
             if (result.next() && result.isLast()) {
                 int customerId = result.getInt(1);
 
-                sql = "insert into creditrequests values(null,?,?,?,?,?,?,?,?)";
+                sql = "insert into creditrequests values(null,?,?,?,?,?,?,?,?,?)";
                 stmt = dbConnection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
                 stmt.setInt(1, customerId);
                 stmt.setInt(2, req.getConsultantId());
@@ -355,7 +355,8 @@ public class DatabaseConnector {
                 stmt.setFloat(5, req.getAmount().floatValue());
                 stmt.setBoolean(6, req.hasFixedLength());
                 stmt.setFloat(7, req.getRate().floatValue());
-                stmt.setObject(8, req.getDuration());
+                stmt.setFloat(8, req.getDuration().floatValue());
+                stmt.setFloat(9, req.getInterest().floatValue());
 
                 stmt.execute();
                 result = stmt.getGeneratedKeys();

@@ -113,4 +113,11 @@ public class InsuranceStep extends WizardStep {
     private List<String> getInsuranceTypes() {
         return Arrays.<String>asList(new String[]{"Unfallversicherung", "Reiseversicherung", "Haftpflichtversicherung", "Rechtsschutzversicherung", "Sonstige Versicherung"});
     }
+
+    public List<Transaction> getTransactions() {
+        List<Transaction> list = new ArrayList<Transaction>();
+        list.addAll(insuranceList);
+        list.addAll(creditList);
+        return list;
+    }
 }

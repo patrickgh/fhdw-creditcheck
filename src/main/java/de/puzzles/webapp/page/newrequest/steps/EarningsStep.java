@@ -103,4 +103,11 @@ public class EarningsStep extends WizardStep {
         resultField.setDefaultModelObject(sum);
         target.add(resultField);
     }
+
+    public List<Transaction> getTransactions() {
+        List<Transaction> list = new ArrayList<Transaction>();
+        list.addAll(incomeList);
+        list.addAll(additionalList);
+        return list;
+    }
 }

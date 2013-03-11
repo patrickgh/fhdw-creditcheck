@@ -21,42 +21,13 @@ public class CreditRequest implements Serializable {
     private Integer consultantId;
     private Date creationDate;
     private CreditState state = CreditState.PENDING;
-    private Double amount;
-    private Double rate;
-    private Double interest;
-    private Integer duration;
+    private Double amount = 0.0;
+    private Double rate = 0.0;
+    private Double interest = 0.0;
+    private Integer duration = 0;
     private List<Transaction> transactions = new ArrayList<Transaction>();
 
     public CreditRequest() {
-    }
-
-    /**
-     * Constructor
-     *
-     * @param id
-     * @param customer
-     * @param consultantId
-     * @param creationDate
-     * @param state
-     * @param amount
-     * @param rate
-     * @param interest
-     * @param duration
-     * @param transactions
-     */
-    public CreditRequest(Integer id, Customer customer, Integer consultantId, Date creationDate, CreditState state, Double amount, Double rate, Double interest, Integer duration, List<Transaction> transactions) {
-        this.id = id;
-        this.customer = customer;
-        this.consultantId = consultantId;
-        this.creationDate = new Date(creationDate.getTime());
-        this.state = state;
-        this.amount = amount;
-        this.interest = interest;
-        this.rate = rate;
-        this.duration = duration;
-        if (transactions != null) {
-            this.transactions = transactions;
-        }
     }
 
     public Integer getId() {

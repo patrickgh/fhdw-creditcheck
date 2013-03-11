@@ -19,12 +19,7 @@ public class Consultant implements Serializable {
 
     private String passwordHash;
 
-    public Consultant(Integer id, String firstname, String lastname, String username, String passwordHash) {
-        this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.username = username;
-        this.passwordHash = passwordHash;
+    public Consultant() {
     }
 
     public Integer getId() {
