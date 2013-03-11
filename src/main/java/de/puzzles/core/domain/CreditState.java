@@ -5,8 +5,6 @@ package de.puzzles.core.domain;
  *
  * @author Patrick Groß-Holtwick
  *         Date: 03.03.13
- *
- *
  */
 public enum CreditState {
     PENDING, ACCEPTED, REJECTED

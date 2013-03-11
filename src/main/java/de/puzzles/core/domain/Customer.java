@@ -10,8 +10,6 @@ import java.util.Date;
  *
  * @author Patrick Groß-Holtwick
  *         Date: 03.03.13
- *
- *
  */
 
 public class Customer implements Serializable {

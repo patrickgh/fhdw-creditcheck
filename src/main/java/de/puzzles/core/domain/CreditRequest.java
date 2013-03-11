@@ -1,7 +1,5 @@
 package de.puzzles.core.domain;
 
-import org.joda.time.DateTime;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,27 +12,27 @@ import java.util.List;
  *
  * @author Patrick Groß-Holtwick
  *         Date: 03.03.13
- *
- *
  */
 public class CreditRequest implements Serializable {
 
+    RepaymentPlan repaymentPlan;
     private Integer id;
     private Customer customer = new Customer();
     private Integer consultantId;
     private Date creationDate;
-    private CreditState state;
+    private CreditState state = CreditState.PENDING;
     private Double amount;
     private Double rate;
+    private Double interest;
     private Integer duration;
     private List<Transaction> transactions = new ArrayList<Transaction>();
-    RepaymentPlan repaymentPlan;
 
     public CreditRequest() {
     }
 
     /**
      * Constructor
+     *
      * @param id
      * @param customer
      * @param consultantId
@@ -42,16 +40,18 @@ public class CreditRequest implements Serializable {
      * @param state
      * @param amount
      * @param rate
+     * @param interest
      * @param duration
      * @param transactions
      */
-    public CreditRequest(Integer id, Customer customer, Integer consultantId, Date creationDate, CreditState state, Double amount, Double rate, Integer duration, List<Transaction> transactions) {
+    public CreditRequest(Integer id, Customer customer, Integer consultantId, Date creationDate, CreditState state, Double amount, Double rate, Double interest, Integer duration, List<Transaction> transactions) {
         this.id = id;
         this.customer = customer;
         this.consultantId = consultantId;
         this.creationDate = new Date(creationDate.getTime());
         this.state = state;
         this.amount = amount;
+        this.interest = interest;
         this.rate = rate;
         this.duration = duration;
         if (transactions != null) {
@@ -115,6 +115,14 @@ public class CreditRequest implements Serializable {
         this.rate = rate;
     }
 
+    public Double getInterest() {
+        return interest;
+    }
+
+    public void setInterest(Double interest) {
+        this.interest = interest;
+    }
+
     public Integer getDuration() {
         return duration;
     }
@@ -127,7 +135,8 @@ public class CreditRequest implements Serializable {
      * This method checks if the creditrequest has a fixed lenght (duration) or a fixed rate.
      * If the duration of the creditrequest is fix, the rate will be automatically calculated.
      * If the rate of the creditrequest is fix, the duration will be automatically calculated.
-     * @return  true or false. Returns true if the creditrequest has a fixed length. Returns true if the creditrequest has a fixed rate.
+     *
+     * @return true or false. Returns true if the creditrequest has a fixed length. Returns true if the creditrequest has a fixed rate.
      */
     public boolean hasFixedLength() {
         return duration != null;
@@ -135,6 +144,7 @@ public class CreditRequest implements Serializable {
 
     /**
      * This method adds a transaction to the list of the transactions, which are related to the creditrequest.
+     *
      * @param trans
      */
     public void addTransaction(Transaction trans) {
@@ -151,29 +161,31 @@ public class CreditRequest implements Serializable {
         this.transactions = transactions;
     }
 
-    public RepaymentPlan getRepaymentPlanFixedDuration(double amount, double interest, int duration){
-        if (repaymentPlan == null)
+    public RepaymentPlan getRepaymentPlanFixedDuration(double amount, double interest, int duration) {
+        if (repaymentPlan == null) {
             repaymentPlan = new RepaymentPlan();
-            repaymentPlan.setAmount(amount);
-            repaymentPlan.setInterest(interest);
-            repaymentPlan.setDuration(duration);
-            repaymentPlan.generateRepaymentPlan();
-            return repaymentPlan;
+        }
+        repaymentPlan.setAmount(amount);
+        repaymentPlan.setInterest(interest);
+        repaymentPlan.setDuration(duration);
+        repaymentPlan.generateRepaymentPlan();
+        return repaymentPlan;
     }
 
-    public RepaymentPlan getRepaymentPlanFixedRate(double amount, double interest, double rate){
-        if (repaymentPlan == null)
+    public RepaymentPlan getRepaymentPlanFixedRate(double amount, double interest, double rate) {
+        if (repaymentPlan == null) {
             repaymentPlan = new RepaymentPlan();
-            repaymentPlan.setAmount(amount);
-            repaymentPlan.setInterest(interest);
-            repaymentPlan.setRate(rate);
-            double duration = repaymentPlan.calculateDuration();
-            repaymentPlan.setDuration((int)duration);
-            if (repaymentPlan.getDuration() <= 0){
-                return repaymentPlan;
-            }
-            getRepaymentPlanFixedDuration(amount, interest, repaymentPlan.getDuration());
+        }
+        repaymentPlan.setAmount(amount);
+        repaymentPlan.setInterest(interest);
+        repaymentPlan.setRate(rate);
+        double duration = repaymentPlan.calculateDuration();
+        repaymentPlan.setDuration((int) duration);
+        if (repaymentPlan.getDuration() <= 0) {
             return repaymentPlan;
+        }
+        getRepaymentPlanFixedDuration(amount, interest, repaymentPlan.getDuration());
+        return repaymentPlan;
 
     }
 }

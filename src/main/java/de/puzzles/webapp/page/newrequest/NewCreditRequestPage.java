@@ -1,6 +1,5 @@
 package de.puzzles.webapp.page.newrequest;
 
-import de.puzzles.core.domain.CreditRequest;
 import de.puzzles.webapp.page.BasePage;
 import de.puzzles.webapp.page.newrequest.steps.EarningsStep;
 import de.puzzles.webapp.page.newrequest.steps.InsuranceStep;
@@ -12,7 +11,6 @@ import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.extensions.wizard.IWizardStep;
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.model.Model;
 
 /**
  * Created with IntelliJ IDEA.
@@ -32,23 +30,23 @@ public class NewCreditRequestPage extends BasePage {
         updateProgressBar(20);
 
         add(progressBar);
-        add(new NewCreditRequestWizard("content"){
+        add(new NewCreditRequestWizard("content") {
             @Override
             public void onActiveStepChanged(IWizardStep newStep) {
                 super.onActiveStepChanged(newStep);
                 int percent = 0;
-                if(newStep instanceof PersonalInformationStep) percent = 20;
-                if(newStep instanceof EarningsStep) percent = 40;
-                if(newStep instanceof SpendingsStep) percent = 60;
-                if(newStep instanceof InsuranceStep) percent = 80;
-                if(newStep instanceof OverviewStep) percent = 100;
+                if (newStep instanceof PersonalInformationStep) { percent = 20; }
+                if (newStep instanceof EarningsStep) { percent = 40; }
+                if (newStep instanceof SpendingsStep) { percent = 60; }
+                if (newStep instanceof InsuranceStep) { percent = 80; }
+                if (newStep instanceof OverviewStep) { percent = 100; }
                 updateProgressBar(percent);
             }
         });
     }
 
     public void updateProgressBar(Integer percent) {
-        progressBar.add(new AttributeModifier("style", "width: "+ percent+"%"));
+        progressBar.add(new AttributeModifier("style", "width: " + percent + "%"));
         AjaxRequestTarget target = getRequestCycle().find(AjaxRequestTarget.class);
         if (target != null) {
             target.add(progressBar);

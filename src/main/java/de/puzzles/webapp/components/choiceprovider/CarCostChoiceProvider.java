@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public class CarCostChoiceProvider extends TextChoiceProvider<Double> {
 
-    Map<String,Double> data = new HashMap<String,Double>();
+    Map<String, Double> data = new HashMap<String, Double>();
 
     public CarCostChoiceProvider() {
         data = DatabaseConnector.getInstance().getCarCostTypes();
@@ -25,7 +25,7 @@ public class CarCostChoiceProvider extends TextChoiceProvider<Double> {
     @Override
     protected String getDisplayText(Double choice) {
         for (String s : data.keySet()) {
-            if(data.get(s).equals(choice)) {
+            if (data.get(s).equals(choice)) {
                 return s;
             }
         }
@@ -40,7 +40,7 @@ public class CarCostChoiceProvider extends TextChoiceProvider<Double> {
     @Override
     public void query(String term, int page, Response<Double> response) {
         for (String s : data.keySet()) {
-            if(s.toLowerCase().contains(term.toLowerCase()) || s.toLowerCase().equals(term.toLowerCase())) {
+            if (s.toLowerCase().contains(term.toLowerCase()) || s.toLowerCase().equals(term.toLowerCase())) {
                 response.add(data.get(s));
             }
         }

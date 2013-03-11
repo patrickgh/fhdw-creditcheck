@@ -9,8 +9,6 @@ import java.io.Serializable;
  *
  * @author Patrick Groß-Holtwick
  *         Date: 03.03.13
- *
- *
  */
 public class Consultant implements Serializable {
 
@@ -18,7 +16,6 @@ public class Consultant implements Serializable {
     private String firstname;
     private String lastname;
     private String username;
-
 
     private String passwordHash;
 

@@ -9,7 +9,6 @@ import java.nio.charset.Charset;
  *
  * @author Patrick Groß-Holtwick
  *         Date: 03.03.13
- *
  */
 public final class PuzzlesUtils {
 
@@ -18,8 +17,9 @@ public final class PuzzlesUtils {
 
     /**
      * This Method generates a md5 hash of a given String.
+     *
      * @param input (String)
-     * @return  (String)
+     * @return (String)
      */
     public static String md5(String input) {
         String md5 = (input == null) ? "" : input;
@@ -42,6 +42,7 @@ public final class PuzzlesUtils {
     /**
      * This Method returns the enum value from a given integer value.
      * This method also checks if the integer is related to a enum value.
+     *
      * @param value
      * @return enum value
      */

@@ -42,7 +42,7 @@ public class DashboardPage extends RequiresLoginPage {
         super();
         final CreditRequestDataProvider provider = new CreditRequestDataProvider(getUserId());
         final DataTable<CreditRequest, String> table = new DataTable<CreditRequest, String>("table", generateColumns(), provider, ROWS_PER_PAGE);
-        table.addTopToolbar(new AjaxFallbackHeadersToolbar<String>(table,new ISortStateLocator<String>() {
+        table.addTopToolbar(new AjaxFallbackHeadersToolbar<String>(table, new ISortStateLocator<String>() {
             @Override
             public ISortState<String> getSortState() {
                 return provider.getSortState();
@@ -72,12 +72,12 @@ public class DashboardPage extends RequiresLoginPage {
     }
 
     private List<? extends IColumn<CreditRequest, String>> generateColumns() {
-        List<IColumn<CreditRequest,String>> list = new ArrayList<IColumn<CreditRequest, String>>();
-        list.add(new PropertyColumn<CreditRequest, String>(new Model<String>("Vorname"),"customer.firstname","customer.firstname"));
-        list.add(new PropertyColumn<CreditRequest, String>(new Model<String>("Nachname"),"customer.lastname","customer.lastname"));
-        list.add(new PropertyColumn<CreditRequest, String>(new Model<String>("Datum"),"creationdate","creationDate"));
-        list.add(new PropertyColumn<CreditRequest, String>(new Model<String>("Kreditsumme"),"creditamount","amount"));
-        list.add(new PropertyColumn<CreditRequest, String>(new Model<String>("Status"),"state","state"));
+        List<IColumn<CreditRequest, String>> list = new ArrayList<IColumn<CreditRequest, String>>();
+        list.add(new PropertyColumn<CreditRequest, String>(new Model<String>("Vorname"), "customer.firstname", "customer.firstname"));
+        list.add(new PropertyColumn<CreditRequest, String>(new Model<String>("Nachname"), "customer.lastname", "customer.lastname"));
+        list.add(new PropertyColumn<CreditRequest, String>(new Model<String>("Datum"), "creationdate", "creationDate"));
+        list.add(new PropertyColumn<CreditRequest, String>(new Model<String>("Kreditsumme"), "creditamount", "amount"));
+        list.add(new PropertyColumn<CreditRequest, String>(new Model<String>("Status"), "state", "state"));
         return list;
     }
 

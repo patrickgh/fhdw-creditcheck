@@ -207,7 +207,7 @@ public class DatabaseConnector {
         if (skip == null) {
             skip = 0;
         }
-        if(sort == null) {
+        if (sort == null) {
             sort = "creationdate ASC";
         }
         String sql;
@@ -221,34 +221,34 @@ public class DatabaseConnector {
                       "customer.firstname LIKE ? OR customer.lastname LIKE ? " +
                       ")" +
                       "AND creationdate < ? AND creationdate > ? " +
-                      "ORDER BY " +sort+
+                      "ORDER BY " + sort +
                       " LIMIT ?,?";
                 stmt = dbConnection.prepareStatement(sql);
                 stmt.setInt(1, id);
-                stmt.setString(2,"%"+customer+"%");
-                stmt.setString(3,"%"+customer+"%");
+                stmt.setString(2, "%" + customer + "%");
+                stmt.setString(3, "%" + customer + "%");
                 stmt.setDate(4, new Date(end.getTime()));
                 stmt.setDate(5, new Date(start.getTime()));
-                stmt.setInt(6,skip);
-                stmt.setInt(7,limit);
+                stmt.setInt(6, skip);
+                stmt.setInt(7, limit);
             }
             else {
                 sql = "SELECT * " +
                       "FROM creditrequests LEFT JOIN customer ON creditrequests.customer_id = customer.id " +
                       "WHERE consultant_id=? " +
                       "AND creationdate < ? AND creationdate > ? " +
-                      "ORDER BY " +sort+
+                      "ORDER BY " + sort +
                       " LIMIT ?,?";
                 stmt = dbConnection.prepareStatement(sql);
                 stmt.setInt(1, id);
                 stmt.setDate(2, new Date(end.getTime()));
                 stmt.setDate(3, new Date(start.getTime()));
-                stmt.setInt(4,skip);
-                stmt.setInt(5,limit);
+                stmt.setInt(4, skip);
+                stmt.setInt(5, limit);
             }
             stmt.execute();
             ResultSet result = stmt.getResultSet();
-            while(result.next()) {
+            while (result.next()) {
                 CreditRequest request = new CreditRequest();
                 request.setId(result.getInt("id"));
                 request.setConsultantId(result.getInt("consultant_id"));

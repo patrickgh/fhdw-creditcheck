@@ -34,11 +34,11 @@ public class InsuranceStep extends WizardStep {
         final WebMarkupContainer container = new WebMarkupContainer("insuranceContainer");
         container.setOutputMarkupId(true);
         insuranceList.add(new Transaction());
-        final ListEditor<Transaction> insurance = new ListEditor<Transaction>("insurance", new PropertyModel<List<Transaction>>(this,"insuranceList")) {
+        final ListEditor<Transaction> insurance = new ListEditor<Transaction>("insurance", new PropertyModel<List<Transaction>>(this, "insuranceList")) {
             @Override
             protected void onPopulateItem(ListItem<Transaction> item) {
                 CompoundPropertyModel<Transaction> model = new CompoundPropertyModel<Transaction>(item.getModel());
-                item.add(new DropDownChoice<String>("insuranceType", model.<String>bind("description"),getInsuranceTypes()));
+                item.add(new DropDownChoice<String>("insuranceType", model.<String>bind("description"), getInsuranceTypes()));
                 item.add(new TextField<String>("insuranceCompany", model.<String>bind("description1")));
                 item.add(new TextField<String>("insuranceAmount", model.<String>bind("description2")));
                 TextField<Double> valueField = new TextField<Double>("insuranceValue", model.<Double>bind("value"));
@@ -54,7 +54,7 @@ public class InsuranceStep extends WizardStep {
         container.add(insurance);
         add(container);
 
-        add(new AjaxLink("insuranceAdd"){
+        add(new AjaxLink("insuranceAdd") {
             @Override
             public void onClick(AjaxRequestTarget ajaxRequestTarget) {
                 insurance.addItem(new Transaction());
@@ -65,7 +65,7 @@ public class InsuranceStep extends WizardStep {
         final WebMarkupContainer creditContainer = new WebMarkupContainer("creditContainer");
         creditContainer.setOutputMarkupId(true);
         creditList.add(new Transaction());
-        final ListEditor<Transaction> credit = new ListEditor<Transaction>("credit", new PropertyModel<List<Transaction>>(this,"creditList")) {
+        final ListEditor<Transaction> credit = new ListEditor<Transaction>("credit", new PropertyModel<List<Transaction>>(this, "creditList")) {
             @Override
             protected void onPopulateItem(ListItem<Transaction> item) {
                 CompoundPropertyModel<Transaction> model = new CompoundPropertyModel<Transaction>(item.getModel());
@@ -85,7 +85,7 @@ public class InsuranceStep extends WizardStep {
         creditContainer.add(credit);
         add(creditContainer);
 
-        add(new AjaxLink("creditAdd"){
+        add(new AjaxLink("creditAdd") {
             @Override
             public void onClick(AjaxRequestTarget ajaxRequestTarget) {
                 credit.addItem(new Transaction());
@@ -111,6 +111,6 @@ public class InsuranceStep extends WizardStep {
     }
 
     private List<String> getInsuranceTypes() {
-          return Arrays.<String>asList(new String[]{"Unfallversicherung", "Reiseversicherung","Haftpflichtversicherung","Rechtsschutzversicherung", "Sonstige Versicherung"});
+        return Arrays.<String>asList(new String[]{"Unfallversicherung", "Reiseversicherung", "Haftpflichtversicherung", "Rechtsschutzversicherung", "Sonstige Versicherung"});
     }
 }

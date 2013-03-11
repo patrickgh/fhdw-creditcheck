@@ -20,6 +20,7 @@ import java.util.Date;
  *         Date: 06.03.13
  */
 public class PersonalInformationStep extends WizardStep {
+
     private DateTextField birthdayField;
 
     public PersonalInformationStep(IModel<CreditRequest> defaultModel) {
@@ -27,16 +28,16 @@ public class PersonalInformationStep extends WizardStep {
 
         CompoundPropertyModel<CreditRequest> requestModel = new CompoundPropertyModel<CreditRequest>(defaultModel);
         CompoundPropertyModel<Customer> customerModel = new CompoundPropertyModel<Customer>(requestModel.getObject().getCustomer());
-        TextField firstName = new TextField("firstName",customerModel.bind("firstname"));
+        TextField firstName = new TextField("firstName", customerModel.bind("firstname"));
         add(firstName);
 
-        TextField lastName = new TextField("lastName",customerModel.bind("lastname"));
+        TextField lastName = new TextField("lastName", customerModel.bind("lastname"));
         add(lastName);
 
         birthdayField = new DateTextField("birthday", customerModel.<Date>bind("birthday"), "dd.MM.yyyy");
         add(birthdayField);
 
-        TextField street = new TextField("street",customerModel.bind("street"));
+        TextField street = new TextField("street", customerModel.bind("street"));
         add(street);
 
         TextField zipCode = new TextField("zipcode", customerModel.bind("zipcode"));
@@ -67,6 +68,6 @@ public class PersonalInformationStep extends WizardStep {
     @Override
     public void renderHead(IHeaderResponse response) {
         super.renderHead(response);
-        response.render(OnDomReadyHeaderItem.forScript("$('#"+birthdayField.getMarkupId()+"').datepicker({format:'dd.mm.yyyy', language:'de',autoclose:true,startView:2});"));
+        response.render(OnDomReadyHeaderItem.forScript("$('#" + birthdayField.getMarkupId() + "').datepicker({format:'dd.mm.yyyy', language:'de',autoclose:true,startView:2});"));
     }
 }

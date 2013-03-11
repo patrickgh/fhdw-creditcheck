@@ -5,113 +5,113 @@
 </head>
 <body>
 <wicket:panel>
-        <legend>Schritt 1 von 5 - Persönliche Daten</legend>
-        <div class="row">
+    <legend>Schritt 1 von 5 - Persönliche Daten</legend>
+    <div class="row">
 
-            <div class="span6">
+        <div class="span6">
 
-                <div class="control-group">
-                    <label class="control-label" for="inputFirstName">Vorname</label>
+            <div class="control-group">
+                <label class="control-label" for="inputFirstName">Vorname</label>
 
-                    <div class="controls">
-                        <input type="text" id="inputFirstName" placeholder="Vorname" wicket:id="firstName">
-                    </div>
+                <div class="controls">
+                    <input type="text" id="inputFirstName" placeholder="Vorname" wicket:id="firstName">
                 </div>
-                <div class="control-group">
-                    <label class="control-label" for="inputName">Name</label>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputName">Name</label>
 
-                    <div class="controls">
-                        <input type="text" id="inputName" placeholder="Name" wicket:id="lastName">
-                    </div>
+                <div class="controls">
+                    <input type="text" id="inputName" placeholder="Name" wicket:id="lastName">
                 </div>
-                <div class="control-group">
-                    <label class="control-label" for="inputDateOfBirth">Geburtstag</label>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputDateOfBirth">Geburtstag</label>
 
 
-                    <div class="controls">
-                        <div class="input-append date"  data-date-format="dd.mm.yyyy">
-                            <input type="text" placeholder="Geburtstag" wicket:id="birthday">
-                            <span class="add-on"><i class="icon-calendar"></i></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="inputStreet">Straße</label>
-
-                    <div class="controls">
-                        <input type="text" id="inputStreet" placeholder="Straße" wicket:id="street">
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="inputPLZ">PLZ</label>
-
-                    <div class="controls">
-                        <input type="text" id="inputPLZ" placeholder="PLZ" wicket:id="zipcode">
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="inputCity">Ort</label>
-
-                    <div class="controls">
-                        <input type="text" id="inputCity" placeholder="Ort" wicket:id="city">
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="inputPhoneNumber">Telefonnummer</label>
-
-                    <div class="controls">
-                        <input type="text" id="inputPhoneNumber" placeholder="Telefonnummer" wicket:id="telephone">
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="inputMail">E-Mail</label>
-
-                    <div class="controls">
-                        <input type="text" id="inputMail" placeholder="E-Mail" wicket:id="email">
+                <div class="controls">
+                    <div class="input-append date" data-date-format="dd.mm.yyyy">
+                        <input type="text" placeholder="Geburtstag" wicket:id="birthday">
+                        <span class="add-on"><i class="icon-calendar"></i></span>
                     </div>
                 </div>
             </div>
+            <div class="control-group">
+                <label class="control-label" for="inputStreet">Straße</label>
 
-            <div class="span5">
-
-                <div class="control-group">
-                    <label class="control-label" for="inputBankAccount">Kontonummer</label>
-
-                    <div class="controls">
-                        <input type="text" id="inputBankAccount" placeholder="Kontonummer" wicket:id="accountnumber">
-                    </div>
+                <div class="controls">
+                    <input type="text" id="inputStreet" placeholder="Straße" wicket:id="street">
                 </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputPLZ">PLZ</label>
 
-                <div class="control-group">
-                    <label class="control-label" for="inputBankNumber">BLZ</label>
-
-                    <div class="controls">
-                        <input type="text" id="inputBankNumber" placeholder="BLZ" wicket:id="bankcode">
-                    </div>
+                <div class="controls">
+                    <input type="text" id="inputPLZ" placeholder="PLZ" wicket:id="zipcode">
                 </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputCity">Ort</label>
 
-                <div class="control-group">
-                    <label class="control-label" for="inputConsultant">Berater</label>
-
-                    <div class="controls">
-                        <input type="hidden" class="span5" data-placeholder="Bitte wählen..."  id="inputConsultant" wicket:id="consultant"/>
-                    </div>
+                <div class="controls">
+                    <input type="text" id="inputCity" placeholder="Ort" wicket:id="city">
                 </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputPhoneNumber">Telefonnummer</label>
 
+                <div class="controls">
+                    <input type="text" id="inputPhoneNumber" placeholder="Telefonnummer" wicket:id="telephone">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputMail">E-Mail</label>
 
+                <div class="controls">
+                    <input type="text" id="inputMail" placeholder="E-Mail" wicket:id="email">
+                </div>
             </div>
         </div>
-<!--        <div class="row">
-            <div class="span12">
-                <div class="span5" align="left">
-                    <button class="btn" type="button">Zurück</button>
-                </div>
 
-                <div class="span1 offset5" align="right">
-                    <button class="btn btn-success" type="button" align="right">Weiter</button>
+        <div class="span5">
+
+            <div class="control-group">
+                <label class="control-label" for="inputBankAccount">Kontonummer</label>
+
+                <div class="controls">
+                    <input type="text" id="inputBankAccount" placeholder="Kontonummer" wicket:id="accountnumber">
                 </div>
             </div>
-        </div>-->
+
+            <div class="control-group">
+                <label class="control-label" for="inputBankNumber">BLZ</label>
+
+                <div class="controls">
+                    <input type="text" id="inputBankNumber" placeholder="BLZ" wicket:id="bankcode">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="inputConsultant">Berater</label>
+
+                <div class="controls">
+                    <input type="hidden" class="span5" data-placeholder="Bitte wählen..." id="inputConsultant" wicket:id="consultant"/>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <!--        <div class="row">
+                <div class="span12">
+                    <div class="span5" align="left">
+                        <button class="btn" type="button">Zurück</button>
+                    </div>
+
+                    <div class="span1 offset5" align="right">
+                        <button class="btn btn-success" type="button" align="right">Weiter</button>
+                    </div>
+                </div>
+            </div>-->
 </wicket:panel>
 </body>
 </html>

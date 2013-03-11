@@ -5,7 +5,6 @@ import de.puzzles.core.domain.CreditRequest;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.Model;
 
 import java.util.Date;
@@ -15,7 +14,7 @@ import java.util.Iterator;
  * @author Patrick Groß-Holtwick
  *         Date: 10.03.13
  */
-public class CreditRequestDataProvider extends SortableDataProvider<CreditRequest,String>{
+public class CreditRequestDataProvider extends SortableDataProvider<CreditRequest, String> {
 
     private int userId;
 
@@ -31,12 +30,12 @@ public class CreditRequestDataProvider extends SortableDataProvider<CreditReques
 
     @Override
     public Iterator<? extends CreditRequest> iterator(long first, long count) {
-        return DatabaseConnector.getInstance().getCreditRequest(userId,searchString,startDate,endDate,Long.valueOf(first).intValue(),Long.valueOf(count).intValue(),getSortString()).iterator();
+        return DatabaseConnector.getInstance().getCreditRequest(userId, searchString, startDate, endDate, Long.valueOf(first).intValue(), Long.valueOf(count).intValue(), getSortString()).iterator();
     }
 
     @Override
     public long size() {
-        return DatabaseConnector.getInstance().getCreditRequest(userId,searchString,startDate,endDate,null,null,getSortString()).size();
+        return DatabaseConnector.getInstance().getCreditRequest(userId, searchString, startDate, endDate, null, null, getSortString()).size();
     }
 
     @Override
@@ -46,10 +45,10 @@ public class CreditRequestDataProvider extends SortableDataProvider<CreditReques
 
     private String getSortString() {
         String sortString = getSort().getProperty() + " ";
-        if(getSort().isAscending()) {
-            return sortString+"ASC";
+        if (getSort().isAscending()) {
+            return sortString + "ASC";
         }
-        return sortString +"DESC";
+        return sortString + "DESC";
     }
 
     public Date getStartDate() {

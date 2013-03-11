@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public class ConsultantChoiceProvider extends TextChoiceProvider<Integer> {
 
-    Map<String,Integer> data = new HashMap<String,Integer>();
+    Map<String, Integer> data = new HashMap<String, Integer>();
 
     public ConsultantChoiceProvider() {
         data = DatabaseConnector.getInstance().getConsultantNames();
@@ -25,7 +25,7 @@ public class ConsultantChoiceProvider extends TextChoiceProvider<Integer> {
     @Override
     protected String getDisplayText(Integer choice) {
         for (String s : data.keySet()) {
-            if(data.get(s).equals(choice)) {
+            if (data.get(s).equals(choice)) {
                 return s;
             }
         }
@@ -40,7 +40,7 @@ public class ConsultantChoiceProvider extends TextChoiceProvider<Integer> {
     @Override
     public void query(String term, int page, Response<Integer> response) {
         for (String s : data.keySet()) {
-            if(s.toLowerCase().contains(term.toLowerCase()) || s.toLowerCase().equals(term.toLowerCase())) {
+            if (s.toLowerCase().contains(term.toLowerCase()) || s.toLowerCase().equals(term.toLowerCase())) {
                 response.add(data.get(s));
             }
         }

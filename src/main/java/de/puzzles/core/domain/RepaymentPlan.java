@@ -107,34 +107,34 @@ public class RepaymentPlan implements Serializable {
     }
 
     private double[] calculateRestDebtAmount() {
-        double[] restDebtAmount = new double[duration+1];
-        restDebtAmount[0]= amount;
-        for (int i = 0; i < duration; i++){
-            restDebtAmount[i] = amount*((Math.pow(1+interest,duration)-Math.pow(1+interest,i))/(Math.pow(1+interest,duration)-1));
+        double[] restDebtAmount = new double[duration + 1];
+        restDebtAmount[0] = amount;
+        for (int i = 0; i < duration; i++) {
+            restDebtAmount[i] = amount * ((Math.pow(1 + interest, duration) - Math.pow(1 + interest, i)) / (Math.pow(1 + interest, duration) - 1));
         }
         return restDebtAmount;
     }
 
-    private double[] calculateInterestPayments(){
-        double[] interestPayments = new double[duration+1];
-        interestPayments[0]=0.0;
+    private double[] calculateInterestPayments() {
+        double[] interestPayments = new double[duration + 1];
+        interestPayments[0] = 0.0;
         double[] restDebtAmount = calculateRestDebtAmount();
-        for (int i = 0; i < duration; i++){
-            interestPayments[i]=restDebtAmount[i]*interest;
+        for (int i = 0; i < duration; i++) {
+            interestPayments[i] = restDebtAmount[i] * interest;
         }
         return interestPayments;
 
     }
 
-    private double[] calculateRepaymentRates(){
-        for (int i = 0; i< duration; i++){
-            repaymentRates[i]= rate - interestPayments[i];
+    private double[] calculateRepaymentRates() {
+        for (int i = 0; i < duration; i++) {
+            repaymentRates[i] = rate - interestPayments[i];
         }
         return repaymentRates;
     }
 
-    public void generateRepaymentPlan(){
-        interest = interest /100;
+    public void generateRepaymentPlan() {
+        interest = interest / 100;
         repaymentRates = new double[duration];
         interestPayments = calculateInterestPayments();
         restDebtAmount = calculateRestDebtAmount();

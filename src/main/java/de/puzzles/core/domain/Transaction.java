@@ -9,8 +9,6 @@ import java.io.Serializable;
  *
  * @author Patrick Groß-Holtwick
  *         Date: 03.03.13
- *
- *
  */
 public class Transaction implements Serializable {
 

@@ -5,30 +5,135 @@
 </head>
 <body>
 <wicket:panel>
-    zusammenfassung
+    <legend>Schritt 5 von 5 - Zusammenfassung</legend>
+
+
+    <p>Zusammenfassung:</p>
+
+    <div class="span2 offset4">
+        <b> &nbsp; Gesamteinkünfte</b>
+        <br>
+        <b>- Gesamtausgaben</b>
+        <br>
+        <b>- monatl. Rate</b>
+        <hr width="300">
+    </div>
+
+    <div class="offset7">
+        0 €
+        <br>
+        0 €
+        <br>
+        0 €
+    </div>
+
+    <div class="span3 offset4">
+        <b>= Überschuss/Fehlbetrag</b>
+    </div>
+
+    <div class="offset7">
+        <br><br>
+        0 €
+    </div>
+
+    <br><br>
+
+    <p>Geben Sie Ihre gewünschte Kreditbedingungen ein:</p>
+
+    <br>
+
+    <div class="span2 offset4">
+        <p>Zinssatz:</p>
+
+        <p>Kreditsumme:</p>
+
+        <p>Kreditart:</p>
+        <br><br><br><br>
+
+        <p>Laufzeit:</p>
+
+        <p><b>Monatliche Tilgungsrate:</b></p>
+    </div>
+
+    <div class="offset7">
+        7%
+        <br>
+
+        <div>
+            <input type="text" id="inputCreditSum2" placeholder="Kreditsumme">
+
+            <br>
+
+            <input type="checkbox" id="inputCreditType">
+            <option>Feste Laufzeit</option>
+
+            <input type="checkbox" id="inputCreditType2">
+            <option>Feste Tilgungssumme</option>
+
+            <br>
+            <br>
+            <input type="text" id="inputRumtime" placeholder="Laufzeit">
+
+            <br>
+            <br>
+            <input type="text" id="inputMonthlyAmortisation" placeholder="Monatliche Tilgungsrate">
+        </div>
+    </div>
+    <br><br><br>
+
+    <p>Tilgungsplan:</p>
+
+
+    <br><br>
+
+
+    <div class="span5">
+
+        <table class="table table-striped table-hover" border="2">
+            <tr>
+                <th>Monat</th>
+                <th>Restschuld</th>
+                <th>Tilgungsrate</th>
+                <th>Zinsaufwand</th>
+                <th>Zahlungsrate</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+        </table>
+
+        <br><br><br>
+
+    </div>
 
 
     <!-- Modal -->
-                                        <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                <h3 id="myModalLabel">Kreditantrag abgesendet</h3>
-                                            </div>
-                                            <div class="modal-body">
-                                                <br>
-                                                <br>
-                                                <br>
-                                                <p>Ihr Kreditantrag wurde erfolgreich abgesendet.</p>
-                                                <br>
-                                                <p>Ihr Bankberater wird sich in Kürze mit Ihnen in Verbindung setzten, um den Kreditantrag persönlich zu besprechen.</p>
-                                                <br>
-                                                <br>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                                                <button class="btn btn-primary">Fertig</button>
-                                            </div>
-                                        </div>
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>-->
+            <h3 id="myModalLabel">Kreditantrag abgesendet</h3>
+        </div>
+        <div class="modal-body">
+            <br>
+            <br>
+            <br>
+
+            <p>Ihr Kreditantrag wurde erfolgreich abgesendet.</p>
+            <br>
+
+            <p>Ihr Bankberater wird sich in Kürze mit Ihnen in Verbindung setzten, um den Kreditantrag persönlich zu besprechen.</p>
+            <br>
+            <br>
+        </div>
+        <div class="modal-footer">
+            <!--<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>-->
+            <button class="btn btn-primary">Fertig</button>
+        </div>
+    </div>
 </wicket:panel>
 </body>
 </html>
