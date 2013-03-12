@@ -325,6 +325,23 @@ public class DatabaseConnector {
         return result;
     }
 
+    public Double getBaseInterest() {
+        Double interest = null;
+        try {
+            Statement stmt = dbConnection.createStatement();
+            stmt.execute("SELECT value FROM config WHERE category LIKE 'BASE_INTEREST'");
+            ResultSet result = stmt.getResultSet();
+            if(result.next() && result.isLast()) {
+                String temp = result.getString("value");
+                interest = Double.valueOf(temp) / 100.0;
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return interest;
+    }
+
     public Integer saveCreditrequest(CreditRequest req) {
         Customer customer = req.getCustomer();
         try {

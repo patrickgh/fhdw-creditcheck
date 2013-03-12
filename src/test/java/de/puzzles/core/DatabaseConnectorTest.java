@@ -72,4 +72,9 @@ public class DatabaseConnectorTest {
         Assert.assertEquals(DatabaseConnector.getInstance().getLivingCosts(3),850.0);
         Assert.assertEquals(DatabaseConnector.getInstance().getLivingCosts(5),1150.0);
     }
+
+    @Test
+    public void testGetBaseInterest() {
+        Assert.assertNotNull(DatabaseConnector.getInstance().getBaseInterest());
+    }
 }
