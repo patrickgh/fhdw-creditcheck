@@ -54,7 +54,7 @@ public class InsuranceStep extends WizardStep {
         container.add(insurance);
         add(container);
 
-        add(new AjaxLink("insuranceAdd") {
+        container.add(new AjaxLink("insuranceAdd") {
             @Override
             public void onClick(AjaxRequestTarget ajaxRequestTarget) {
                 insurance.addItem(new Transaction());
@@ -85,7 +85,7 @@ public class InsuranceStep extends WizardStep {
         creditContainer.add(credit);
         add(creditContainer);
 
-        add(new AjaxLink("creditAdd") {
+        creditContainer.add(new AjaxLink("creditAdd") {
             @Override
             public void onClick(AjaxRequestTarget ajaxRequestTarget) {
                 credit.addItem(new Transaction());

@@ -5,116 +5,71 @@
 </head>
 <body>
 <wicket:panel>
+
+
     <legend>Schritt 4 von 5 - sonstige Ausgaben</legend>
 
     <br>
 
     <p>Geben Sie Ihre Versicherungsausgaben ein:</p>
-    <br><br>
-
-
-    <div class="span1.5 offset1">
-        Versicherungsart
-    </div>
-    <div class="span2 offset1">
-        Versicherungsgesellschaft
-    </div>
-    <div class="span2 offset1">
-        Versicherungssumme
-    </div>
-    <div class="span2 offset1">
-        monatl. Betrag
-    </div>
-
     <br>
 
-    <div wicket:id="insuranceContainer">
-        <div wicket:id="insurance">
-            <div class="span1">
-                <div class="controls">
-                    <select id="inputInsuranceType" wicket:id="insuranceType">
-                        <option>Unfallversicherung</option>
-                        <option>Reiseversicherung</option>
-                        <option>Haftpflichtversicherung</option>
-                        <option>Krankenversicherung</option>
-                        <option>sonstige Versicherung</option>
-                    </select>
-                </div>
-            </div>
+    <table border="0" cellpadding="4" wicket:id="insuranceContainer">
+        <tr>
+            <td align="left">Versicherungsart</td>
+            <td align="left">Versicherungsgesellschaft</td>
+            <td align="left">Versicherungssumme</td>
+            <td align="left">monatlicher Beitrag</td>
+        </tr>
+        <tr wicket:id="insurance">
+            <td>
+                <select id="inputInsuranceType" wicket:id="insuranceType">
+                    <option>Unfallversicherung</option>
+                    <option>Reiseversicherung</option>
+                    <option>Haftpflichtversicherung</option>
+                    <option>Krankenversicherung</option>
+                    <option>sonstige Versicherung</option>
+                </select>
+            </td>
+            <td><input type="text" id="inputInsuranceCompany" placeholder="Versicherungsgesellschaft" wicket:id="insuranceCompany"></td>
+            <td><input type="text" id="inputInsuranceSum" placeholder="Versicherungssumme" wicket:id="insuranceAmount"></td>
+            <td><input type="text" id="inputMonthlySum" placeholder="monatlicher Beitrag" wicket:id="insuranceValue"></td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <a class="btn offset7" wicket:id="insuranceAdd">
+                    <i class="icon-plus-sign"></i> weitere Zeile hinzufügen
+                </a>
+            </td>
+        </tr>
+    </table>
 
-            <div class="span1 offset2">
-                <div class="controls">
-                    <input type="text" id="inputInsuranceCompany" placeholder="Versicherungsgesellschaft" wicket:id="insuranceCompany">
-                </div>
-            </div>
-
-            <div class="span1 offset2">
-                <div class="controls">
-                    <input type="text" id="inputInsuranceSum" placeholder="Versicherungssumme" wicket:id="insuranceAmount">
-                </div>
-            </div>
-
-            <div class="span1 offset2">
-                <div class="controls">
-                    <input type="text" id="inputInsuranceMonthly" placeholder="monatlicher Betrag" wicket:id="insuranceValue">
-                </div>
-            </div>
-        </div>
-    </div>
-    <a class="btn offset7" wicket:id="insuranceAdd">
-        <i class="icon-plus-sign"></i> weitere Zeile hinzufügen
-    </a>
-    <br><br><br><br><br>
+    <br><br><br><br>
 
     <p>Geben Sie Ihre Kreditausgaben ein:</p>
-
     <br>
 
-    <div class="span1.5 offset1">
-        Kreditinstitut
-    </div>
-    <div class="span2 offset1">
-        Gesamtschuld
-    </div>
-    <div class="span2 offset1">
-        Restschuld
-    </div>
-    <div class="span2 offset1">
-        monatl. Rate
-    </div>
+    <table border="0" cellpadding="4" wicket:id="creditContainer">
+        <tr>
+            <td align="left">Kreditinstitut</td>
+            <td align="left">Gesamtschuld</td>
+            <td align="left">Restschld</td>
+            <td align="left">monatliche Rate</td>
+        </tr>
+        <tr wicket:id="credit">
+            <td><input type="text" id="inputCreditInstitution" placeholder="Kreditinstitut" wicket:id="creditBank"></td>
+            <td><input type="text" id="inputTotalDebt" placeholder="Gesamtschuld" wicket:id="creditAmount"></td>
+            <td><input type="text" id="inputRestDebt" placeholder="Restschld" wicket:id="creditRest"></td>
+            <td><input type="text" id="inputMonthlyRate" placeholder="monatliche Rate" wicket:id="creditValue"></td>
+        </tr>
+        <tr>
+            <td colspan="4"><a class="btn offset7" wicket:id="creditAdd">
+                <i class="icon-plus-sign"></i> weitere Zeile hinzufügen
+            </a>
+            </td>
+        </tr>
+    </table>
 
-    <br>
-
-    <div wicket:id="creditContainer">
-        <div wicket:id="credit">
-            <div class="span1 offset1">
-                <div class="controls">
-                    <input type="text" id="inputCreditInstitute" placeholder="Kreditinstitut" wicket:id="creditBank">
-                </div>
-            </div>
-
-            <div class="span1 offset2">
-                <div class="controls">
-                    <input type="text" id="inputTotalDebt" placeholder="Gesamtschuld" wicket:id="creditAmount">
-                </div>
-            </div>
-
-            <div class="span1 offset2">
-                <div class="controls">
-                    <input type="text" id="inputRemainderDebt" placeholder="Restschuld" wicket:id="creditRest">
-                </div>
-            </div>
-
-            <div class="span1 offset2">
-                <div class="controls">
-                    <input type="text" id="inputCreditMonthly" placeholder="monatliche Rate" wicket:id="creditValue">
-                </div>
-            </div>
-        </div>
-    </div>
-    <a class="btn offset7" wicket:id="creditAdd">
-        <i class="icon-plus-sign"></i> weitere Zeile hinzufügen
-    </a>
 
     <br><br>
     <hr color="grey" width="915" align="center">

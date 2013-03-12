@@ -117,6 +117,7 @@ public class SpendingsStep extends WizardStep {
                 updateResultField(ajaxRequestTarget);
             }
         });
+        add(carcost);
 
         resultField = new TextField<Double>("total", new Model<Double>(0.0));
         resultField.setOutputMarkupId(true);
