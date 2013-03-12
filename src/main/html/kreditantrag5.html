@@ -99,7 +99,45 @@
                 <legend>Schritt 5 von 5 - Zusammenfassung</legend>
 
 
-                <p>Zusammenfassung:</p>
+
+                <p><b>Persönliche Daten:</b></p>
+
+                <div class="span6 offset3">
+                    <table border="0" cellpadding="6">
+                        <tr>
+                            <td colspan="3">Name:</td>
+                            <td colspan="3">Max Mustermann</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Anschrift:</td>
+                            <td colspan="3">Hauptstraße 1, 33719 Bielefeld</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Telefonnummer:</td>
+                            <td colspan="3">0123/4567890</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">E-Mail:</td>
+                            <td colspan="3">max.mustermann@test.de</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Bankleitzahl:</td>
+                            <td colspan="3">13245678</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Kontonummer:</td>
+                            <td colspan="3">111111</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Bankberater</td>
+                            <td colspan="3">Moritz Barnick</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+                <p><b>Ein- und Ausgaben:</b></p>
 
                 <div class="span2 offset4">
                     <b> &nbsp; Gesamteinkünfte</b>
@@ -127,55 +165,45 @@
                     0 €
                 </div>
 
-                <br><br>
+                <br><br><br><br>
 
-                <p>Geben Sie Ihre gewünschte Kreditbedingungen ein:</p>
+               <p><b>Geben Sie Ihre gewünschte Kreditbedingungen ein:</b></p>
 
                 <br>
 
-                <div class="span2 offset4">
-                    <p>Zinssatz:</p>
-
-                    <p>Kreditsumme:</p>
-
-                    <p>Kreditart:</p>
-                    <br><br><br><br>
-
-                    <p>Laufzeit:</p>
-
-                    <p><b>Monatliche Tilgungsrate:</b></p>
+                <div class="span8 offset3">
+                    <table border="0" cellpadding="8">
+                        <tr>
+                            <td colspan="3" width="50%">Zinssatz:</td>
+                            <td colspan="3">7 %</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Kreditsumme:</td>
+                            <td colspan="3"><input type="text" id="inputCreditSum" placeholder="Kreditsumme"</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" valign="top">Kreditart:</td>
+                            <td colspan="3"><input type="checkbox" name="typeOfCredit"> Feste Tilgungssumme<br>
+                                <input type="checkbox" name="typeOfCredit"> Feste Laufzeit</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Laufzeit:</td>
+                            <td colspan="3"><input type="text" id="inputRunTime" placeholder="Laufzeit"</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><b>Monatliche Tilgungsrate:</b></td>
+                            <td><input type="text" id="MonthlyRepaymentRate" disabled></td>
+                        </tr>
+                    </table>
                 </div>
 
-                <div class="offset7">
-                    7%
-                    <br>
 
-                    <div>
-                        <input type="text" id="inputCreditSum2" placeholder="Kreditsumme">
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-                        <br>
-
-                        <input type="checkbox" id="inputCreditType">
-                        <option>Feste Laufzeit</option>
-
-                        <input type="checkbox" id="inputCreditType2">
-                        <option>Feste Tilgungssumme</option>
-
-                        <br>
-                        <br>
-                        <input type="text" id="inputRumtime" placeholder="Laufzeit">
-
-                        <br>
-                        <br>
-                        <input type="text" id="inputMonthlyAmortisation" placeholder="Monatliche Tilgungsrate">
-                    </div>
-                </div>
-                <br><br><br>
-
-                <p>Tilgungsplan:</p>
+                <p><b>Tilgungsplan:</b></p>
 
 
-                <br><br>
+                <br>
 
 
                 <div class="span5">
