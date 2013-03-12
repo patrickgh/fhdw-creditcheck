@@ -6,6 +6,8 @@ import de.puzzles.core.domain.Customer;
 import de.puzzles.webapp.components.choiceprovider.ConsultantChoiceProvider;
 import org.apache.wicket.extensions.markup.html.form.DateTextField;
 import org.apache.wicket.extensions.wizard.WizardStep;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
@@ -19,21 +21,23 @@ import java.util.Date;
  */
 public class PersonalInformationStep extends WizardStep {
 
+    private DateTextField birthdayField;
+
     public PersonalInformationStep(IModel<CreditRequest> defaultModel) {
         super();
 
         CompoundPropertyModel<CreditRequest> requestModel = new CompoundPropertyModel<CreditRequest>(defaultModel);
         CompoundPropertyModel<Customer> customerModel = new CompoundPropertyModel<Customer>(requestModel.getObject().getCustomer());
-        TextField firstName = new TextField("firstName",customerModel.bind("firstname"));
+        TextField firstName = new TextField("firstName", customerModel.bind("firstname"));
         add(firstName);
 
-        TextField lastName = new TextField("lastName",customerModel.bind("lastname"));
+        TextField lastName = new TextField("lastName", customerModel.bind("lastname"));
         add(lastName);
 
-        DateTextField birthdayField = new DateTextField("birthday", customerModel.<Date>bind("birthday"));
+        birthdayField = new DateTextField("birthday", customerModel.<Date>bind("birthday"), "dd.MM.yyyy");
         add(birthdayField);
 
-        TextField street = new TextField("street",customerModel.bind("street"));
+        TextField street = new TextField("street", customerModel.bind("street"));
         add(street);
 
         TextField zipCode = new TextField("zipcode", customerModel.bind("zipcode"));
@@ -59,5 +63,11 @@ public class PersonalInformationStep extends WizardStep {
         consultant.setRequired(true);
         add(consultant);
 
+    }
+
+    @Override
+    public void renderHead(IHeaderResponse response) {
+        super.renderHead(response);
+        response.render(OnDomReadyHeaderItem.forScript("$('#" + birthdayField.getMarkupId() + "').datepicker({format:'dd.mm.yyyy', language:'de',autoclose:true,startView:2});"));
     }
 }

@@ -10,8 +10,6 @@ import java.util.Date;
  *
  * @author Patrick Groß-Holtwick
  *         Date: 03.03.13
- *
- *
  */
 
 public class Customer implements Serializable {
@@ -29,20 +27,6 @@ public class Customer implements Serializable {
     private String bankcode;
 
     public Customer() {
-    }
-
-    public Customer(Integer id, String firstname, String lastname, Date birthday, String street, String city, String zipcode, String telephone, String email, String accountnumber, String bankcode) {
-        this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.birthday = new Date(birthday.getTime());
-        this.street = street;
-        this.city = city;
-        this.zipcode = zipcode;
-        this.telephone = telephone;
-        this.email = email;
-        this.accountnumber = accountnumber;
-        this.bankcode = bankcode;
     }
 
     public Integer getId() {

@@ -125,9 +125,9 @@ public class DatabaseConnector {
                 request.setConsultantId(result.getInt("consultant_id"));
                 request.setCreationDate(result.getDate("creationdate"));
                 request.setState(PuzzlesUtils.getCreditStateByValue(result.getInt("state")));
-                request.setAmount(result.getDouble("creditamount"));
-                request.setRate(result.getDouble("rate"));
-                request.setDuration(result.getInt("duration"));
+                request.getRepaymentPlan().setAmount(result.getDouble("creditamount"));
+                request.getRepaymentPlan().setRate(result.getDouble("rate"));
+                request.getRepaymentPlan().setDuration(result.getInt("duration"));
                 request.setCustomer(getCustomerById(result.getInt("customer_id")));
                 request.setTransactions(getTransactionsByRequestId(id));
                 return request;
@@ -207,7 +207,7 @@ public class DatabaseConnector {
         if (skip == null) {
             skip = 0;
         }
-        if(sort == null) {
+        if (sort == null) {
             sort = "creationdate ASC";
         }
         String sql;
@@ -221,44 +221,42 @@ public class DatabaseConnector {
                       "customer.firstname LIKE ? OR customer.lastname LIKE ? " +
                       ")" +
                       "AND creationdate < ? AND creationdate > ? " +
-                      "ORDER BY ? " +
-                      "LIMIT ?,?";
+                      "ORDER BY " + sort +
+                      " LIMIT ?,?";
                 stmt = dbConnection.prepareStatement(sql);
                 stmt.setInt(1, id);
-                stmt.setString(2,"%"+customer+"%");
-                stmt.setString(3,"%"+customer+"%");
+                stmt.setString(2, "%" + customer + "%");
+                stmt.setString(3, "%" + customer + "%");
                 stmt.setDate(4, new Date(end.getTime()));
                 stmt.setDate(5, new Date(start.getTime()));
-                stmt.setString(6, sort);
-                stmt.setInt(7,skip);
-                stmt.setInt(8,limit);
+                stmt.setInt(6, skip);
+                stmt.setInt(7, limit);
             }
             else {
                 sql = "SELECT * " +
                       "FROM creditrequests LEFT JOIN customer ON creditrequests.customer_id = customer.id " +
                       "WHERE consultant_id=? " +
                       "AND creationdate < ? AND creationdate > ? " +
-                      "ORDER BY ? " +
-                      "LIMIT ?,?";
+                      "ORDER BY " + sort +
+                      " LIMIT ?,?";
                 stmt = dbConnection.prepareStatement(sql);
                 stmt.setInt(1, id);
                 stmt.setDate(2, new Date(end.getTime()));
                 stmt.setDate(3, new Date(start.getTime()));
-                stmt.setString(4, sort);
-                stmt.setInt(5,skip);
-                stmt.setInt(6,limit);
+                stmt.setInt(4, skip);
+                stmt.setInt(5, limit);
             }
             stmt.execute();
             ResultSet result = stmt.getResultSet();
-            while(result.next()) {
+            while (result.next()) {
                 CreditRequest request = new CreditRequest();
                 request.setId(result.getInt("id"));
                 request.setConsultantId(result.getInt("consultant_id"));
                 request.setCreationDate(result.getDate("creationdate"));
                 request.setState(PuzzlesUtils.getCreditStateByValue(result.getInt("state")));
-                request.setAmount(result.getDouble("creditamount"));
-                request.setRate(result.getDouble("rate"));
-                request.setDuration(result.getInt("duration"));
+                request.getRepaymentPlan().setAmount(result.getDouble("creditamount"));
+                request.getRepaymentPlan().setRate(result.getDouble("rate"));
+                request.getRepaymentPlan().setDuration(result.getInt("duration"));
                 request.setCustomer(getCustomerById(result.getInt("customer_id")));
                 request.setTransactions(getTransactionsByRequestId(id));
                 resultList.add(request);
@@ -348,16 +346,17 @@ public class DatabaseConnector {
             if (result.next() && result.isLast()) {
                 int customerId = result.getInt(1);
 
-                sql = "insert into creditrequests values(null,?,?,?,?,?,?,?,?)";
+                sql = "insert into creditrequests values(null,?,?,?,?,?,?,?,?,?)";
                 stmt = dbConnection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
                 stmt.setInt(1, customerId);
                 stmt.setInt(2, req.getConsultantId());
                 stmt.setDate(3, new Date(System.currentTimeMillis()));
                 stmt.setInt(4, req.getState().ordinal());
-                stmt.setFloat(5, req.getAmount().floatValue());
-                stmt.setBoolean(6, req.hasFixedLength());
-                stmt.setFloat(7, req.getRate().floatValue());
-                stmt.setObject(8, req.getDuration());
+                stmt.setFloat(5, req.getRepaymentPlan().getAmount().floatValue());
+                stmt.setBoolean(6, (req.getRepaymentPlan().getRate() != null));
+                stmt.setFloat(7, req.getRepaymentPlan().getRate().floatValue());
+                stmt.setDouble(8, req.getRepaymentPlan().getDuration());
+                stmt.setFloat(9, req.getRepaymentPlan().getInterest().floatValue());
 
                 stmt.execute();
                 result = stmt.getGeneratedKeys();

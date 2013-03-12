@@ -43,10 +43,10 @@ public class DatabaseConnectorTest {
         customer.setTelephone("0000000");
 
         req.setCustomer(customer);
-        req.setAmount(10000.0);
+        req.getRepaymentPlan().setAmount(10000.0);
         req.setConsultantId(1);
         req.setState(CreditState.PENDING);
-        req.setRate(100.0);
+        req.getRepaymentPlan().setRate(100.0);
 
         req.addTransaction(new Transaction(null, null, "Lohn/Gehalt", "Laudert Gmbh+Co KG", "", 450.0));
         req.addTransaction(new Transaction(null, null, "Miete", "Wohnung Bielefeld", "", -300.0));
@@ -58,7 +58,7 @@ public class DatabaseConnectorTest {
         Assert.assertNotNull(req);
         Assert.assertNotNull(req.getCustomer());
         Assert.assertEquals(req.getCustomer().getFirstname(), "Patrick");
-        Assert.assertEquals(req.getAmount(), 10000.0);
+        Assert.assertEquals(req.getRepaymentPlan().getAmount(), 10000.0);
         Assert.assertNotNull(req.getTransactions());
         Assert.assertEquals(req.getTransactions().size(), 2);
     }

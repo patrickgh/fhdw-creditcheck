@@ -4,8 +4,134 @@
     <title></title>
 </head>
 <body>
-     <wicket:panel>
-         versicherungen
-     </wicket:panel>
+<wicket:panel>
+    <legend>Schritt 4 von 5 - sonstige Ausgaben</legend>
+
+    <br>
+
+    <p>Geben Sie Ihre Versicherungsausgaben ein:</p>
+    <br><br>
+
+
+    <div class="span1.5 offset1">
+        Versicherungsart
+    </div>
+    <div class="span2 offset1">
+        Versicherungsgesellschaft
+    </div>
+    <div class="span2 offset1">
+        Versicherungssumme
+    </div>
+    <div class="span2 offset1">
+        monatl. Betrag
+    </div>
+
+    <br>
+
+    <div wicket:id="insuranceContainer">
+        <div wicket:id="insurance">
+            <div class="span1">
+                <div class="controls">
+                    <select id="inputInsuranceType" wicket:id="insuranceType">
+                        <option>Unfallversicherung</option>
+                        <option>Reiseversicherung</option>
+                        <option>Haftpflichtversicherung</option>
+                        <option>Krankenversicherung</option>
+                        <option>sonstige Versicherung</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="span1 offset2">
+                <div class="controls">
+                    <input type="text" id="inputInsuranceCompany" placeholder="Versicherungsgesellschaft" wicket:id="insuranceCompany">
+                </div>
+            </div>
+
+            <div class="span1 offset2">
+                <div class="controls">
+                    <input type="text" id="inputInsuranceSum" placeholder="Versicherungssumme" wicket:id="insuranceAmount">
+                </div>
+            </div>
+
+            <div class="span1 offset2">
+                <div class="controls">
+                    <input type="text" id="inputInsuranceMonthly" placeholder="monatlicher Betrag" wicket:id="insuranceValue">
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="btn offset7" wicket:id="insuranceAdd">
+        <i class="icon-plus-sign"></i> weitere Zeile hinzufügen
+    </a>
+    <br><br><br><br><br>
+
+    <p>Geben Sie Ihre Kreditausgaben ein:</p>
+
+    <br>
+
+    <div class="span1.5 offset1">
+        Kreditinstitut
+    </div>
+    <div class="span2 offset1">
+        Gesamtschuld
+    </div>
+    <div class="span2 offset1">
+        Restschuld
+    </div>
+    <div class="span2 offset1">
+        monatl. Rate
+    </div>
+
+    <br>
+
+    <div wicket:id="creditContainer">
+        <div wicket:id="credit">
+            <div class="span1 offset1">
+                <div class="controls">
+                    <input type="text" id="inputCreditInstitute" placeholder="Kreditinstitut" wicket:id="creditBank">
+                </div>
+            </div>
+
+            <div class="span1 offset2">
+                <div class="controls">
+                    <input type="text" id="inputTotalDebt" placeholder="Gesamtschuld" wicket:id="creditAmount">
+                </div>
+            </div>
+
+            <div class="span1 offset2">
+                <div class="controls">
+                    <input type="text" id="inputRemainderDebt" placeholder="Restschuld" wicket:id="creditRest">
+                </div>
+            </div>
+
+            <div class="span1 offset2">
+                <div class="controls">
+                    <input type="text" id="inputCreditMonthly" placeholder="monatliche Rate" wicket:id="creditValue">
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="btn offset7" wicket:id="creditAdd">
+        <i class="icon-plus-sign"></i> weitere Zeile hinzufügen
+    </a>
+
+    <br><br>
+    <hr color="grey" width="915" align="center">
+    <br>
+
+    <div class="span3 offset1">
+        <p>Summe</p>
+    </div>
+
+    <div class="span2 offset1">
+        <div class="controls">
+            <input type="text" id="inputValueTotal" placeholder="Wert" wicket:id="total">
+        </div>
+    </div>
+
+    <br><br><br>
+
+</wicket:panel>
 </body>
 </html>

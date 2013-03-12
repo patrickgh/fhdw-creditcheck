@@ -3,13 +3,11 @@ package de.puzzles.webapp.page.newrequest.steps;
 import de.puzzles.core.domain.Transaction;
 import de.puzzles.webapp.components.listeditor.ListEditor;
 import de.puzzles.webapp.components.listeditor.ListItem;
-import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.wizard.WizardStep;
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
@@ -34,7 +32,7 @@ public class EarningsStep extends WizardStep {
         final WebMarkupContainer container = new WebMarkupContainer("incomeContainer");
         container.setOutputMarkupId(true);
         incomeList.add(new Transaction());
-        final ListEditor<Transaction> income = new ListEditor<Transaction>("income", new PropertyModel<List<Transaction>>(this,"incomeList")) {
+        final ListEditor<Transaction> income = new ListEditor<Transaction>("income", new PropertyModel<List<Transaction>>(this, "incomeList")) {
             @Override
             protected void onPopulateItem(ListItem<Transaction> item) {
                 CompoundPropertyModel<Transaction> model = new CompoundPropertyModel<Transaction>(item.getModel());
@@ -52,7 +50,7 @@ public class EarningsStep extends WizardStep {
         container.add(income);
         add(container);
 
-        add(new AjaxLink("incomeAdd"){
+        add(new AjaxLink("incomeAdd") {
             @Override
             public void onClick(AjaxRequestTarget ajaxRequestTarget) {
                 income.addItem(new Transaction());
@@ -63,7 +61,7 @@ public class EarningsStep extends WizardStep {
         additionalList.add(new Transaction());
         final WebMarkupContainer additionalContainer = new WebMarkupContainer("additionalIncomeContainer");
         additionalContainer.setOutputMarkupId(true);
-        final ListEditor<Transaction> additional = new ListEditor<Transaction>("additionalIncome", new PropertyModel<List<Transaction>>(this,"additionalList")) {
+        final ListEditor<Transaction> additional = new ListEditor<Transaction>("additionalIncome", new PropertyModel<List<Transaction>>(this, "additionalList")) {
             @Override
             protected void onPopulateItem(ListItem<Transaction> item) {
                 CompoundPropertyModel<Transaction> model = new CompoundPropertyModel<Transaction>(item.getModel());
@@ -81,7 +79,7 @@ public class EarningsStep extends WizardStep {
         additionalContainer.add(additional);
         add(additionalContainer);
 
-        add(new AjaxLink("additionalAdd"){
+        add(new AjaxLink("additionalAdd") {
             @Override
             public void onClick(AjaxRequestTarget ajaxRequestTarget) {
                 additional.addItem(new Transaction());
@@ -104,5 +102,12 @@ public class EarningsStep extends WizardStep {
         }
         resultField.setDefaultModelObject(sum);
         target.add(resultField);
+    }
+
+    public List<Transaction> getTransactions() {
+        List<Transaction> list = new ArrayList<Transaction>();
+        list.addAll(incomeList);
+        list.addAll(additionalList);
+        return list;
     }
 }

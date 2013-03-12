@@ -1,41 +1,34 @@
 package de.puzzles.webapp.components.listeditor;
 
-import java.util.List;
-
 import org.apache.wicket.markup.html.form.Button;
 
-public abstract class EditorButton extends Button
-{
-    private transient ListItem< ? > parent;
+import java.util.List;
 
-    public EditorButton(String id)
-    {
+public abstract class EditorButton extends Button {
+
+    private transient ListItem<?> parent;
+
+    public EditorButton(String id) {
         super(id);
     }
 
-    protected final ListItem< ? > getItem()
-    {
-        if (parent == null)
-        {
+    protected final ListItem<?> getItem() {
+        if (parent == null) {
             parent = findParent(ListItem.class);
         }
         return parent;
     }
 
-    protected final List< ? > getList()
-    {
+    protected final List<?> getList() {
         return getEditor().items;
     }
 
-    protected final ListEditor< ? > getEditor()
-    {
-        return (ListEditor< ? >)getItem().getParent();
+    protected final ListEditor<?> getEditor() {
+        return (ListEditor<?>) getItem().getParent();
     }
 
-
     @Override
-    protected void onDetach()
-    {
+    protected void onDetach() {
         parent = null;
         super.onDetach();
     }

@@ -11,16 +11,15 @@ import java.io.Serializable;
  */
 public class RepaymentPlan implements Serializable {
 
-    private int duration;
+    private Double duration;
     private double amount;
-    private double interest;
-    private double rate;
-    private int creditRequestId;
-
+    private double interest; // example: 0.10 => 10%
+    private Double rate;
     private double[] repaymentRates;
     private double[] interestPayments;
+    private double[] restDebtAmount;
 
-    public double getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
@@ -28,23 +27,16 @@ public class RepaymentPlan implements Serializable {
         this.amount = amount;
     }
 
-    public int getCreditRequestId() {
-        return creditRequestId;
+    public double getDuration() {
+        return (duration != null) ? duration : 0.0;
     }
 
-    public void setCreditRequestId(int creditRequestId) {
-        this.creditRequestId = creditRequestId;
-    }
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
+    public void setDuration(double duration) {
         this.duration = duration;
+        this.rate = null;
     }
 
-    public double getInterest() {
+    public Double getInterest() {
         return interest;
     }
 
@@ -52,95 +44,85 @@ public class RepaymentPlan implements Serializable {
         this.interest = interest;
     }
 
-    public double[] getInterestPayments() {
-        return interestPayments;
-    }
-
-    public void setInterestPayments(double[] interestPayments) {
-        this.interestPayments = interestPayments;
-    }
-
-    public double getRate() {
+    public Double getRate() {
         return rate;
     }
 
     public void setRate(double rate) {
         this.rate = rate;
+        this.duration = null;
     }
 
     public double[] getRepaymentRates() {
         return repaymentRates;
     }
 
-    public void setRepaymentRates(double[] repaymentRates) {
-        this.repaymentRates = repaymentRates;
-    }
-
-    public int returnDuration() {
-        return this.duration;
-    }
-
     public double[] getRestDebtAmount() {
         return restDebtAmount;
     }
 
-    public void setRestDebtAmount(double[] restDebtAmount) {
-        this.restDebtAmount = restDebtAmount;
+    public double[] getInterestPayments() {
+        return interestPayments;
     }
-
-    private double[] restDebtAmount;
 
     private double calculateRate() {
         double rate = amount * ((interest * Math.pow(interest + 1, duration)) / (Math.pow(1 + interest, duration) - 1));
         return rate;
     }
 
-    public int calculateDuration() {
-        interest = interest / 100;
-        double tempDuration = (-(Math.log(1 - (interest * amount) / rate) / Math.log(1 + interest)));
-        int duration = 0;
-        if (tempDuration > 0) {
-            duration = (int) tempDuration;
-            //duration = (int) tempDuration + 1;
-        }
-        return duration;
+    private double calculateDuration() {
+        double tempDuration = -1 * (Math.log(1 - ((interest * amount) / rate)) / Math.log(1 + interest));
+        return tempDuration;
+    }
+
+    public int getTableSize() {
+        return ((int) ((double) duration)) + 1;
     }
 
     private double[] calculateRestDebtAmount() {
-        double[] restDebtAmount = new double[duration+1];
-        restDebtAmount[0]= amount;
-        for (int i = 0; i < duration; i++){
-            restDebtAmount[i] = amount*((Math.pow(1+interest,duration)-Math.pow(1+interest,i))/(Math.pow(1+interest,duration)-1));
+        restDebtAmount = new double[getTableSize() + 1];
+        restDebtAmount[0] = amount;
+        for (int i = 1; i <= getTableSize(); i++) {
+            restDebtAmount[i] = amount * ((Math.pow(1 + interest, duration) - Math.pow(1 + interest, i)) / (Math.pow(1 + interest, duration) - 1));
+            if (restDebtAmount[i] < 0.0) {
+                restDebtAmount[i] = 0.0;
+            }
         }
         return restDebtAmount;
     }
 
-    private double[] calculateInterestPayments(){
-        double[] interestPayments = new double[duration+1];
-        interestPayments[0]=0.0;
-        double[] restDebtAmount = calculateRestDebtAmount();
-        for (int i = 0; i < duration; i++){
-            interestPayments[i]=restDebtAmount[i]*interest;
+    private double[] calculateInterestPayments() {
+        interestPayments = new double[getTableSize() + 1];
+        interestPayments[0] = 0.0;
+        for (int i = 1; i <= getTableSize(); i++) {
+            interestPayments[i] = restDebtAmount[i - 1] * interest;
         }
         return interestPayments;
 
     }
 
-    private double[] calculateRepaymentRates(){
-        for (int i = 0; i< duration; i++){
-            repaymentRates[i]= rate - interestPayments[i];
+    private double[] calculateRepaymentRates() {
+        repaymentRates = new double[getTableSize() + 1];
+        repaymentRates[0] = 0.0;
+        for (int i = 1; i <= getTableSize(); i++) {
+            repaymentRates[i] = rate;
+            if((restDebtAmount[i-1] + interestPayments[i]) < rate) {
+                repaymentRates[i] = restDebtAmount[i-1] + interestPayments[i];
+            }
         }
         return repaymentRates;
     }
 
-    public void generateRepaymentPlan(){
-        interest = interest /100;
-        repaymentRates = new double[duration];
-        interestPayments = calculateInterestPayments();
-        restDebtAmount = calculateRestDebtAmount();
-        rate = calculateRate();
+    public void generateRepaymentPlan() {
+        if (rate == null && duration != null) {
+            rate = calculateRate();
+        }
+        else if (duration == null && rate != null) {
+            duration = calculateDuration();
+        }
+        calculateRestDebtAmount();
+        calculateInterestPayments();
         calculateRepaymentRates();
-
     }
 
 }

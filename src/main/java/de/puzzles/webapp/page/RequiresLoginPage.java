@@ -18,6 +18,10 @@ public abstract class RequiresLoginPage extends BasePage {
     }
 
     protected int getUserId() {
-        return (Integer) getSession().getAttribute("userId");
+        Integer id = (Integer) getSession().getAttribute("userId");
+        if (id != null) {
+            return id;
+        }
+        return 0;
     }
 }
