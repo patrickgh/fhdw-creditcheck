@@ -125,9 +125,9 @@ public class DatabaseConnector {
                 request.setConsultantId(result.getInt("consultant_id"));
                 request.setCreationDate(result.getDate("creationdate"));
                 request.setState(PuzzlesUtils.getCreditStateByValue(result.getInt("state")));
-                request.setAmount(result.getDouble("creditamount"));
-                request.setRate(result.getDouble("rate"));
-                request.setDuration(result.getInt("duration"));
+                request.getRepaymentPlan().setAmount(result.getDouble("creditamount"));
+                request.getRepaymentPlan().setRate(result.getDouble("rate"));
+                request.getRepaymentPlan().setDuration(result.getInt("duration"));
                 request.setCustomer(getCustomerById(result.getInt("customer_id")));
                 request.setTransactions(getTransactionsByRequestId(id));
                 return request;
@@ -254,9 +254,9 @@ public class DatabaseConnector {
                 request.setConsultantId(result.getInt("consultant_id"));
                 request.setCreationDate(result.getDate("creationdate"));
                 request.setState(PuzzlesUtils.getCreditStateByValue(result.getInt("state")));
-                request.setAmount(result.getDouble("creditamount"));
-                request.setRate(result.getDouble("rate"));
-                request.setDuration(result.getInt("duration"));
+                request.getRepaymentPlan().setAmount(result.getDouble("creditamount"));
+                request.getRepaymentPlan().setRate(result.getDouble("rate"));
+                request.getRepaymentPlan().setDuration(result.getInt("duration"));
                 request.setCustomer(getCustomerById(result.getInt("customer_id")));
                 request.setTransactions(getTransactionsByRequestId(id));
                 resultList.add(request);
@@ -352,11 +352,11 @@ public class DatabaseConnector {
                 stmt.setInt(2, req.getConsultantId());
                 stmt.setDate(3, new Date(System.currentTimeMillis()));
                 stmt.setInt(4, req.getState().ordinal());
-                stmt.setFloat(5, req.getAmount().floatValue());
-                stmt.setBoolean(6, req.hasFixedLength());
-                stmt.setFloat(7, req.getRate().floatValue());
-                stmt.setFloat(8, req.getDuration().floatValue());
-                stmt.setFloat(9, req.getInterest().floatValue());
+                stmt.setFloat(5, req.getRepaymentPlan().getAmount().floatValue());
+                stmt.setBoolean(6, (req.getRepaymentPlan().getRate() != null));
+                stmt.setFloat(7, req.getRepaymentPlan().getRate().floatValue());
+                stmt.setDouble(8, req.getRepaymentPlan().getDuration());
+                stmt.setFloat(9, req.getRepaymentPlan().getInterest().floatValue());
 
                 stmt.execute();
                 result = stmt.getGeneratedKeys();

@@ -15,16 +15,12 @@ import java.util.List;
  */
 public class CreditRequest implements Serializable {
 
-    RepaymentPlan repaymentPlan;
+    private RepaymentPlan repaymentPlan = new RepaymentPlan();
     private Integer id;
     private Customer customer = new Customer();
     private Integer consultantId;
     private Date creationDate;
     private CreditState state = CreditState.PENDING;
-    private Double amount = 0.0;
-    private Double rate = 0.0;
-    private Double interest = 0.0;
-    private Integer duration = 0;
     private List<Transaction> transactions = new ArrayList<Transaction>();
 
     public CreditRequest() {
@@ -70,49 +66,6 @@ public class CreditRequest implements Serializable {
         this.state = state;
     }
 
-    public Double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Double amount) {
-        this.amount = amount;
-    }
-
-    public Double getRate() {
-        return rate;
-    }
-
-    public void setRate(Double rate) {
-        this.rate = rate;
-    }
-
-    public Double getInterest() {
-        return interest;
-    }
-
-    public void setInterest(Double interest) {
-        this.interest = interest;
-    }
-
-    public Integer getDuration() {
-        return duration;
-    }
-
-    public void setDuration(Integer duration) {
-        this.duration = duration;
-    }
-
-    /**
-     * This method checks if the creditrequest has a fixed lenght (duration) or a fixed rate.
-     * If the duration of the creditrequest is fix, the rate will be automatically calculated.
-     * If the rate of the creditrequest is fix, the duration will be automatically calculated.
-     *
-     * @return true or false. Returns true if the creditrequest has a fixed length. Returns true if the creditrequest has a fixed rate.
-     */
-    public boolean hasFixedLength() {
-        return duration != null;
-    }
-
     /**
      * This method adds a transaction to the list of the transactions, which are related to the creditrequest.
      *
@@ -132,31 +85,7 @@ public class CreditRequest implements Serializable {
         this.transactions = transactions;
     }
 
-    public RepaymentPlan getRepaymentPlanFixedDuration(double amount, double interest, int duration) {
-        if (repaymentPlan == null) {
-            repaymentPlan = new RepaymentPlan();
-        }
-        repaymentPlan.setAmount(amount);
-        repaymentPlan.setInterest(interest);
-        repaymentPlan.setDuration(duration);
-        repaymentPlan.generateRepaymentPlan();
+    public RepaymentPlan getRepaymentPlan() {
         return repaymentPlan;
-    }
-
-    public RepaymentPlan getRepaymentPlanFixedRate(double amount, double interest, double rate) {
-        if (repaymentPlan == null) {
-            repaymentPlan = new RepaymentPlan();
-        }
-        repaymentPlan.setAmount(amount);
-        repaymentPlan.setInterest(interest);
-        repaymentPlan.setRate(rate);
-        double duration = repaymentPlan.calculateDuration();
-        repaymentPlan.setDuration((int) duration);
-        if (repaymentPlan.getDuration() <= 0) {
-            return repaymentPlan;
-        }
-        getRepaymentPlanFixedDuration(amount, interest, repaymentPlan.getDuration());
-        return repaymentPlan;
-
     }
 }
