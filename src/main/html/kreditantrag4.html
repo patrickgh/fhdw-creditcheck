@@ -87,7 +87,7 @@
 
 
 
-        <form align="center" class="form-horizontal well">
+        <form align="left" class="form-horizontal well">
             <div align="center" class="span11">
                 <div class="progress progress-striped active" >
                     <div class="bar bar-success" style="width: 80%;"></div>
@@ -116,95 +116,41 @@
 
                 <br>
                 <p>Geben Sie Ihre Versicherungsausgaben ein:</p>
-                <br><br>
-
-
-                <div class="span1.5 offset1">
-                    Versicherungsart
-                </div>
-                <div class="span2 offset1">
-                    Versicherungsgesellschaft
-                </div>
-                <div class="span2 offset1">
-                    Versicherungssumme
-                </div>
-                <div class="span2 offset1">
-                    monatl. Betrag
-                </div>
-
                 <br>
 
-                <div class="span1">
-                    <div class="controls">
-                        <select id="inputInsuranceType">
-                            <option>Unfallversicherung</option>
-                            <option>weitere Versicherung</option>
-                        </select>
-                    </div>
-                </div>
+                <table border="0" cellpadding="4">
+                    <tr>
+                        <td colspan="4" align="left">Versicherungsart</td>
+                        <td colspan="4" align="left">Versicherungsgesellschaft</td>
+                        <td colspan="4" align="left">Versicherungssumme</td>
+                        <td colspan="4" align="left">monatlicher Beitrag</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><input type="text" id="inputTypeOfInsurance" placeholder="Versicherungsart"></td>
+                        <td colspan="4"><input type="text" id="inputInsuranceCompany" placeholder="Versicherungsgesellschaft"></td>
+                        <td colspan="4"><input type="text" id="inputInsuranceSum" placeholder="Versicherungssumme"></td>
+                        <td colspan="4"><input type="text" id="inputMonthlySum" placeholder="monatlicher Beitrag"></td>
+                    </tr>
+                </table>
 
-                <div class="span1 offset2">
-                    <div class="controls">
-                        <input type="text" id="inputInsuranceCompany" placeholder="Versicherungsgesellschaft">
-                    </div>
-                </div>
-
-                <div class="span1 offset2">
-                    <div class="controls">
-                        <input type="text" id="inputInsuranceSum" placeholder="Versicherungssumme">
-                    </div>
-                </div>
-
-                <div class="span1 offset2">
-                    <div class="controls">
-                        <input type="text" id="inputInsuranceMonthly" placeholder="monatlicher Betrag">
-                    </div>
-                </div>
-
-                <br><br><br><br><br>
-
+                <br><br><br><br>
                 <p>Geben Sie Ihre Kreditausgaben ein:</p>
-
                 <br>
 
-                <div class="span1.5 offset1">
-                    Kreditinstitut
-                </div>
-                <div class="span2 offset1">
-                    Gesamtschuld
-                </div>
-                <div class="span2 offset1">
-                    Restschuld
-                </div>
-                <div class="span2 offset1">
-                    monatl. Rate
-                </div>
-
-                <br>
-
-                <div class="span1 offset1">
-                    <div class="controls">
-                        <input type="text" id="inputCreditInstitute" placeholder="Kreditinstitut">
-                    </div>
-                </div>
-
-                <div class="span1 offset2">
-                    <div class="controls">
-                        <input type="text" id="inputTotalDebt" placeholder="Gesamtschuld">
-                    </div>
-                </div>
-
-                <div class="span1 offset2">
-                    <div class="controls">
-                        <input type="text" id="inputRemainderDebt" placeholder="Restschuld">
-                    </div>
-                </div>
-
-                <div class="span1 offset2">
-                    <div class="controls">
-                        <input type="text" id="inputCreditMonthly" placeholder="monatliche Rate">
-                    </div>
-                </div>
+                <table border="0" cellpadding="4">
+                    <tr>
+                        <td colspan="4" align="left">Kreditinstitut</td>
+                        <td colspan="4" align="left">Gesamtschuld</td>
+                        <td colspan="4" align="left">Restschld</td>
+                        <td colspan="4" align="left">monatliche Rate</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><input type="text" id="inputCreditInstitution" placeholder="Kreditinstitut"></td>
+                        <td colspan="4"><input type="text" id="inputTotalDebt" placeholder="Gesamtschuld"></td>
+                        <td colspan="4"><input type="text" id="inputRestDebt" placeholder="Restschld"></td>
+                        <td colspan="4"><input type="text" id="inputMonthlyRate" placeholder="monatliche Rate"></td>
+                    </tr>
+                </table>
 
 
                 <br><br>
