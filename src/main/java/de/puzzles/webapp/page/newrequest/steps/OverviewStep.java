@@ -1,7 +1,9 @@
 package de.puzzles.webapp.page.newrequest.steps;
 
 import de.puzzles.core.domain.CreditRequest;
+import de.puzzles.core.domain.RepaymentPlan;
 import de.puzzles.core.domain.Transaction;
+import de.puzzles.webapp.page.newrequest.RepaymentPlanPanel;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.extensions.wizard.WizardStep;
@@ -24,6 +26,7 @@ public class OverviewStep extends WizardStep {
     private CompoundPropertyModel<List<Transaction>> spendingsModel;
     private TextField<Double> rateField;
     private TextField<Double> durationField;
+    private RepaymentPlanPanel repaymentPlan;
 
     public OverviewStep(IModel<CreditRequest> model, IModel<List<Transaction>> incomes, IModel<List<Transaction>> spendings) {
         super();
@@ -59,10 +62,27 @@ public class OverviewStep extends WizardStep {
         });
         add(durationField);
 
-        add(new TextField<Double>("creditRate", requestModel.<Double>bind("repaymentPlan.rate")));
+        rateField = new TextField<Double>("creditRate", new AbstractReadOnlyModel<Double>() {
+            @Override
+            public Double getObject() {
+                return requestModel.getObject().getRepaymentPlan().getRate();
+            }
+        });
+        rateField.setOutputMarkupId(true);
+        add(rateField);
+        repaymentPlan = new RepaymentPlanPanel("repaymentPlan",new AbstractReadOnlyModel<List<RepaymentPlan.Entry>>() {
+            @Override
+            public List<RepaymentPlan.Entry> getObject() {
+                return requestModel.getObject().getRepaymentPlan().generateRepaymentPlan();
+            }
+        });
+        repaymentPlan.setOutputMarkupId(true);
+        add(repaymentPlan);
     }
 
     public void updateFields(AjaxRequestTarget target) {
-
+        requestModel.getObject().getRepaymentPlan().setAmount(requestModel.getObject().getRepaymentPlan().getAmount());
+        target.add(rateField);
+        target.add(repaymentPlan);
     }
 }

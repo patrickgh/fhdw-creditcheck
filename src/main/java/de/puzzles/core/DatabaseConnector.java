@@ -370,8 +370,8 @@ public class DatabaseConnector {
                 stmt.setDate(3, new Date(System.currentTimeMillis()));
                 stmt.setInt(4, req.getState().ordinal());
                 stmt.setFloat(5, req.getRepaymentPlan().getAmount().floatValue());
-                stmt.setBoolean(6, (req.getRepaymentPlan().getRate() != null));
-                stmt.setFloat(7, req.getRepaymentPlan().getRate().floatValue());
+                stmt.setBoolean(6, true);
+                stmt.setFloat(7, 0.0F);//req.getRepaymentPlan().getRate().floatValue());
                 stmt.setDouble(8, req.getRepaymentPlan().getDuration());
                 stmt.setFloat(9, req.getRepaymentPlan().getInterest().floatValue());
 

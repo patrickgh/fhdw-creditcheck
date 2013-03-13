@@ -3,15 +3,20 @@ package de.puzzles.webapp.page.dashboard;
 import de.puzzles.core.DatabaseConnector;
 import de.puzzles.core.domain.CreditRequest;
 import de.puzzles.core.domain.CreditState;
+import de.puzzles.core.domain.RepaymentPlan;
 import de.puzzles.core.util.PuzzlesUtils;
 import de.puzzles.webapp.page.RequiresLoginPage;
+import de.puzzles.webapp.page.newrequest.RepaymentPlanPanel;
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.request.cycle.RequestCycle;
+
+import java.util.List;
 
 /**
  * @author Patrick Groß-Holtwick
@@ -65,6 +70,13 @@ public class CreditDetailsPage extends RequiresLoginPage {
                 });
                 buttonContainer.add(declineButton);
                 add(buttonContainer);
+
+                add(new RepaymentPlanPanel("repaymentPlan", new AbstractReadOnlyModel<List<RepaymentPlan.Entry>>() {
+                    @Override
+                    public List<RepaymentPlan.Entry> getObject() {
+                        return model.getObject().getRepaymentPlan().generateRepaymentPlan();
+                    }
+                }));
             }
         }
         else {

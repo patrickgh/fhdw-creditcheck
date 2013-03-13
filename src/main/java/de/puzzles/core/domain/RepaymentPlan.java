@@ -1,6 +1,8 @@
 package de.puzzles.core.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,9 +13,9 @@ import java.io.Serializable;
  */
 public class RepaymentPlan implements Serializable {
 
-    private Double duration;
-    private double amount;
-    private double interest; // example: 0.10 => 10%
+    private Double duration = 5.0;
+    private double amount = 10000;
+    private double interest = 0.07; // example: 0.10 => 10%
     private Double rate;
     private double[] repaymentRates;
     private double[] interestPayments;
@@ -25,6 +27,7 @@ public class RepaymentPlan implements Serializable {
 
     public void setAmount(double amount) {
         this.amount = amount;
+        this.rate = calculateRate();
     }
 
     public double getDuration() {
@@ -113,7 +116,7 @@ public class RepaymentPlan implements Serializable {
         return repaymentRates;
     }
 
-    public void generateRepaymentPlan() {
+    public List<Entry> generateRepaymentPlan() {
         if (rate == null && duration != null) {
             rate = calculateRate();
         }
@@ -123,7 +126,48 @@ public class RepaymentPlan implements Serializable {
         calculateRestDebtAmount();
         calculateInterestPayments();
         calculateRepaymentRates();
+        List<Entry> list = new ArrayList<Entry>();
+        for (int i=0; i<getTableSize();i++) {
+            list.add(new Entry(getRestDebtAmount()[i],getInterestPayments()[i],getRepaymentRates()[i]));
+        }
+        return list;
     }
 
+
+    public class Entry implements Serializable{
+        Double restDebt;
+        Double interestPayment;
+        Double rate;
+
+        public Entry(Double restDebt, Double interestPayment, Double rate) {
+            this.restDebt = restDebt;
+            this.interestPayment = interestPayment;
+            this.rate = rate;
+        }
+
+        public Double getRestDebt() {
+            return restDebt;
+        }
+
+        public void setRestDebt(Double restDebt) {
+            this.restDebt = restDebt;
+        }
+
+        public Double getInterestPayment() {
+            return interestPayment;
+        }
+
+        public void setInterestPayment(Double interestPayment) {
+            this.interestPayment = interestPayment;
+        }
+
+        public Double getRate() {
+            return rate;
+        }
+
+        public void setRate(Double rate) {
+            this.rate = rate;
+        }
+    }
 }
 
