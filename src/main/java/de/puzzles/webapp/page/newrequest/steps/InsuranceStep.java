@@ -11,6 +11,7 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
@@ -46,7 +47,6 @@ public class InsuranceStep extends WizardStep {
                 valueField.add(new AjaxFormComponentUpdatingBehavior("onchange") {
                     @Override
                     protected void onUpdate(AjaxRequestTarget ajaxRequestTarget) {
-                        updateResultField(ajaxRequestTarget);
                     }
                 });
                 item.add(valueField);
@@ -73,12 +73,6 @@ public class InsuranceStep extends WizardStep {
                 item.add(new TextField<String>("creditAmount", model.<String>bind("description1")));
                 item.add(new TextField<String>("creditRest", model.<String>bind("description2")));
                 TextField<Double> valueField = new TextField<Double>("creditValue", model.<Double>bind("value"));
-                valueField.add(new AjaxFormComponentUpdatingBehavior("onchange") {
-                    @Override
-                    protected void onUpdate(AjaxRequestTarget ajaxRequestTarget) {
-                        updateResultField(ajaxRequestTarget);
-                    }
-                });
                 item.add(valueField);
             }
         };
@@ -92,21 +86,21 @@ public class InsuranceStep extends WizardStep {
             }
         }.setDefaultFormProcessing(false));
 
-        resultField = new TextField<Double>("total", new Model<Double>(0.0));
+        resultField = new TextField<Double>("total", new AbstractReadOnlyModel<Double>() {
+            @Override
+            public Double getObject() {
+                Double sum = 0.0;
+                for (Transaction transaction : creditList) {
+                    sum += transaction.getValue();
+                }
+                for (Transaction transaction : insuranceList) {
+                    sum += transaction.getValue();
+                }
+                return sum;
+            }
+        });
         resultField.setOutputMarkupId(true);
         add(resultField);
-    }
-
-    private void updateResultField(AjaxRequestTarget target) {
-        Double sum = 0.0;
-        for (Transaction transaction : creditList) {
-            sum += transaction.getValue();
-        }
-        for (Transaction transaction : insuranceList) {
-            sum += transaction.getValue();
-        }
-        resultField.setDefaultModelObject(sum);
-        target.add(resultField);
     }
 
     private List<String> getInsuranceTypes() {

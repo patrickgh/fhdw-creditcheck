@@ -42,8 +42,7 @@ public class EarningsStep extends WizardStep {
                 TextField<Double> valueField = new TextField<Double>("valueIncome", model.<Double>bind("value"));
                 valueField.add(new AjaxFormComponentUpdatingBehavior("onchange") {
                     @Override
-                    protected void onUpdate(AjaxRequestTarget ajaxRequestTarget) {
-                        updateResultField(ajaxRequestTarget);
+                    protected void onUpdate(AjaxRequestTarget target) {
                     }
                 });
                 item.add(valueField);
@@ -68,12 +67,6 @@ public class EarningsStep extends WizardStep {
                 CompoundPropertyModel<Transaction> model = new CompoundPropertyModel<Transaction>(item.getModel());
                 item.add(new TextField<String>("descriptionAdditional", model.<String>bind("description")));
                 TextField<Double> valueField = new TextField<Double>("valueAdditional", model.<Double>bind("value"));
-                valueField.add(new AjaxFormComponentUpdatingBehavior("onchange") {
-                    @Override
-                    protected void onUpdate(AjaxRequestTarget ajaxRequestTarget) {
-                        updateResultField(ajaxRequestTarget);
-                    }
-                });
                 item.add(valueField);
             }
         };
@@ -103,10 +96,6 @@ public class EarningsStep extends WizardStep {
         resultField.setOutputMarkupId(true);
         resultField.setEnabled(false);
         add(resultField);
-    }
-
-    private void updateResultField(AjaxRequestTarget target) {
-        target.add(resultField);
     }
 
     public List<Transaction> getTransactions() {

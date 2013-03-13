@@ -30,7 +30,7 @@
 
             <div class="span4" align="right">
                 <div class="input-append">
-                    <input class="span2" type="text" id="inputValueIncome" placeholder="Betrag" wicket:id="valueIncome">
+                    <input class="span2 transaction-value" type="text" id="inputValueIncome" onchange="updateResultField();" placeholder="Betrag" wicket:id="valueIncome">
                     <span class="add-on">€</span>
                 </div>
             </div>
@@ -58,7 +58,7 @@
 
             <div class="span4" align="right">
                 <div class="input-append">
-                    <input class="span2" type="text" id="inputValueOther" placeholder="Betrag" wicket:id="valueAdditional">
+                    <input class="span2 transaction-value" type="text" id="inputValueOther" onchange="updateResultField();" placeholder="Betrag" wicket:id="valueAdditional">
                     <span class="add-on">€</span>
                 </div>
             </div>
@@ -80,7 +80,7 @@
 
     <div class="span4" align="right">
         <div class="input-append">
-            <input class="span2" type="text" id="inputValueTotal" placeholder="0.00" disabled wicket:id="total">
+            <input class="span2 " type="text" id="transaction-result" placeholder="0.00" disabled wicket:id="total">
             <span class="add-on">€</span>
         </div>
     </div>
