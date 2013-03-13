@@ -21,24 +21,24 @@
 
     <div wicket:id="incomeContainer">
         <div wicket:id="income">
-            <div class="span2 offset2">
-                <div class="controls">
+            <div class="span7" align="right">
+                <div>
                     <input type="text" id="inputDescriptionIncome" placeholder="Firma" wicket:id="descriptionIncome">
                 </div>
             </div>
 
 
-            <div class="span2 offset1">
-                <div class="controls input-append">
-                    <input type="text" id="inputValueIncome" placeholder="Betrag" wicket:id="valueIncome">
+            <div class="span4" align="right">
+                <div class="input-append">
+                    <input class="span2" type="text" id="inputValueIncome" placeholder="Betrag" wicket:id="valueIncome">
                     <span class="add-on">€</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <a class="btn offset7" wicket:id="incomeAdd">
-        <i class="icon-plus-sign"></i> weitere Zeile hinzufügen
+    <a class="btn offset9" wicket:id="incomeAdd">
+        <i class="icon-plus-sign"></i> weitere Zeile
     </a>
     <br><br><br>
 
@@ -50,22 +50,22 @@
 
     <div wicket:id="additionalIncomeContainer">
         <div wicket:id="additionalIncome">
-            <div class="span2 offset2">
-                <div class="controls">
+            <div class="span7" align="right">
+                <div>
                     <input type="text" id="inputDescriptionOther" placeholder="Beschreibung" wicket:id="descriptionAdditional">
                 </div>
             </div>
 
-            <div class="span2 offset1">
-                <div class="controls input-append">
-                    <input type="text" id="inputValueOther" placeholder="Betrag" wicket:id="valueAdditional">
+            <div class="span4" align="right">
+                <div class="input-append">
+                    <input class="span2" type="text" id="inputValueOther" placeholder="Betrag" wicket:id="valueAdditional">
                     <span class="add-on">€</span>
                 </div>
             </div>
         </div>
     </div>
-    <a class="btn offset7" wicket:id="additionalAdd">
-        <i class="icon-plus-sign"></i> weitere Zeile hinzufügen
+    <a class="btn offset9" wicket:id="additionalAdd">
+        <i class="icon-plus-sign"></i> weitere Zeile
     </a>
 
 
@@ -74,13 +74,13 @@
     <br>
 
 
-    <div class="span2 offset2">
+    <div class="span7">
         <p>Gesamteinkünfte</p>
     </div>
 
-    <div class="span2 offset1">
-        <div class="controls input-append">
-            <input type="text" id="inputValueTotal" placeholder="0.00" disabled wicket:id="total">
+    <div class="span4" align="right">
+        <div class="input-append">
+            <input class="span2" type="text" id="inputValueTotal" placeholder="0.00" disabled wicket:id="total">
             <span class="add-on">€</span>
         </div>
     </div>
