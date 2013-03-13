@@ -8,7 +8,9 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.request.resource.PackageResourceReference;
 import webresources.ImportResourceLocator;
 
@@ -44,6 +46,16 @@ public abstract class BasePage extends WebPage implements IAjaxIndicatorAware {
                 return getSession().getAttribute("userId") != null;
             }
         });
+        add(new Label("title", new AbstractReadOnlyModel<String>() {
+            @Override
+            public String getObject() {
+                return getTitle();
+            }
+        }));
+    }
+
+    public String getTitle() {
+        return "Startseite";
     }
 
     @Override

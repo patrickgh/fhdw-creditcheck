@@ -54,4 +54,9 @@ public class NewCreditRequestPage extends BasePage {
             target.add(progressBar);
         }
     }
+
+    @Override
+    public String getTitle() {
+        return "Neuer Kreditantrag";
+    }
 }

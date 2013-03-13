@@ -99,4 +99,9 @@ public class DashboardPage extends RequiresLoginPage {
         response.render(OnDomReadyHeaderItem.forScript("$('#" + startDate.getMarkupId() + "').datepicker({format:'dd.mm.yyyy', language:'de',autoclose:true,startView:0});"));
         response.render(OnDomReadyHeaderItem.forScript("$('#" + endDate.getMarkupId() + "').datepicker({format:'dd.mm.yyyy', language:'de',autoclose:true,startView:0});"));
     }
+
+    @Override
+    public String getTitle() {
+        return "Dashboard";
+    }
 }

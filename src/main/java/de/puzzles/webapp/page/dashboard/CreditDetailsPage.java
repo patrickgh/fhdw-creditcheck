@@ -204,4 +204,9 @@ public class CreditDetailsPage extends RequiresLoginPage {
             setResponsePage(DashboardPage.class);
         }
     }
+
+    @Override
+    public String getTitle() {
+        return "Kreditdetails";
+    }
 }

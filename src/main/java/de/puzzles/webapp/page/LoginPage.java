@@ -79,4 +79,9 @@ public class LoginPage extends BasePage {
         });
         add(dashboardContainer);
     }
+
+    @Override
+    public String getTitle() {
+        return "Startseite";
+    }
 }
