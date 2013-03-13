@@ -5,272 +5,278 @@
 </head>
 <body>
 <wicket:extend>
-    <legend>Kreditantragsdetails</legend>
-    <div class="row">
+<legend>Kreditantragsdetails</legend>
+<div class="row">
 
-        <br>
+    <br>
 
-        <div class="span1">
-            <p><h5>Allgemein</h5></p>
-        </div>
-        <br><br><br>
+    <div class="span1">
+        <p><h5>Allgemein</h5></p>
+    </div>
+    <br><br><br>
 
-        <div class="span6">
+    <div class="span6">
 
-            <div class="control-group">
-                <label class="control-label" for="inputNameDetails">Name</label>
+        <div class="control-group">
+            <label class="control-label" for="inputNameDetails">Name</label>
 
-                <div class="controls">
-                    <input type="text" id="inputNameDetails" placeholder="Name" wicket:id="name">
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="inputFirstNameDetails">Vorname</label>
-
-                <div class="controls">
-                    <input type="text" id="inputFirstNameDetails" placeholder="Vorname" wicket:id="firstname">
-                </div>
+            <div class="controls">
+                <input type="text" id="inputNameDetails" placeholder="Name" wicket:id="name">
             </div>
         </div>
+        <div class="control-group">
+            <label class="control-label" for="inputFirstNameDetails">Vorname</label>
 
-        <div class="span5">
-
-            <div class="control-group">
-                <label class="control-label" for="StatusCredit">Kreditstatus</label>
-
-                <div class="controls">
-                    <input type="text" id="StatusCredit" disabled wicket:id="state">
-                </div>
+            <div class="controls">
+                <input type="text" id="inputFirstNameDetails" placeholder="Vorname" wicket:id="firstname">
             </div>
-
-        </div>
-        <br><br><br><br><br>
-
-        <div class="offset1">
-            <hr width="770">
-        </div>
-
-        <br>
-
-        <div class="span1">
-            <h5>Kreditbedingungen</h5>
-        </div>
-
-        <div class="span1 offset6">
-            <h5>Zusammenfassung</h5>
-        </div>
-
-        <br><br><br>
-
-
-        <div class="span6">
-
-            <div class="span1 offset1">
-                <p>Zinssatz:</p>
-                <br>
-
-                <p>Kreditsumme:</p>
-
-                <br><br>
-
-                <p>Laufzeit:</p>
-
-                <p>Monatliche Tilgungsrate:</p>
-            </div>
-
-            <div class="offset3">
-                <input type="text" disabled wicket:id="interest">
-                <br><br>
-
-                <div>
-                    <input type="text" id="inputCreditSum2" placeholder="Kreditsumme" wicket:id="amount">
-
-                    <br><br>
-
-                    <br>
-                    <br>
-                    <input type="text" id="inputRumtime" placeholder="Laufzeit" wicket:id="duration">
-
-                    <br>
-                    <br>
-                    <input type="text" id="inputMonthlyAmortisation" placeholder="Monatliche Tilgungsrate" wicket:id="rate">
-                </div>
-            </div>
-
-        </div>
-
-        <div class="span5">
-
-            <br><br>
-
-            <div class="span2 offset1">
-                &nbsp; <a href="#earningsModal" data-toggle="modal">Gesamteinkünfte</a>
-                <br>
-                - <a href="#insuranceModal" data-toggle="modal">Gesamtausgaben</a>
-                <br>
-                - monatl. Rate
-                <hr width="300">
-            </div>
-
-            <div class="offset4">
-                0 €
-                <br>
-                0 €
-                <br>
-                0 €
-            </div>
-
-            <div class="span3 offset1">
-                <b>= Überschuss/Fehlbetrag</b>
-            </div>
-
-            <div class="offset4">
-                <br><br>
-                0 €
-            </div>
-
-        </div>
-
-        <div class="offset1">
-            <br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <hr width="770">
-        </div>
-
-        <div class="span1">
-            <br>
-
-            <p><h5>Tilgungsplan</h5></p>
-        </div>
-
-        <br><br><br><br>
-
-        <div class="span5 offset1" wicket:id="repaymentPlan">
-
-        </div>
-        <div wicket:id="buttonContainer">
-            <input type="button" class="btn btn-danger" wicket:id="declineButton" value="Kreditantrag ablehnen">
-            <input type="button" class="btn btn-success" wicket:id="acceptButton" value="Kreditantrag bewilligen">
         </div>
     </div>
 
+    <div class="span5">
+
+        <div class="control-group">
+            <label class="control-label" for="StatusCredit">Kreditstatus</label>
+
+            <div class="controls">
+                <input type="text" id="StatusCredit" disabled wicket:id="state">
+            </div>
+        </div>
+
+    </div>
+    <br><br><br><br><br>
+
+    <div class="offset1">
+        <hr width="770">
+    </div>
+
+    <br>
+
+    <div class="span1">
+        <h5>Kreditbedingungen</h5>
+    </div>
+
+    <div class="span1 offset6">
+        <h5>Zusammenfassung</h5>
+    </div>
+
+    <br><br><br>
+
+
+    <div class="span6">
+
+        <div class="span1 offset1">
+            <p>Zinssatz:</p>
+            <br>
+
+            <p>Kreditsumme:</p>
+
+            <br><br>
+
+            <p>Laufzeit:</p>
+
+            <p>Monatliche Tilgungsrate:</p>
+        </div>
+
+        <div class="offset3">
+            <input type="text" disabled wicket:id="interest">
+            <br><br>
+
+            <div>
+                <input type="text" id="inputCreditSum2" placeholder="Kreditsumme" wicket:id="amount">
+
+                <br>
+                <br>
+                <input type="text" id="inputRumtime" placeholder="Laufzeit" wicket:id="duration">
+
+                <br>
+                <br>
+                <input type="text" id="inputMonthlyAmortisation" placeholder="Monatliche Tilgungsrate" wicket:id="rate">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="span5">
+
+        <br><br>
+        <table border="0" class="offset1">
+            <tr>
+                <td>&nbsp; <a href="#earningsModal" data-toggle="modal">Gesamteinkünfte</a></td>
+                <td><b wicket:id="incomeTotal">0</b> €</td>
+            </tr>
+            <tr>
+                <td>- <a href="#insuranceModal" data-toggle="modal">Gesamtausgaben</a></td>
+                <td><b wicket:id="spendingTotal">0</b> €</td>
+            </tr>
+            <tr>
+                <td>- monatl. Rate</td>
+                <td><b wicket:id="rateTotal">0</b> €</td>
+            </tr>
+            <tr>
+                <td colspan="2"><hr></td>
+            </tr>
+            <tr>
+                <td><b>= Überschuss/Fehlbetrag&nbsp;&nbsp;&nbsp;&nbsp;</b></td>
+                <td><b wicket:id="total">0</b> €</td>
+            </tr>
+        </table>
+
+        <div class="offset4">
+            <br><br>
+
+
+        </div>
+
+    </div>
+
+    <div class="offset1">
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <hr width="770">
+    </div>
+
+    <div class="span1">
+        <br>
+
+        <p><h5>Tilgungsplan</h5></p>
+    </div>
+
+    <br><br><br><br>
+
+    <div class="span5 offset1" wicket:id="repaymentPlan">
+
+    </div>
+    <br>
+    <div wicket:id="buttonContainer" class="offset7">
+        <input type="button" class="btn btn-danger" wicket:id="declineButton" value="Kreditantrag ablehnen">
+        <br><br>
+        <input type="button" class="btn btn-success" wicket:id="acceptButton" value="Kreditantrag bewilligen">
+    </div>
+</div>
 
 
 <!-- Modal
    ================================================== -->
-   <!-- Modal Earnings-->
-   <div id="earningsModal" class="modal-new hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-       <div class="modal-header">
-           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-           <h3 id="earningsModalLabel">Gesamteinkünfte</h3>
-       </div>
-       <div class="modal-body">
+<!-- Modal Earnings-->
+<div id="earningsModal" class="modal-new hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h3 id="earningsModalLabel">Gesamteinkünfte</h3>
+    </div>
+    <div class="modal-body">
 
 
-           <div class="span2 ">
-               <h5>Lohn/Gehalt</h5>
-           </div>
+        <div class="span2 ">
+            <h5>Lohn/Gehalt</h5>
+        </div>
 
-           <br><br>
+        <br><br>
 
-           <div class="span2 offset1">
-               <div class="controls">
-                   Beschreibung
-               </div>
-           </div>
+        <div wicket:id="earnings">
+            <div class="span5 offset1">
+                <div class="controls">
+                    <span wicket:id="earningDescription">Beschreibung</span>
+                </div>
+            </div>
 
-           <div class="span2 offset3">
-               <div class="controls input-append">
-                   <input class="span2" type="text" id="eMInputValueIncome" placeholder="Wert" disabled>
-                   <span class="add-on">€</span>
-               </div>
-           </div>
-
-
-
-
-           <br>
-           <br>
-           <br>
-           <div class="span9">
-           <hr color="grey" width="725" align="center">
-           </div>
-           <br>
+            <div class="span2">
+                <div class="controls input-append">
+                    <input class="span2" type="text" id="eMInputValueIncome" placeholder="Wert" disabled wicket:id="earningValue">
+                    <span class="add-on">€</span>
+                </div>
+            </div>
+            <br>
+        </div>
 
 
-           <div class="span2 ">
-               <h5>Gesamteinkünfte</h5>
-           </div>
+        <br>
+        <br>
+        <br>
 
-           <div class="span2 offset6">
-               <div class="controls input-append">
-                   <input class="span2" type="text" id="eMInputValueTotal" placeholder="Wert" disabled>
-                   <span class="add-on">€</span>
-               </div>
-           </div>
-
-           <br><br><br>
-
-       </div>
-       <div class="modal-footer">
-           <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Zurück</button>
-
-       </div>
-   </div>
-
-   <!-- Modal Insurance-->
-   <div id="insuranceModal" class="modal-new hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-   <div class="modal-header">
-       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-       <h3 id="insuranceModalLabel">Gesamtausgaben</h3>
-   </div>
-   <div class="modal-body">
-
-   <div class="span9">
-       <h5>Ausgaben</h5>
-       </div>
-       <br>
-       <div class="control-group">
-
-           <div class="span2 offset1">
-               <label class="control-label" for="inputRent">Miete</label>
-           </div>
-
-           <div class="span2 offset3 controls input-append">
-               <input class="span2" type="text" id="inputRent" placeholder="Miete" disabled>
-               <span class="add-on">€</span>
-           </div>
-       </div>
-       <br>
-       <br>
+        <div class="span9">
+            <hr color="grey" width="725" align="center">
+        </div>
+        <br>
 
 
+        <div class="span2 ">
+            <h5>Gesamteinkünfte</h5>
+        </div>
+
+        <div class="span2 offset6">
+            <div class="controls input-append">
+                <input class="span2" type="text" id="eMInputValueTotal" placeholder="Wert" disabled wicket:id="earningsTotal">
+                <span class="add-on">€</span>
+            </div>
+        </div>
+
+        <br><br><br>
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Zurück</button>
+
+    </div>
+</div>
+
+<!-- Modal Insurance-->
+<div id="insuranceModal" class="modal-new hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h3 id="insuranceModalLabel">Gesamtausgaben</h3>
+    </div>
+    <div class="modal-body">
 
 
-       <br>
-       <br>
-       <br>
-       <div class="span9">
-       <hr color="grey" width="725" align="center">
-       </div>
-       <br>
+        <div class="span2 ">
+            <h5>Ausgaben</h5>
+        </div>
 
-       <div class="span3">
-           <h5>Gesamtausgaben</h5>
-       </div>
-           <div class="span2 offset6">
-               <div class="controls input-append">
-                   <input class="span2" type="text" id="eMInputDebtTotal" placeholder="Wert" disabled>
-                   <span class="add-on">€</span>
-               </div>
-           </div>
+        <br><br>
 
-   </div>
-   <div class="modal-footer">
-       <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Zurück</button>
-   </div>
-   </div>
+        <div wicket:id="spendings">
+            <div class="span5 offset1">
+                <div class="controls">
+                    <span wicket:id="spendingDescription">Beschreibung</span>
+                </div>
+            </div>
+
+            <div class="span2">
+                <div class="controls input-append">
+                    <input class="span2" type="text" placeholder="Wert" disabled wicket:id="spendingValue">
+                    <span class="add-on">€</span>
+                </div>
+            </div>
+            <br>
+        </div>
 
 
+        <br>
+        <br>
+        <br>
+
+        <div class="span9">
+            <hr color="grey" width="725" align="center">
+        </div>
+        <br>
+
+
+        <div class="span2 ">
+            <h5>Gesamtausgaben</h5>
+        </div>
+
+        <div class="span2 offset6">
+            <div class="controls input-append">
+                <input class="span2" type="text" id="eMInputDebtTotal" placeholder="Wert" disabled wicket:id="spendingsTotal">
+                <span class="add-on">€</span>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Zurück</button>
+    </div>
+</div>
 
 
 </wicket:extend>
