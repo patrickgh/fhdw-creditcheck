@@ -271,7 +271,7 @@
 <!-- Modal Earnings-->
 <div id="earningsModal" class="modal-new hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">?</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
         <h3 id="earningsModalLabel">Gesamteinkünfte</h3>
     </div>
     <div class="modal-body">
@@ -283,46 +283,27 @@
 
         <br><br>
 
-        <div class="span2 offset6">
-            <div class="controls">
-                <input type="text" id="eMInputDescriptionIncome" placeholder="Beschreibung">
-            </div>
-        </div>
-
         <div class="span2 offset1">
+            <div class="controls">
+                Beschreibung
+            </div>
+        </div>
+
+        <div class="span2 offset3">
             <div class="controls input-append">
-                <input class="span2" type="text" id="eMInputValueIncome" placeholder="Wert">
+                <input class="span2" type="text" id="eMInputValueIncome" placeholder="Wert" disabled>
                 <span class="add-on">€</span>
             </div>
         </div>
 
 
-        <br><br><br>
 
-        <div class="span2 ">
-            <h5>Sonstige Einnahmen</h5>
-        </div>
-
-        <br><br>
-
-        <div class="span2 offset6">
-            <div class="controls">
-                <input type="text" id="eMInputDescriptionOther" placeholder="Beschreibung">
-            </div>
-        </div>
-
-        <div class="span2 offset1 input-append">
-            <div class="controls">
-                <input class="span2" type="text" id="eMInputValueOther" placeholder="Wert">
-                <span class="add-on">€</span>
-            </div>
-        </div>
 
         <br>
         <br>
         <br>
-        <div class="span11">
-        <hr color="grey" width="900" align="center">
+        <div class="span9">
+        <hr color="grey" width="725" align="center">
         </div>
         <br>
 
@@ -331,9 +312,9 @@
             <h5>Gesamteinkünfte</h5>
         </div>
 
-        <div class="span2 offset7">
+        <div class="span2 offset6">
             <div class="controls input-append">
-                <input class="span2" type="text" id="eMInputValueTotal" placeholder="Wert">
+                <input class="span2" type="text" id="eMInputValueTotal" placeholder="Wert" disabled>
                 <span class="add-on">€</span>
             </div>
         </div>
@@ -350,13 +331,13 @@
 <!-- Modal Insurance-->
 <div id="insuranceModal" class="modal-new hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">?</button>
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
     <h3 id="insuranceModalLabel">Gesamtausgaben</h3>
 </div>
 <div class="modal-body">
 
-<div class="span11">
-    <h5>Allgemeine Ausgaben</h5>
+<div class="span9">
+    <h5>Ausgaben</h5>
     </div>
     <br>
     <div class="control-group">
@@ -365,186 +346,22 @@
             <label class="control-label" for="inputRent">Miete</label>
         </div>
 
-        <div class="span2 offset6 controls input-append">
-            <input class="span2" type="text" id="inputRent" placeholder="Miete">
+        <div class="span2 offset3 controls input-append">
+            <input class="span2" type="text" id="inputRent" placeholder="Miete" disabled>
             <span class="add-on">€</span>
         </div>
     </div>
     <br>
     <br>
 
-    <div class="control-group">
-
-        <div class="span2 offset1">
-            <label class="control-label" for="inputIncidentials">Wohnnebenkosten</label>
-        </div>
-
-        <div class="span2 offset6 controls input-append">
-            <input class="span2" type="text" id="inputIncidentials" placeholder="Wohnnebenkosten">
-            <span class="add-on">€</span>
-        </div>
-    </div>
-
-    <br>
-    <br>
-
-    <div class="control-group">
-        <div class="span2 offset1">
-            <label class="control-label" for="inputCostOfLiving">Lebenshaltungskosten</label>
-        </div>
-
-        <div class="span2 offset3 controls">
-            <input type="text" id="inputDescriptionOther" placeholder="Beschreibung">
-        </div>
-
-        <div class="span2 offset1 controls input-append">
-            <input class="span2" type="text" id="inputCostOfLiving" placeholder="Lebenshaltungskosten">
-            <span class="add-on">€</span>
-        </div>
-    </div>
-
-    <br>
-    <br>
 
 
-    <div class="control-group">
-        <div class="span2 offset1">
-            <label class="control-label" for="inputCostOfKFZ">KFZ-Kosten</label>
-        </div>
-
-        <div class="span2 offset3 controls">
-            <input type="text" id="inputDescriptionOther1" placeholder="Beschreibung">
-        </div>
-
-
-        <div class="span2 offset1 controls input-append">
-            <input class="span2" type="text" id="inputCostOfKFZ" placeholder="KFZ-Kosten">
-            <span class="add-on">€</span>
-        </div>
-    </div>
-
-    <br>
-    <br>
-
-
-    <div class="control-group">
-        <div class="span2 offset1">
-            <label class="control-label" for="inputCostOfPhone">Telefon</label>
-        </div>
-
-        <div class="span2 offset6 controls input-append">
-            <input class="span2" type="text" id="inputCostOfPhone" placeholder="Telefon">
-            <span class="add-on">€</span>
-        </div>
-    </div>
-    <br>
-    <br>
-
-    <div class="control-group">
-        <div class="span2 offset1">
-            <label class="control-label" for="inputSavingsPlans">Sparverträge</label>
-        </div>
-
-        <div class="span2 offset6 controls input-append">
-            <input class="span2" type="text" id="inputSavingsPlans" placeholder="Sparverträge">
-            <span class="add-on">€</span>
-        </div>
-    </div>
-    <br>
-    <br>
-
-    <div class="control-group">
-        <div class="span2 offset1">
-            <label class="control-label" for="inputOther">sonstige Ausgaben</label>
-        </div>
-
-        <div class="span2 offset3 controls">
-            <input type="text" id="inputDescriptionOther2" placeholder="Beschreibung">
-        </div>
-
-        <div class="span2 offset1 controls input-append">
-            <input class="span2" type="text" id="inputValueOhter" placeholder="Wert">
-            <span class="add-on">€</span>
-        </div>
-    </div>
-
-    <br>
-    <br>
-
-    <div class="span11">
-    <h5>Versicherungen</h5>
-    </div>
-        <br>
-
-    <div class="span3">
-        <div class="controls">
-            <input class="span3" type="text" id="inputInsuranceType" placeholder="Versicherungstyp">
-        </div>
-    </div>
-
-    <div class="span3">
-        <div class="controls">
-            <input class="span3" type="text" id="inputInsuranceCompany" placeholder="Versicherungsgesellschaft">
-        </div>
-    </div>
-
-    <div class="span2">
-        <div class="controls input-append">
-            <input class="span2" type="text" id="inputInsuranceSum" placeholder="Versicherungssumme">
-            <span class="add-on">€</span>
-        </div>
-    </div>
-
-    <div class="span2 offset1">
-        <div class="controls input-append">
-            <input class="span2" type="text" id="inputInsuranceMonthly" placeholder="monatlicher Betrag">
-            <span class="add-on">€</span>
-        </div>
-    </div>
-
-    <br>
-<br>
-<br>
-<br>
-
-
-    <div class="span11">
-    <h5>Kredite</h5>
-    </div>
-        <br>
-
-    <div class="span3">
-        <div class="controls">
-            <input class="span3" type="text" id="inputCreditInstitute" placeholder="Kreditinstitut">
-        </div>
-    </div>
-
-    <div class="span3">
-        <div class="controls input-append">
-            <input class="span2" type="text" id="inputTotalDebt" placeholder="Gesamtschuld">
-            <span class="add-on">€</span>
-        </div>
-    </div>
-
-    <div class="span2">
-        <div class="controls input-append">
-            <input class="span2" type="text" id="inputRemainderDebt" placeholder="Restschuld">
-            <span class="add-on">€</span>
-        </div>
-    </div>
-
-    <div class="span2 offset1">
-        <div class="controls input-append">
-            <input class="span2" type="text" id="inputCreditMonthly" placeholder="monatliche Rate">
-            <span class="add-on">€</span>
-        </div>
-    </div>
 
     <br>
     <br>
     <br>
-    <div class="span11">
-    <hr color="grey" width="900" align="center">
+    <div class="span9">
+    <hr color="grey" width="725" align="center">
     </div>
     <br>
 
@@ -553,7 +370,7 @@
     </div>
         <div class="span2 offset6">
             <div class="controls input-append">
-                <input class="span2" type="text" id="eMInputDebtTotal" placeholder="Wert">
+                <input class="span2" type="text" id="eMInputDebtTotal" placeholder="Wert" disabled>
                 <span class="add-on">€</span>
             </div>
         </div>

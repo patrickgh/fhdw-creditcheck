@@ -30,9 +30,9 @@ position: fixed;
 top: 50%;
 left: 50%;
 z-index: 1050;
-width: 960px;
+width: 800px;
 
-margin: -250px 0 0 -480px;
+margin: -250px 0 0 -400px;
 overflow: auto;
 background-color: #ffffff;
 border: 1px solid #999;
