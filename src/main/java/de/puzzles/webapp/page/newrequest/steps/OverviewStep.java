@@ -27,6 +27,8 @@ public class OverviewStep extends WizardStep {
     private TextField<Double> rateField;
     private TextField<Double> durationField;
     private RepaymentPlanPanel repaymentPlan;
+    private Label rateLabel;
+    private Label totalLabel;
 
     public OverviewStep(IModel<CreditRequest> model, IModel<List<Transaction>> incomes, IModel<List<Transaction>> spendings) {
         super();
@@ -71,7 +73,57 @@ public class OverviewStep extends WizardStep {
         rateField.setOutputMarkupId(true);
         rateField.setEnabled(false);
         add(rateField);
-        repaymentPlan = new RepaymentPlanPanel("repaymentPlan",new AbstractReadOnlyModel<List<RepaymentPlan.Entry>>() {
+
+        final IModel<Double> incomeTotal = new AbstractReadOnlyModel<Double>() {
+            @Override
+            public Double getObject() {
+                Double d = 0.0;
+                for (Transaction t : incomeModel.getObject()) {
+                    d += t.getValue();
+                }
+                return d;
+            }
+        };
+        final IModel<Double> spendingTotal = new
+            AbstractReadOnlyModel<Double>() {
+                @Override
+                public Double getObject() {
+                    Double d = 0.0;
+                    for (Transaction t : spendingsModel.getObject()) {
+                        d += t.getValue();
+                    }
+                    return d;
+                }
+            };
+        add(new Label("incomeTotal", incomeTotal));
+        add(new Label("spendingTotal", spendingTotal));
+        rateLabel = new Label("rateTotal", rateField.getModel());
+        add(rateLabel);
+
+        totalLabel = new Label("total", new AbstractReadOnlyModel<Double>() {
+            @Override
+            public Double getObject() {
+                return incomeTotal.getObject() - spendingTotal.getObject() - rateField.getModelObject();
+            }
+        });
+        add(totalLabel);
+
+        add(new Label("name", new AbstractReadOnlyModel<String>() {
+            @Override
+            public String getObject() {
+                return requestModel.getObject().getCustomer().getFirstname() + " " + requestModel.getObject().getCustomer().getLastname();
+            }
+        }));
+        add(new Label("adress", new AbstractReadOnlyModel<String>() {
+            @Override
+            public String getObject() {
+                return requestModel.getObject().getCustomer().getStreet() + ", "+ requestModel.getObject().getCustomer().getZipcode() + " " + requestModel.getObject().getCustomer().getCity();
+            }
+        }));
+        add(new Label("phone", requestModel.<String>bind("customer.telephone")));
+        add(new Label("mail", requestModel.<String>bind("customer.email")));
+
+        repaymentPlan = new RepaymentPlanPanel("repaymentPlan", new AbstractReadOnlyModel<List<RepaymentPlan.Entry>>() {
             @Override
             public List<RepaymentPlan.Entry> getObject() {
                 return requestModel.getObject().getRepaymentPlan().generateRepaymentPlan();
@@ -84,6 +136,8 @@ public class OverviewStep extends WizardStep {
     public void updateFields(AjaxRequestTarget target) {
         requestModel.getObject().getRepaymentPlan().setAmount(requestModel.getObject().getRepaymentPlan().getAmount());
         target.add(rateField);
+        target.add(rateLabel);
+        target.add(totalLabel);
         target.add(repaymentPlan);
     }
 }

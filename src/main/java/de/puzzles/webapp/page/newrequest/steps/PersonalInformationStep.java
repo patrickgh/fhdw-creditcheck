@@ -29,47 +29,47 @@ public class PersonalInformationStep extends WizardStep {
         CompoundPropertyModel<CreditRequest> requestModel = new CompoundPropertyModel<CreditRequest>(defaultModel);
         CompoundPropertyModel<Customer> customerModel = new CompoundPropertyModel<Customer>(requestModel.getObject().getCustomer());
         TextField firstName = new TextField("firstName", customerModel.bind("firstname"));
-        firstName.setRequired(true);
+        firstName.setRequired(false);
         add(firstName);
 
         TextField lastName = new TextField("lastName", customerModel.bind("lastname"));
-        lastName.setRequired(true);
+        lastName.setRequired(false);
         add(lastName);
 
         birthdayField = new DateTextField("birthday", customerModel.<Date>bind("birthday"), "dd.MM.yyyy");
-        birthdayField.setRequired(true);
+        birthdayField.setRequired(false);
         add(birthdayField);
 
         TextField street = new TextField("street", customerModel.bind("street"));
-        street.setRequired(true);
+        street.setRequired(false);
         add(street);
 
         TextField zipCode = new TextField("zipcode", customerModel.bind("zipcode"));
-        zipCode.setRequired(true);
+        zipCode.setRequired(false);
         add(zipCode);
 
         TextField city = new TextField("city", customerModel.bind("city"));
-        city.setRequired(true);
+        city.setRequired(false);
         add(city);
 
         TextField telephone = new TextField("telephone", customerModel.bind("telephone"));
-        telephone.setRequired(true);
+        telephone.setRequired(false);
         add(telephone);
 
         TextField email = new TextField("email", customerModel.bind("email"));
         email.add(EmailAddressValidator.getInstance());
-        email.setRequired(true);
+        email.setRequired(false);
         add(email);
 
         TextField accountNumber = new TextField("accountnumber", customerModel.bind("accountnumber"));
         add(accountNumber);
 
         TextField bankCode = new TextField("bankcode", customerModel.bind("bankcode"));
-        bankCode.setRequired(true);
+        bankCode.setRequired(false);
         add(bankCode);
 
         Select2Choice<Integer> consultant = new Select2Choice<Integer>("consultant", requestModel.<Integer>bind("consultantId"), new ConsultantChoiceProvider());
-        consultant.setRequired(true);
+        consultant.setRequired(false);
         add(consultant);
 
     }

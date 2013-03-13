@@ -26,7 +26,7 @@ public class RepaymentPlan implements Serializable {
     }
 
     public void setAmount(double amount) {
-        this.amount = amount;
+        this.amount = Math.abs(amount);
         this.rate = calculateRate();
     }
 
@@ -35,7 +35,7 @@ public class RepaymentPlan implements Serializable {
     }
 
     public void setDuration(double duration) {
-        this.duration = duration;
+        this.duration = Math.abs(duration);
         this.rate = calculateRate();
     }
 
