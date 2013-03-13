@@ -126,8 +126,8 @@ public class DatabaseConnector {
                 request.setCreationDate(result.getDate("creationdate"));
                 request.setState(PuzzlesUtils.getCreditStateByValue(result.getInt("state")));
                 request.getRepaymentPlan().setAmount(result.getDouble("creditamount"));
-                request.getRepaymentPlan().setRate(result.getDouble("rate"));
-                request.getRepaymentPlan().setDuration(result.getInt("duration"));
+//                request.getRepaymentPlan().setRate(result.getDouble("rate"));
+                request.getRepaymentPlan().setDuration(result.getDouble("duration"));
                 request.setCustomer(getCustomerById(result.getInt("customer_id")));
                 request.setTransactions(getTransactionsByRequestId(id));
                 return request;

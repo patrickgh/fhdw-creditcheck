@@ -33,7 +33,7 @@ public class RepaymentPlan implements Serializable {
 
     public void setDuration(double duration) {
         this.duration = duration;
-        this.rate = null;
+        this.rate = calculateRate();
     }
 
     public Double getInterest() {

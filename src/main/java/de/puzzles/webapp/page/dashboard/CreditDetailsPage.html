@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<wicket:extend>
+    <legend>Kreditantragsdetails</legend>
+    <div class="row">
+
+        <br>
+
+        <div class="span1">
+            <p><h5>Allgemein</h5></p>
+        </div>
+        <br><br><br>
+
+        <div class="span6">
+
+            <div class="control-group">
+                <label class="control-label" for="inputNameDetails">Name</label>
+
+                <div class="controls">
+                    <input type="text" id="inputNameDetails" placeholder="Name" wicket:id="name">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputFirstNameDetails">Vorname</label>
+
+                <div class="controls">
+                    <input type="text" id="inputFirstNameDetails" placeholder="Vorname" wicket:id="firstname">
+                </div>
+            </div>
+        </div>
+
+        <div class="span5">
+
+            <div class="control-group">
+                <label class="control-label" for="StatusCredit">Kreditstatus</label>
+
+                <div class="controls">
+                    <input type="text" id="StatusCredit" disabled wicket:id="state">
+                </div>
+            </div>
+
+        </div>
+        <br><br><br><br><br>
+
+        <div class="offset1">
+            <hr width="770">
+        </div>
+
+        <br>
+
+        <div class="span1">
+            <h5>Kreditbedingungen</h5>
+        </div>
+
+        <div class="span1 offset6">
+            <h5>Zusammenfassung</h5>
+        </div>
+
+        <br><br><br>
+
+
+        <div class="span6">
+
+            <div class="span1 offset1">
+                <p>Zinssatz:</p>
+                <br>
+
+                <p>Kreditsumme:</p>
+
+                <br><br>
+
+                <p>Laufzeit:</p>
+
+                <p>Monatliche Tilgungsrate:</p>
+            </div>
+
+            <div class="offset3">
+                <input type="text" disabled wicket:id="interest">
+                <br><br>
+
+                <div>
+                    <input type="text" id="inputCreditSum2" placeholder="Kreditsumme" wicket:id="amount">
+
+                    <br><br>
+
+                    <br>
+                    <br>
+                    <input type="text" id="inputRumtime" placeholder="Laufzeit" wicket:id="duration">
+
+                    <br>
+                    <br>
+                    <input type="text" id="inputMonthlyAmortisation" placeholder="Monatliche Tilgungsrate" wicket:id="rate">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="span5">
+
+            <br><br>
+
+            <div class="span2 offset1">
+                &nbsp; Gesamteinkünfte
+                <br>
+                - Gesamtausgaben
+                <br>
+                - monatl. Rate
+                <hr width="300">
+            </div>
+
+            <div class="offset4">
+                0 €
+                <br>
+                0 €
+                <br>
+                0 €
+            </div>
+
+            <div class="span3 offset1">
+                <b>= Überschuss/Fehlbetrag</b>
+            </div>
+
+            <div class="offset4">
+                <br><br>
+                0 €
+            </div>
+
+        </div>
+
+        <div class="offset1">
+            <br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <hr width="770">
+        </div>
+
+        <div class="span1">
+            <br>
+
+            <p><h5>Tilgungsplan</h5></p>
+        </div>
+
+        <br><br><br><br>
+
+        <div class="span5 offset1">
+
+            <table class="table table-striped table-hover" border="2">
+                <tr>
+                    <th>Monat</th>
+                    <th>Restschuld</th>
+                    <th>Tilgungsrate</th>
+                    <th>Zinsaufwand</th>
+                    <th>Zahlungsrate</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+            </table>
+
+            <br><br><br>
+
+            <div wicket:id="buttonContainer">
+                <input type="button" class="btn btn-danger" wicket:id="declineButton" value="Kreditantrag ablehnen">
+                <input type="button" class="btn btn-success" wicket:id="acceptButton" value="Kreditantrag bewilligen">
+            </div>
+        </div>
+    </div>
+</wicket:extend>
+</body>
+</html>
