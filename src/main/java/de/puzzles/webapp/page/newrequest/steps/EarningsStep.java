@@ -8,7 +8,9 @@ import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.wizard.WizardStep;
 import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
@@ -50,13 +52,12 @@ public class EarningsStep extends WizardStep {
         container.add(income);
         add(container);
 
-        add(new AjaxLink("incomeAdd") {
+        add(new Button("incomeAdd") {
             @Override
-            public void onClick(AjaxRequestTarget ajaxRequestTarget) {
+            public void onSubmit() {
                 income.addItem(new Transaction());
-                ajaxRequestTarget.add(container);
             }
-        });
+        }.setDefaultFormProcessing(false));
 
         additionalList.add(new Transaction());
         final WebMarkupContainer additionalContainer = new WebMarkupContainer("additionalIncomeContainer");
@@ -79,28 +80,32 @@ public class EarningsStep extends WizardStep {
         additionalContainer.add(additional);
         add(additionalContainer);
 
-        add(new AjaxLink("additionalAdd") {
+        add(new Button("additionalAdd") {
             @Override
-            public void onClick(AjaxRequestTarget ajaxRequestTarget) {
+            public void onSubmit() {
                 additional.addItem(new Transaction());
-                ajaxRequestTarget.add(additionalContainer);
+            }
+        }.setDefaultFormProcessing(false));
+
+        resultField = new TextField<Double>("total", new AbstractReadOnlyModel<Double>() {
+            @Override
+            public Double getObject() {
+                Double sum = 0.0;
+                for (Transaction transaction : incomeList) {
+                    sum += transaction.getValue();
+                }
+                for (Transaction transaction : additionalList) {
+                    sum += transaction.getValue();
+                }
+                return sum;
             }
         });
-
-        resultField = new TextField<Double>("total", new Model<Double>(0.0));
         resultField.setOutputMarkupId(true);
+        resultField.setEnabled(false);
         add(resultField);
     }
 
     private void updateResultField(AjaxRequestTarget target) {
-        Double sum = 0.0;
-        for (Transaction transaction : incomeList) {
-            sum += transaction.getValue();
-        }
-        for (Transaction transaction : additionalList) {
-            sum += transaction.getValue();
-        }
-        resultField.setDefaultModelObject(sum);
         target.add(resultField);
     }
 

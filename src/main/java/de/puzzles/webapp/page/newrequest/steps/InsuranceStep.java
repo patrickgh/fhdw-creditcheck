@@ -8,6 +8,7 @@ import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.wizard.WizardStep;
 import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
@@ -54,13 +55,12 @@ public class InsuranceStep extends WizardStep {
         container.add(insurance);
         add(container);
 
-        container.add(new AjaxLink("insuranceAdd") {
+        container.add(new Button("insuranceAdd") {
             @Override
-            public void onClick(AjaxRequestTarget ajaxRequestTarget) {
+            public void onSubmit() {
                 insurance.addItem(new Transaction());
-                ajaxRequestTarget.add(container);
             }
-        });
+        }.setDefaultFormProcessing(false));
 
         final WebMarkupContainer creditContainer = new WebMarkupContainer("creditContainer");
         creditContainer.setOutputMarkupId(true);
@@ -85,13 +85,12 @@ public class InsuranceStep extends WizardStep {
         creditContainer.add(credit);
         add(creditContainer);
 
-        creditContainer.add(new AjaxLink("creditAdd") {
+        creditContainer.add(new Button("creditAdd") {
             @Override
-            public void onClick(AjaxRequestTarget ajaxRequestTarget) {
+            public void onSubmit() {
                 credit.addItem(new Transaction());
-                ajaxRequestTarget.add(creditContainer);
             }
-        });
+        }.setDefaultFormProcessing(false));
 
         resultField = new TextField<Double>("total", new Model<Double>(0.0));
         resultField.setOutputMarkupId(true);

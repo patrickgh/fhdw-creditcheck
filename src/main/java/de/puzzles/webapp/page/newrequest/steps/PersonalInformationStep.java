@@ -29,34 +29,43 @@ public class PersonalInformationStep extends WizardStep {
         CompoundPropertyModel<CreditRequest> requestModel = new CompoundPropertyModel<CreditRequest>(defaultModel);
         CompoundPropertyModel<Customer> customerModel = new CompoundPropertyModel<Customer>(requestModel.getObject().getCustomer());
         TextField firstName = new TextField("firstName", customerModel.bind("firstname"));
+        firstName.setRequired(true);
         add(firstName);
 
         TextField lastName = new TextField("lastName", customerModel.bind("lastname"));
+        lastName.setRequired(true);
         add(lastName);
 
         birthdayField = new DateTextField("birthday", customerModel.<Date>bind("birthday"), "dd.MM.yyyy");
+        birthdayField.setRequired(true);
         add(birthdayField);
 
         TextField street = new TextField("street", customerModel.bind("street"));
+        street.setRequired(true);
         add(street);
 
         TextField zipCode = new TextField("zipcode", customerModel.bind("zipcode"));
+        zipCode.setRequired(true);
         add(zipCode);
 
         TextField city = new TextField("city", customerModel.bind("city"));
+        city.setRequired(true);
         add(city);
 
         TextField telephone = new TextField("telephone", customerModel.bind("telephone"));
+        telephone.setRequired(true);
         add(telephone);
 
         TextField email = new TextField("email", customerModel.bind("email"));
         email.add(EmailAddressValidator.getInstance());
+        email.setRequired(true);
         add(email);
 
         TextField accountNumber = new TextField("accountnumber", customerModel.bind("accountnumber"));
         add(accountNumber);
 
         TextField bankCode = new TextField("bankcode", customerModel.bind("bankcode"));
+        bankCode.setRequired(true);
         add(bankCode);
 
         Select2Choice<Integer> consultant = new Select2Choice<Integer>("consultant", requestModel.<Integer>bind("consultantId"), new ConsultantChoiceProvider());
