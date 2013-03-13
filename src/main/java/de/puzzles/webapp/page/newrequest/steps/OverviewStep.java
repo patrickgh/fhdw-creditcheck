@@ -98,6 +98,7 @@ public class OverviewStep extends WizardStep {
         add(new Label("incomeTotal", incomeTotal));
         add(new Label("spendingTotal", spendingTotal));
         rateLabel = new Label("rateTotal", rateField.getModel());
+        rateLabel.setOutputMarkupId(true);
         add(rateLabel);
 
         totalLabel = new Label("total", new AbstractReadOnlyModel<Double>() {
@@ -106,6 +107,7 @@ public class OverviewStep extends WizardStep {
                 return incomeTotal.getObject() - spendingTotal.getObject() - rateField.getModelObject();
             }
         });
+        totalLabel.setOutputMarkupId(true);
         add(totalLabel);
 
         add(new Label("name", new AbstractReadOnlyModel<String>() {
