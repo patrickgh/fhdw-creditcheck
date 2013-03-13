@@ -100,6 +100,7 @@ public class InsuranceStep extends WizardStep {
             }
         });
         resultField.setOutputMarkupId(true);
+        resultField.setEnabled(false);
         add(resultField);
     }
 
