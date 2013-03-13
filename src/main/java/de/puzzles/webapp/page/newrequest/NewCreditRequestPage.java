@@ -1,6 +1,7 @@
 package de.puzzles.webapp.page.newrequest;
 
 import de.puzzles.webapp.page.BasePage;
+import de.puzzles.webapp.page.newrequest.steps.ConfirmationStep;
 import de.puzzles.webapp.page.newrequest.steps.EarningsStep;
 import de.puzzles.webapp.page.newrequest.steps.InsuranceStep;
 import de.puzzles.webapp.page.newrequest.steps.OverviewStep;
@@ -39,7 +40,8 @@ public class NewCreditRequestPage extends BasePage {
                 if (newStep instanceof EarningsStep) { percent = 40; }
                 if (newStep instanceof SpendingsStep) { percent = 60; }
                 if (newStep instanceof InsuranceStep) { percent = 80; }
-                if (newStep instanceof OverviewStep) { percent = 100; }
+                if (newStep instanceof OverviewStep) { percent = 99; }
+                if (newStep instanceof ConfirmationStep) {percent= 100;}
                 updateProgressBar(percent);
             }
         });

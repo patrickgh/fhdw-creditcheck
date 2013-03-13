@@ -199,7 +199,7 @@ public class DatabaseConnector {
             start = new DateTime().minusYears(10).toDate();
         }
         if (end == null) {
-            end = new java.util.Date();
+            end = new DateTime().plusDays(2).toDate();
         }
         if (limit == null) {
             limit = 1000;
@@ -214,7 +214,7 @@ public class DatabaseConnector {
         PreparedStatement stmt;
         try {
             if (customer != null && customer.length() > 0) {
-                sql = "SELECT * " +
+                sql = "SELECT creditrequests.id AS id " +
                       "FROM creditrequests LEFT JOIN customer ON creditrequests.customer_id = customer.id " +
                       "WHERE consultant_id=? " +
                       "AND (" +
@@ -233,7 +233,7 @@ public class DatabaseConnector {
                 stmt.setInt(7, limit);
             }
             else {
-                sql = "SELECT * " +
+                sql = "SELECT creditrequests.id AS id " +
                       "FROM creditrequests LEFT JOIN customer ON creditrequests.customer_id = customer.id " +
                       "WHERE consultant_id=? " +
                       "AND creationdate < ? AND creationdate > ? " +
@@ -249,17 +249,7 @@ public class DatabaseConnector {
             stmt.execute();
             ResultSet result = stmt.getResultSet();
             while (result.next()) {
-                CreditRequest request = new CreditRequest();
-                request.setId(result.getInt("id"));
-                request.setConsultantId(result.getInt("consultant_id"));
-                request.setCreationDate(result.getDate("creationdate"));
-                request.setState(PuzzlesUtils.getCreditStateByValue(result.getInt("state")));
-                request.getRepaymentPlan().setAmount(result.getDouble("creditamount"));
-                request.getRepaymentPlan().setRate(result.getDouble("rate"));
-                request.getRepaymentPlan().setDuration(result.getInt("duration"));
-                request.setCustomer(getCustomerById(result.getInt("customer_id")));
-                request.setTransactions(getTransactionsByRequestId(id));
-                resultList.add(request);
+                resultList.add(getCreditRequestById(result.getInt("id")));
             }
         }
         catch (SQLException e) {

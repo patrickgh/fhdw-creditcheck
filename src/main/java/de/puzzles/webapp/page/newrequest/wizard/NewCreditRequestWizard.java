@@ -3,6 +3,7 @@ package de.puzzles.webapp.page.newrequest.wizard;
 import de.puzzles.core.DatabaseConnector;
 import de.puzzles.core.domain.CreditRequest;
 import de.puzzles.core.domain.Transaction;
+import de.puzzles.webapp.page.newrequest.steps.ConfirmationStep;
 import de.puzzles.webapp.page.newrequest.steps.EarningsStep;
 import de.puzzles.webapp.page.newrequest.steps.InsuranceStep;
 import de.puzzles.webapp.page.newrequest.steps.OverviewStep;
@@ -44,6 +45,7 @@ public class NewCreditRequestWizard extends Wizard {
         insuranceStep = new InsuranceStep();
         wizardModel.add(insuranceStep);
         wizardModel.add(new OverviewStep(model,getIncomes(),getSpendings()));
+        wizardModel.add(new ConfirmationStep());
         init(wizardModel);
     }
 

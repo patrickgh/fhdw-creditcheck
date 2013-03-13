@@ -37,7 +37,7 @@ public class OverviewStep extends WizardStep {
         Label interestLabel = new Label("interest", new AbstractReadOnlyModel<String>() {
             @Override
             public String getObject() {
-                return (requestModel.getObject().getRepaymentPlan().getInterest() * 100) + " %";
+                return Math.round(requestModel.getObject().getRepaymentPlan().getInterest() * 10000) / 100 + " %";
             }
         });
         add(interestLabel);
@@ -69,6 +69,7 @@ public class OverviewStep extends WizardStep {
             }
         });
         rateField.setOutputMarkupId(true);
+        rateField.setEnabled(false);
         add(rateField);
         repaymentPlan = new RepaymentPlanPanel("repaymentPlan",new AbstractReadOnlyModel<List<RepaymentPlan.Entry>>() {
             @Override

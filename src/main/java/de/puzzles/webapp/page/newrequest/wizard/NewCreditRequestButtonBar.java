@@ -38,7 +38,7 @@ public class NewCreditRequestButtonBar extends Panel implements IDefaultButtonPr
                 return finish.isEnabled();
             }
         };
-        add(finish);
+        finishContainer.add(finish);
         add(finishContainer);
     }
 

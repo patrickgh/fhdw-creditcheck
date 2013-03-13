@@ -82,6 +82,7 @@ public class SpendingsStep extends WizardStep {
 
         final TextField<Double> personsResult = new TextField<Double>("personsResult", new PropertyModel<Double>(this, "livingcosts.value"));
         personsResult.setOutputMarkupId(true);
+        personsResult.setEnabled(false);
         add(personsResult);
 
         final TextField<String> persons = new TextField<String>("persons", new Model<String>("0")) {
@@ -107,6 +108,7 @@ public class SpendingsStep extends WizardStep {
 
         final TextField<Double> carcostLabel = new TextField<Double>("carcostlabel", new PropertyModel<Double>(this, "carcosts.value"));
         carcostLabel.setOutputMarkupId(true);
+        carcostLabel.setEnabled(false);
         add(carcostLabel);
 
         Select2Choice<Double> carcost = new Select2Choice<Double>("carcost", new PropertyModel<Double>(this, "carcosts.value"), new CarCostChoiceProvider());
