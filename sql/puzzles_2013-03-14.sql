@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.25a)
 # Datenbank: puzzles
-# Erstellungsdauer: 2013-03-13 18:17:57 +0100
+# Erstellungsdauer: 2013-03-14 01:33:31 +0100
 # ************************************************************
 
 
@@ -102,6 +102,16 @@ CREATE TABLE `creditrequests` (
   KEY `consultant_id` (`consultant_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `creditrequests` WRITE;
+/*!40000 ALTER TABLE `creditrequests` DISABLE KEYS */;
+
+INSERT INTO `creditrequests` (`id`, `customer_id`, `consultant_id`, `creationdate`, `state`, `creditamount`, `hasfixedlength`, `rate`, `duration`, `interest`)
+VALUES
+	(1,1,1,'2013-03-13 00:00:00',0,5000,1,0,10,0.07),
+	(2,2,1,'2013-03-14 00:00:00',0,5000,1,0,5,0.07);
+
+/*!40000 ALTER TABLE `creditrequests` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle customer
@@ -124,6 +134,16 @@ CREATE TABLE `customer` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `customer` WRITE;
+/*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+
+INSERT INTO `customer` (`id`, `firstname`, `lastname`, `birthdate`, `street`, `city`, `zipcode`, `telephone`, `email`, `accountnumber`, `bankcode`)
+VALUES
+	(1,'Patrick','Groß-Holtwick','1991-04-26','Ehlentruper Weg 87','Bielefeld','33477','017691403382','patrickgh@web.de','1234','12123324'),
+	(2,'Hermann','Mels','2013-02-14','Burloer Straße 125','Borken','46325','0900123456','h.mels@gmx.de','123455','543211');
+
+/*!40000 ALTER TABLE `customer` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle transactions
@@ -142,6 +162,38 @@ CREATE TABLE `transactions` (
   KEY `request_id` (`request_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `transactions` WRITE;
+/*!40000 ALTER TABLE `transactions` DISABLE KEYS */;
+
+INSERT INTO `transactions` (`id`, `request_id`, `description`, `description1`, `description2`, `value`)
+VALUES
+	(1,1,'Laudert',NULL,NULL,3000),
+	(2,1,'rasen mähen',NULL,NULL,10),
+	(3,1,'Miete','','',-300),
+	(4,1,'Wohnnebenkosten','','',-100),
+	(5,1,'Sparverträge','','',-10),
+	(6,1,'Telefon/Internet/Handy','','',-20),
+	(7,1,'Lebenshaltungskosten','1 Personen','',-450),
+	(8,1,'YOLO','','',-50),
+	(9,1,'KFZ-Kosten','','',-10),
+	(10,1,'Rechtsschutzversicherung','ASD','100000',-5),
+	(11,1,'Spa','3000','1000',-10),
+	(12,2,'Laudert',NULL,NULL,359),
+	(13,2,'Bafög',NULL,NULL,16),
+	(14,2,'Sofortrente Glücksspirale',NULL,NULL,5000),
+	(15,2,'Räsen mähen',NULL,NULL,10),
+	(16,2,'Miete','','',-200),
+	(17,2,'Wohnnebenkosten','','',-100),
+	(18,2,'Sparverträge','','',0),
+	(19,2,'Telefon/Internet/Handy','','',-30),
+	(20,2,'Lebenshaltungskosten','1 Personen','',-450),
+	(21,2,NULL,'','',0),
+	(22,2,'KFZ-Kosten','','',-10),
+	(23,2,'Rechtsschutzversicherung','ASDF Insurances','1000000',-4.99),
+	(24,2,NULL,NULL,NULL,0);
+
+/*!40000 ALTER TABLE `transactions` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 
