@@ -4,6 +4,10 @@ import org.apache.wicket.markup.html.form.Button;
 
 import java.util.List;
 
+/**
+ * Wicket ListEditor Component
+ * Source: http://wicketinaction.com/2008/10/building-a-listeditor-form-component/
+ */
 public abstract class EditorButton extends Button {
 
     private transient ListItem<?> parent;

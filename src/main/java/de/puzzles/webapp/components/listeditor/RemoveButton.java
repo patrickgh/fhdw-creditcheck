@@ -1,5 +1,9 @@
 package de.puzzles.webapp.components.listeditor;
 
+/**
+ * Wicket ListEditor Component
+ * Source: http://wicketinaction.com/2008/10/building-a-listeditor-form-component/
+ */
 public class RemoveButton extends EditorButton {
 
     public RemoveButton(String id) {

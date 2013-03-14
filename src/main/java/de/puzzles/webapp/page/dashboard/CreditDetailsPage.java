@@ -14,6 +14,7 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.AbstractReadOnlyModel;
@@ -21,6 +22,7 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.request.cycle.RequestCycle;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -42,8 +44,31 @@ public class CreditDetailsPage extends RequiresLoginPage {
             }
             else {
                 final CompoundPropertyModel<CreditRequest> model = new CompoundPropertyModel<CreditRequest>(request);
-                //add(new TextField<String>("name", model.<String>bind("customer.lastname")));
-                //add(new TextField<String>("firstname", model.<String>bind("customer.firstname")));
+                add(new Link("back"){
+                    @Override
+                    public void onClick() {
+                        setResponsePage(DashboardPage.class);
+                    }
+                });
+
+                add(new Label("name", new AbstractReadOnlyModel<String>() {
+                    @Override
+                    public String getObject() {
+                        return model.getObject().getCustomer().getFirstname() + " " + model.getObject().getCustomer().getLastname();
+                    }
+                }));
+                add(new Label("adress", new AbstractReadOnlyModel<String>() {
+                    @Override
+                    public String getObject() {
+                        return model.getObject().getCustomer().getStreet() + ", "+ model.getObject().getCustomer().getZipcode() + " " + model.getObject().getCustomer().getCity();
+                    }
+                }));
+                add(new Label("birthdate", model.<Date>bind("customer.birthday")));
+                add(new Label("telephone", model.<String>bind("customer.telephone")));
+                add(new Label("mail", model.<String>bind("customer.email")));
+                add(new Label("accountnumber", model.<String>bind("customer.accountnumber")));
+                add(new Label("bankcode", model.<String>bind("customer.bankcode")));
+                add(new Label("consultant", model.<String>bind("consultantId")));
                 add(new TextField<String>("state", model.<String>bind("state")));
                 add(new TextField<String>("interest", model.<String>bind("repaymentPlan.interest")));
                 add(new TextField<String>("amount", model.<String>bind("repaymentPlan.amount")));

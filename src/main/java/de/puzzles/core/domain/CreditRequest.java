@@ -63,7 +63,9 @@ public class CreditRequest implements Serializable {
     }
 
     public void setState(CreditState state) {
-        this.state = state;
+        if (state != null) {
+            this.state = state;
+        }
     }
 
     /**

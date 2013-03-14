@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Wicket ListEditor Component
+ * Source: http://wicketinaction.com/2008/10/building-a-listeditor-form-component/
+ */
 public abstract class ListEditor<T> extends RepeatingView implements IFormModelUpdateListener {
 
     List<T> items;

@@ -3,6 +3,8 @@ package de.puzzles;
 import de.puzzles.core.domain.RepaymentPlan;
 
 /**
+ * temporary Test-Class for testing a RepaymentPlan. Does not affect the webapp in any case.
+ *
  * @author Patrick Groß-Holtwick
  *         Date: 12.03.13
  */

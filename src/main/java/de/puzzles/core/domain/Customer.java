@@ -17,7 +17,7 @@ public class Customer implements Serializable {
     private Integer id;
     private String firstname;
     private String lastname;
-    private Date birthday;
+    private Date birthday = new Date();
     private String street;
     private String city;
     private String zipcode;
@@ -58,7 +58,9 @@ public class Customer implements Serializable {
     }
 
     public void setBirthday(Date birthday) {
-        this.birthday = new Date(birthday.getTime());
+        if (birthday != null) {
+            this.birthday = new Date(birthday.getTime());
+        }
     }
 
     public String getStreet() {

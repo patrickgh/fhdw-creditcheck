@@ -34,17 +34,17 @@ public class DatabaseConnector {
     public static final String DEFAULT_USER = "root";
     public static final String DEFAULT_PASSWORD = "";
     private static DatabaseConnector INSTANCE = new DatabaseConnector();
-    private Connection dbConnection; // connection vorbereiten
+    private Connection dbConnection; // prepare connection
 
     private DatabaseConnector() {
         try {
-            //Default Werte nutzen, falls keine Parameter mitgegeben werden
+            //use credentials from properties, if available, otherwise use defaults
             String url = System.getProperty("db.url") != null ? System.getProperty("db.url") : DEFAULT_URL;
             String user = System.getProperty("db.user") != null ? System.getProperty("db.user") : DEFAULT_USER;
             String password = System.getProperty("db.password") != null ? System.getProperty("db.password") : DEFAULT_PASSWORD;
-            // einen JDBC-Treiber registrieren und über den registrierten
-            // Treiber das Programm mit der DB verbinden:
+            // register JDBC driver
             Class.forName("com.mysql.jdbc.Driver");
+            // create connection
             dbConnection = DriverManager.getConnection(url, user, password);
         }
         catch (ClassNotFoundException err) {
@@ -55,7 +55,6 @@ public class DatabaseConnector {
             System.out.println("Connect nicht möglich");
             System.out.println(err);
         }
-
     }
 
     public static DatabaseConnector getInstance() {
@@ -321,7 +320,7 @@ public class DatabaseConnector {
             Statement stmt = dbConnection.createStatement();
             stmt.execute("SELECT value FROM config WHERE category LIKE 'BASE_INTEREST'");
             ResultSet result = stmt.getResultSet();
-            if(result.next() && result.isLast()) {
+            if (result.next() && result.isLast()) {
                 String temp = result.getString("value");
                 interest = Double.valueOf(temp) / 100.0;
             }
