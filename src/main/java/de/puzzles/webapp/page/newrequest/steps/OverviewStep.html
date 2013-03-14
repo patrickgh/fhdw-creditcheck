@@ -10,7 +10,12 @@
 
     <p><b>Persönliche Daten:</b></p>
 
-    <div class="span6 offset3">
+    <div class="span12">
+        <table class="offset2">
+            <tr>
+
+                <td>
+
         <table border="0" cellpadding="6">
             <tr>
                 <td>Name:</td>
@@ -21,12 +26,41 @@
                 <td wicket:id="adress">Hauptstraße 1, 33719 Bielefeld</td>
             </tr>
             <tr>
+                                        <td>Geburtsdatum:</td>
+                                        <td >02.03.1991</td>
+                                    </tr>
+
+            <tr>
                 <td>Telefonnummer:</td>
                 <td wicket:id="phone">0123/4567890</td>
             </tr>
+
             <tr>
                 <td>E-Mail:</td>
                 <td wicket:id="mail">max.mustermann@test.de</td>
+            </tr>
+        </table>
+                </td>
+
+                <td valign="top">
+
+                        <table border="0" cellpadding="6" class="offset1" >
+                            <tr>
+                                <td>Kontonummer:</td>
+                                <td >10312300</td>
+                            </tr>
+                            <tr>
+                                <td>BLZ:</td>
+                                <td >42861307</td>
+                            </tr>
+                            <tr>
+                                <td>Berater:</td>
+                                <td >Peter Pan</td>
+                            </tr>
+
+                        </table>
+                                </td>
+
             </tr>
         </table>
     </div>
@@ -102,9 +136,9 @@
 
     <br>
 
-
+    <div class="offset3">
     <div class="span5" wicket:id="repaymentPlan">
-
+    </div>
 
     </div>
 </wicket:panel>

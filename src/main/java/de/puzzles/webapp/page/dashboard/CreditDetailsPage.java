@@ -42,8 +42,8 @@ public class CreditDetailsPage extends RequiresLoginPage {
             }
             else {
                 final CompoundPropertyModel<CreditRequest> model = new CompoundPropertyModel<CreditRequest>(request);
-                add(new TextField<String>("name", model.<String>bind("customer.lastname")));
-                add(new TextField<String>("firstname", model.<String>bind("customer.firstname")));
+                //add(new TextField<String>("name", model.<String>bind("customer.lastname")));
+                //add(new TextField<String>("firstname", model.<String>bind("customer.firstname")));
                 add(new TextField<String>("state", model.<String>bind("state")));
                 add(new TextField<String>("interest", model.<String>bind("repaymentPlan.interest")));
                 add(new TextField<String>("amount", model.<String>bind("repaymentPlan.amount")));

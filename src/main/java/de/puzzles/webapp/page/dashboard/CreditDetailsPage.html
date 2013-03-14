@@ -5,9 +5,11 @@
 </head>
 <body>
 <wicket:extend>
+<div class="form-horizontal well" align="center">
+
 <legend>Kreditantragsdetails</legend>
 <div class="row">
-
+    <input type="button" class="btn" value="Zurück zum Dashboard">
     <br>
 
     <div class="span1">
@@ -15,40 +17,72 @@
     </div>
     <br><br><br>
 
-    <div class="span6">
+    <div class="span12">
+            <table>
+                <tr>
 
-        <div class="control-group">
-            <label class="control-label" for="inputNameDetails">Name</label>
+                    <td>
 
-            <div class="controls">
-                <input type="text" id="inputNameDetails" placeholder="Name" wicket:id="name">
-            </div>
+            <table border="0" cellpadding="6">
+                <tr>
+                    <td>Name:</td>
+                    <td>Max Mustermann</td>
+                </tr>
+                <tr>
+                    <td>Anschrift:</td>
+                    <td>Hauptstraße 1, 33719 Bielefeld</td>
+                </tr>
+                <tr>
+                                            <td>Geburtsdatum:</td>
+                                            <td >02.03.1991</td>
+                                        </tr>
+
+                <tr>
+                    <td>Telefonnummer:</td>
+                    <td>0123/4567890</td>
+                </tr>
+
+                <tr>
+                    <td>E-Mail:</td>
+                    <td>max.mustermann@test.de</td>
+                </tr>
+            </table>
+                    </td>
+
+                    <td valign="top">
+
+                            <table border="0" cellpadding="6" class="offset1" >
+                                <tr>
+                                    <td>Kreditstatus</td>
+                                    <td><input type="text" id="StatusCredit" disabled wicket:id="state"></td>
+                                </tr>
+                                <tr>
+                                    <td>Kontonummer:</td>
+                                    <td >10312300</td>
+                                </tr>
+                                <tr>
+                                    <td>BLZ:</td>
+                                    <td >42861307</td>
+                                </tr>
+                                <tr>
+                                    <td>Berater:</td>
+                                    <td >Peter Pan</td>
+                                </tr>
+
+                            </table>
+                                    </td>
+
+                </tr>
+            </table>
         </div>
-        <div class="control-group">
-            <label class="control-label" for="inputFirstNameDetails">Vorname</label>
 
-            <div class="controls">
-                <input type="text" id="inputFirstNameDetails" placeholder="Vorname" wicket:id="firstname">
-            </div>
-        </div>
-    </div>
 
-    <div class="span5">
-
-        <div class="control-group">
-            <label class="control-label" for="StatusCredit">Kreditstatus</label>
-
-            <div class="controls">
-                <input type="text" id="StatusCredit" disabled wicket:id="state">
-            </div>
-        </div>
-
-    </div>
     <br><br><br><br><br>
+    <br><br><br>
 
-    <div class="offset1">
-        <hr width="770">
-    </div>
+
+
+    <hr width="915" color="grey" align="center">
 
     <br>
 
@@ -130,10 +164,16 @@
 
     </div>
 
-    <div class="offset1">
-        <br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <hr width="770">
-    </div>
+    <br><br><br><br><br>
+    <br><br><br><br>
+    <br>
+    <div wicket:id="buttonContainer">
+            <input type="button" class="btn btn-danger" wicket:id="declineButton" value="Kreditantrag ablehnen">
+
+            <input type="button" class="btn btn-success" wicket:id="acceptButton" value="Kreditantrag bewilligen">
+        </div>
+
+        <hr width="915" color="grey" align="center">
 
     <div class="span1">
         <br>
@@ -143,17 +183,14 @@
 
     <br><br><br><br>
 
-    <div class="span5 offset1" wicket:id="repaymentPlan">
-
+     <div class="offset3">
+    <div class="span5" wicket:id="repaymentPlan">
+      </div>
     </div>
     <br>
-    <div wicket:id="buttonContainer" class="offset7">
-        <input type="button" class="btn btn-danger" wicket:id="declineButton" value="Kreditantrag ablehnen">
-        <br><br>
-        <input type="button" class="btn btn-success" wicket:id="acceptButton" value="Kreditantrag bewilligen">
-    </div>
-</div>
 
+</div>
+</div>
 
 <!-- Modal
    ================================================== -->
