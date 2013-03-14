@@ -12,6 +12,7 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.request.resource.PackageResourceReference;
+import org.apache.wicket.resource.JQueryPluginResourceReference;
 import webresources.ImportResourceLocator;
 
 /**
@@ -65,10 +66,11 @@ public abstract class BasePage extends WebPage implements IAjaxIndicatorAware {
         response.render(CssHeaderItem.forReference(new PackageResourceReference(ImportResourceLocator.class, "css/bootstrap-datepicker.css")));
         response.render(CssHeaderItem.forReference(new PackageResourceReference(ImportResourceLocator.class, "css/puzzles.css")));
 
-        response.render(JavaScriptHeaderItem.forReference(new PackageResourceReference(ImportResourceLocator.class, "js/bootstrap.js")));
-        response.render(JavaScriptHeaderItem.forReference(new PackageResourceReference(ImportResourceLocator.class, "js/jquery-ui-1.10.1.custom.js")));
-        response.render(JavaScriptHeaderItem.forReference(new PackageResourceReference(ImportResourceLocator.class, "js/puzzles.js")));
-        response.render(JavaScriptHeaderItem.forReference(new PackageResourceReference(ImportResourceLocator.class, "js/bootstrap-datepicker.js")));
+        response.render(JavaScriptHeaderItem.forReference(new JQueryPluginResourceReference(ImportResourceLocator.class, "js/bootstrap.js")));
+        response.render(JavaScriptHeaderItem.forReference(new JQueryPluginResourceReference(ImportResourceLocator.class, "js/jquery-ui-1.10.1.custom.js")));
+        response.render(JavaScriptHeaderItem.forReference(new JQueryPluginResourceReference(ImportResourceLocator.class, "js/jquery-ui-1.10.1.custom.js")));
+        response.render(JavaScriptHeaderItem.forReference(new JQueryPluginResourceReference(ImportResourceLocator.class, "js/puzzles.js")));
+        response.render(JavaScriptHeaderItem.forReference(new JQueryPluginResourceReference(ImportResourceLocator.class, "js/bootstrap-datepicker.js")));
     }
 
     @Override
