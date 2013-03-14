@@ -69,11 +69,11 @@ public class CreditDetailsPage extends RequiresLoginPage {
                 add(new Label("accountnumber", model.<String>bind("customer.accountnumber")));
                 add(new Label("bankcode", model.<String>bind("customer.bankcode")));
                 add(new Label("consultant", model.<String>bind("consultantId")));
-                add(new TextField<String>("state", model.<String>bind("state")));
+                add(new TextField<CreditState>("state", model.<CreditState>bind("state")));
                 add(new TextField<String>("interest", model.<String>bind("repaymentPlan.interest")));
-                add(new TextField<String>("amount", model.<String>bind("repaymentPlan.amount")));
+                add(new TextField<Double>("amount", model.<Double>bind("repaymentPlan.amount")));
                 add(new Label("duration", model.<String>bind("repaymentPlan.duration")));
-                add(new TextField<String>("rate", model.<String>bind("repaymentPlan.rate")));
+                add(new TextField<Double>("rate", model.<Double>bind("repaymentPlan.rate")));
                 WebMarkupContainer buttonContainer = new WebMarkupContainer("buttonContainer") {
                     @Override
                     public boolean isVisible() {
@@ -209,7 +209,7 @@ public class CreditDetailsPage extends RequiresLoginPage {
 
                 add(new Label("incomeTotal", resultField.getModel()));
                 add(new Label("spendingTotal", resultSpendings.getModel()));
-                add(new Label("rateTotal", model.<String>bind("repaymentPlan.rate")));
+                add(new Label("rateTotal", model.<Double>bind("repaymentPlan.rate")));
                 add(new Label("total", new AbstractReadOnlyModel<Double>() {
                     @Override
                     public Double getObject() {

@@ -28,8 +28,8 @@ public class NewCreditRequestWizard extends Wizard {
     private EarningsStep earningsStep;
     private SpendingsStep spendingsStep;
     private InsuranceStep insuranceStep;
-
     private IModel<CreditRequest> model;
+    private boolean submitted = false;
 
     public NewCreditRequestWizard(String id) {
         super(id, false);
@@ -44,7 +44,7 @@ public class NewCreditRequestWizard extends Wizard {
         wizardModel.add(spendingsStep);
         insuranceStep = new InsuranceStep();
         wizardModel.add(insuranceStep);
-        wizardModel.add(new OverviewStep(model,getIncomes(),getSpendings()));
+        wizardModel.add(new OverviewStep(model, getIncomes(), getSpendings()));
         wizardModel.add(new ConfirmationStep());
         init(wizardModel);
     }
@@ -59,7 +59,7 @@ public class NewCreditRequestWizard extends Wizard {
     }
 
     private IModel<List<Transaction>> getSpendings() {
-        return new AbstractReadOnlyModel<List<Transaction>>(){
+        return new AbstractReadOnlyModel<List<Transaction>>() {
             @Override
             public List<Transaction> getObject() {
                 List<Transaction> list = new ArrayList<Transaction>();
@@ -73,34 +73,36 @@ public class NewCreditRequestWizard extends Wizard {
     @Override
     public void onFinish() {
         super.onFinish();
-
-        List<Transaction> transactions = new ArrayList<Transaction>();
-        for (Transaction t : earningsStep.getTransactions()) {
-            Transaction t1 = new Transaction();
-            t1.setDescription(t.getDescription());
-            t1.setDescription1(t.getDescription1());
-            t1.setDescription2(t.getDescription2());
-            t1.setValue(Math.abs(t.getValue()));
-            transactions.add(t1);
+        if (!submitted) {
+            List<Transaction> transactions = new ArrayList<Transaction>();
+            for (Transaction t : earningsStep.getTransactions()) {
+                Transaction t1 = new Transaction();
+                t1.setDescription(t.getDescription());
+                t1.setDescription1(t.getDescription1());
+                t1.setDescription2(t.getDescription2());
+                t1.setValue(Math.abs(t.getValue()));
+                transactions.add(t1);
+            }
+            for (Transaction t : spendingsStep.getTransactions()) {
+                Transaction t1 = new Transaction();
+                t1.setDescription(t.getDescription());
+                t1.setDescription1(t.getDescription1());
+                t1.setDescription2(t.getDescription2());
+                t1.setValue(Math.abs(t.getValue()) * -1);
+                transactions.add(t1);
+            }
+            for (Transaction t : insuranceStep.getTransactions()) {
+                Transaction t1 = new Transaction();
+                t1.setDescription(t.getDescription());
+                t1.setDescription1(t.getDescription1());
+                t1.setDescription2(t.getDescription2());
+                t1.setValue(Math.abs(t.getValue()) * -1);
+                transactions.add(t1);
+            }
+            model.getObject().setTransactions(transactions);
+            DatabaseConnector.getInstance().saveCreditrequest(model.getObject());
+            submitted = true;
         }
-        for (Transaction t : spendingsStep.getTransactions()) {
-            Transaction t1 = new Transaction();
-            t1.setDescription(t.getDescription());
-            t1.setDescription1(t.getDescription1());
-            t1.setDescription2(t.getDescription2());
-            t1.setValue(Math.abs(t.getValue())*-1);
-            transactions.add(t1);
-        }
-        for (Transaction t : insuranceStep.getTransactions()) {
-            Transaction t1 = new Transaction();
-            t1.setDescription(t.getDescription());
-            t1.setDescription1(t.getDescription1());
-            t1.setDescription2(t.getDescription2());
-            t1.setValue(Math.abs(t.getValue())*-1);
-            transactions.add(t1);
-        }
-        model.getObject().setTransactions(transactions);
-        DatabaseConnector.getInstance().saveCreditrequest(model.getObject());
         setResponsePage(getApplication().getHomePage());
     }
 
