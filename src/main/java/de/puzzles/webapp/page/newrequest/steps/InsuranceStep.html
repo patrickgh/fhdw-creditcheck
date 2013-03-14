@@ -32,8 +32,8 @@
                 </select>
             </td>
             <td><input type="text" id="inputInsuranceCompany" placeholder="Versicherungsgesellschaft" wicket:id="insuranceCompany"></td>
-            <td><input type="text" id="inputInsuranceSum" placeholder="Versicherungssumme" wicket:id="insuranceAmount"></td>
-            <td><input type="text" id="inputMonthlySum" class="transaction-value" placeholder="monatlicher Beitrag" onchange="updateResultField();" wicket:id="insuranceValue"></td>
+            <td><div class="input-append"><input class="span2" type="text" id="inputInsuranceSum" placeholder="Versicherungssumme" wicket:id="insuranceAmount"><span class="add-on">€</span></div></td>
+            <td><div class="input-append"><input type="text" id="inputMonthlySum" class="span2 transaction-value" placeholder="monatlicher Beitrag" onchange="updateResultField();" wicket:id="insuranceValue"><span class="add-on">€</span></div></td>
         </tr>
         <tr>
             <td colspan="4">
@@ -44,7 +44,7 @@
         </tr>
     </table>
 
-    <br><br><br><br>
+    <br><br>
 
     <p>Geben Sie Ihre Kreditausgaben ein:</p>
     <br>
@@ -58,9 +58,9 @@
         </tr>
         <tr wicket:id="credit">
             <td><input type="text" id="inputCreditInstitution" placeholder="Kreditinstitut" wicket:id="creditBank"></td>
-            <td><input type="text" id="inputTotalDebt" placeholder="Gesamtschuld" wicket:id="creditAmount"></td>
-            <td><input type="text" id="inputRestDebt" placeholder="Restschld" wicket:id="creditRest"></td>
-            <td><input type="text" id="inputMonthlyRate" class="transaction-value" onchange="updateResultField();" placeholder="monatliche Rate" wicket:id="creditValue"></td>
+            <td><div class="input-append"><input class="span2" type="text" id="inputTotalDebt" placeholder="Gesamtschuld" wicket:id="creditAmount"><span class="add-on">€</span></div></td>
+            <td><div class="input-append"><input class="span2" type="text" id="inputRestDebt" placeholder="Restschld" wicket:id="creditRest"><span class="add-on">€</span></div></td>
+            <td><div class="input-append"><input type="text" id="inputMonthlyRate" class="span2 transaction-value" onchange="updateResultField();" placeholder="monatliche Rate" wicket:id="creditValue"><span class="add-on">€</span></div></td>
         </tr>
         <tr>
             <td colspan="4">
@@ -76,15 +76,30 @@
     <hr color="grey" width="915" align="center">
     <br>
 
-    <div class="span3 offset1">
-        <p>Summe</p>
-    </div>
 
-    <div class="span2 offset1">
-        <div class="controls">
-            <input type="text" id="transaction-result" placeholder="Wert" wicket:id="total">
-        </div>
-    </div>
+    <div class="span12">
+           <div class="span4" align="left">
+               <p>Summe</p>
+           </div>
+
+
+           <div class="span3" align="right">
+
+           </div>
+
+           <div class="span2" align="right">
+
+           </div>
+
+
+
+           <div class="span3" align="right">
+               <div class="input-append">
+                   <input class="span2" type="text" id="transaction-result" placeholder="Wert" wicket:id="total">
+                          <span class="add-on">€</span>
+                      </div>
+           </div>
+           </div>
 
     <br><br><br>
 
