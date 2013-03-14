@@ -17,7 +17,7 @@ public class Customer implements Serializable {
     private Integer id;
     private String firstname;
     private String lastname;
-    private Date birthday = new Date();
+    private Date birthday;
     private String street;
     private String city;
     private String zipcode;

@@ -16,50 +16,49 @@
 
                 <td>
 
-        <table border="0" cellpadding="6">
-            <tr>
-                <td>Name:</td>
-                <td wicket:id="name">Max Mustermann</td>
-            </tr>
-            <tr>
-                <td>Anschrift:</td>
-                <td wicket:id="adress">Hauptstraße 1, 33719 Bielefeld</td>
-            </tr>
-            <tr>
-                                        <td>Geburtsdatum:</td>
-                                        <td >02.03.1991</td>
-                                    </tr>
+                    <table border="0" cellpadding="6">
+                        <tr>
+                            <td>Name:</td>
+                            <td wicket:id="name">Max Mustermann</td>
+                        </tr>
+                        <tr>
+                            <td>Anschrift:</td>
+                            <td wicket:id="adress">Hauptstraße 1, 33719 Bielefeld</td>
+                        </tr>
+                        <tr>
+                            <td>Geburtsdatum:</td>
+                            <td wicket:id="birthdate">02.03.1991</td>
+                        </tr>
 
-            <tr>
-                <td>Telefonnummer:</td>
-                <td wicket:id="phone">0123/4567890</td>
-            </tr>
+                        <tr>
+                            <td>Telefonnummer:</td>
+                            <td wicket:id="phone">0123/4567890</td>
+                        </tr>
 
-            <tr>
-                <td>E-Mail:</td>
-                <td wicket:id="mail">max.mustermann@test.de</td>
-            </tr>
-        </table>
+                        <tr>
+                            <td>E-Mail:</td>
+                            <td wicket:id="mail">max.mustermann@test.de</td>
+                        </tr>
+                    </table>
                 </td>
 
                 <td valign="top">
 
-                        <table border="0" cellpadding="6" class="offset1" >
-                            <tr>
-                                <td>Kontonummer:</td>
-                                <td >10312300</td>
-                            </tr>
-                            <tr>
-                                <td>BLZ:</td>
-                                <td >42861307</td>
-                            </tr>
-                            <tr>
-                                <td>Berater:</td>
-                                <td >Peter Pan</td>
-                            </tr>
-
-                        </table>
-                                </td>
+                    <table border="0" cellpadding="6" class="offset1">
+                        <tr>
+                            <td>Kontonummer:</td>
+                            <td wicket:id="accountnumber">10312300</td>
+                        </tr>
+                        <tr>
+                            <td>BLZ:</td>
+                            <td wicket:id="bankcode">42861307</td>
+                        </tr>
+                        <tr>
+                            <td>Berater:</td>
+                            <td wicket:id="consultant">Peter Pan</td>
+                        </tr>
+                    </table>
+                </td>
 
             </tr>
         </table>
@@ -76,57 +75,61 @@
         </tr>
 
         <tr>
-         <td>
+            <td>
 
-    <div class="span7 offset3">
-        <table border="0" cellpadding="8">
-            <tr>
-                <td width="50%">Zinssatz:</td>
-                <td wicket:id="interest">7 %</td>
-            </tr>
-            <tr>
-                <td>Kreditsumme:</td>
-                <td><div class="input-append"><input class="span2" type="text" id="inputCreditSum" placeholder="Kreditsumme" wicket:id="creditAmount"><span class="add-on">€</span>
-                                    </div></td>
-            </tr>
-            <tr>
-                <td>Laufzeit:</td>
-                <td><span wicket:id="creditDuration"></span> Jahre </td>
-            </tr>
-            <tr>
-                <td><b>Monatliche Tilgungsrate:</b></td>
-                <td><div class="input-append"><input class="span2" type="text" id="MonthlyRepaymentRate" disabled wicket:id="creditRate"><span class="add-on">€</span>
-                                    </div></td>
-            </tr>
-        </table>
-    </div>
+                <div class="span7 offset3">
+                    <table border="0" cellpadding="8">
+                        <tr>
+                            <td width="50%">Zinssatz:</td>
+                            <td wicket:id="interest">7 %</td>
+                        </tr>
+                        <tr>
+                            <td>Kreditsumme:</td>
+                            <td>
+                                <div class="input-append"><input class="span2" type="text" id="inputCreditSum" placeholder="Kreditsumme" wicket:id="creditAmount"><span class="add-on">€</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Laufzeit:</td>
+                            <td><input type="text" wicket:id="creditDuration" class="span1"/> Jahre</td>
+                        </tr>
+                        <tr>
+                            <td><b>Monatliche Tilgungsrate:</b></td>
+                            <td>
+                                <div class="input-append"><input class="span2" type="text" id="MonthlyRepaymentRate" disabled wicket:id="creditRate"><span class="add-on">€</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </td>
             <td>
-    <table border="0">
-            <tbody>
-            <tr>
-                <td>&nbsp; Gesamteinkünfte</td>
-                <td><b wicket:id="incomeTotal">3.010</b> €</td>
-            </tr>
-            <tr>
-                <td>- Gesamtausgaben</td>
-                <td><b wicket:id="spendingTotal">955</b> €</td>
-            </tr>
-            <tr>
-                <td>- monatl. Rate</td>
-                <td><b wicket:id="rateTotal">711,888</b> €</td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <hr>
-                </td>
-            </tr>
-            <tr>
-                <td><b>= Überschuss/Fehlbetrag&nbsp;&nbsp;&nbsp;&nbsp;</b></td>
-                <td><b wicket:id="total">1.343,112</b> €</td>
-            </tr>
-            </tbody>
-        </table>
+                <table border="0">
+                    <tbody>
+                    <tr>
+                        <td>&nbsp; Gesamteinkünfte</td>
+                        <td><b wicket:id="incomeTotal">3.010</b> €</td>
+                    </tr>
+                    <tr>
+                        <td>- Gesamtausgaben</td>
+                        <td><b wicket:id="spendingTotal">955</b> €</td>
+                    </tr>
+                    <tr>
+                        <td>- monatl. Rate</td>
+                        <td><b wicket:id="rateTotal">711,888</b> €</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>= Überschuss/Fehlbetrag&nbsp;&nbsp;&nbsp;&nbsp;</b></td>
+                        <td><b wicket:id="total">1.343,112</b> €</td>
+                    </tr>
+                    </tbody>
+                </table>
             </td>
         </tr>
     </table>
@@ -139,8 +142,8 @@
     <br>
 
     <div class="offset3">
-    <div class="span5" wicket:id="repaymentPlan">
-    </div>
+        <div class="span5" wicket:id="repaymentPlan">
+        </div>
 
     </div>
 </wicket:panel>

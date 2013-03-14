@@ -13,6 +13,7 @@ import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -52,8 +53,14 @@ public class OverviewStep extends WizardStep {
         amount.setRequired(true);
         add(amount);
 
-        Label durationField = new Label("creditDuration", requestModel.<Double>bind("repaymentPlan.duration"));
+        TextField<Double> durationField = new TextField<Double>("creditDuration", requestModel.<Double>bind("repaymentPlan.duration"));
         durationField.setOutputMarkupId(true);
+        durationField.add(new AjaxFormComponentUpdatingBehavior("onchange") {
+            @Override
+            protected void onUpdate(AjaxRequestTarget target) {
+                updateFields(target);
+            }
+        });
         add(durationField);
 
         rateField = new TextField<Double>("creditRate", new AbstractReadOnlyModel<Double>() {
@@ -116,6 +123,10 @@ public class OverviewStep extends WizardStep {
         }));
         add(new Label("phone", requestModel.<String>bind("customer.telephone")));
         add(new Label("mail", requestModel.<String>bind("customer.email")));
+        add(new Label("birthdate", requestModel.<Date>bind("customer.birthday")));
+        add(new Label("accountnumber", requestModel.<String>bind("customer.accountnumber")));
+        add(new Label("bankcode", requestModel.<String>bind("customer.bankcode")));
+        add(new Label("consultant", requestModel.<String>bind("consultantId")));
 
         repaymentPlan = new RepaymentPlanPanel("repaymentPlan", new AbstractReadOnlyModel<List<RepaymentPlan.Entry>>() {
             @Override
