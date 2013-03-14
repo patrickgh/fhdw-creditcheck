@@ -79,7 +79,7 @@ public class DashboardPage extends RequiresLoginPage {
 
     private List<? extends IColumn<CreditRequest, String>> generateColumns() {
         List<IColumn<CreditRequest, String>> list = new ArrayList<IColumn<CreditRequest, String>>();
-        list.add(new PropertyColumn<CreditRequest, String>(new Model<String>("id"),"id"){
+        list.add(new PropertyColumn<CreditRequest, String>(new Model<String>(""),"id"){
             @Override
             public void populateItem(Item<ICellPopulator<CreditRequest>> item, String componentId, final IModel<CreditRequest> rowModel) {
                 item.add(new InfoButtonPanel(componentId,rowModel.getObject().getId()));
