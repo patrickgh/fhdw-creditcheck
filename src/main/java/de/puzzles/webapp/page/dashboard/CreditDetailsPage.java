@@ -68,7 +68,12 @@ public class CreditDetailsPage extends RequiresLoginPage {
                 add(new Label("mail", model.<String>bind("customer.email")));
                 add(new Label("accountnumber", model.<String>bind("customer.accountnumber")));
                 add(new Label("bankcode", model.<String>bind("customer.bankcode")));
-                add(new Label("consultant", model.<String>bind("consultantId")));
+                add(new Label("consultant", new AbstractReadOnlyModel<String>() {
+                    @Override
+                    public String getObject() {
+                        return DatabaseConnector.getInstance().getConsultantNameById(model.getObject().getConsultantId());
+                    }
+                }));
                 add(new TextField<CreditState>("state", model.<CreditState>bind("state")));
                 add(new TextField<String>("interest", model.<String>bind("repaymentPlan.interest")));
                 add(new TextField<Double>("amount", model.<Double>bind("repaymentPlan.amount")));

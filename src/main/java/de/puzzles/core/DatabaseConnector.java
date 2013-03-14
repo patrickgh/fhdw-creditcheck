@@ -192,6 +192,23 @@ public class DatabaseConnector {
         return names;
     }
 
+    public String getConsultantNameById(Integer id) {
+        String name = "";
+        try {
+            String sql = "SELECT CONCAT(firstname, ' ', lastname) AS name, id FROM consultants WHERE id = ?";
+            PreparedStatement stmt = dbConnection.prepareStatement(sql);
+            stmt.setInt(1,id);
+            stmt.execute();
+            ResultSet result = stmt.getResultSet();
+            if(result.next() && result.isLast()) {
+                name = result.getString("name");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return name;
+    }
+
     public List<CreditRequest> getCreditRequest(int id, String customer, java.util.Date start, java.util.Date end, Integer skip, Integer limit, String sort) {
         List<CreditRequest> resultList = new ArrayList<CreditRequest>();
         if (start == null) {

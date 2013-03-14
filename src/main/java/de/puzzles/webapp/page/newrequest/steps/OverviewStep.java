@@ -1,5 +1,6 @@
 package de.puzzles.webapp.page.newrequest.steps;
 
+import de.puzzles.core.DatabaseConnector;
 import de.puzzles.core.domain.CreditRequest;
 import de.puzzles.core.domain.RepaymentPlan;
 import de.puzzles.core.domain.Transaction;
@@ -126,7 +127,12 @@ public class OverviewStep extends WizardStep {
         add(new Label("birthdate", requestModel.<Date>bind("customer.birthday")));
         add(new Label("accountnumber", requestModel.<String>bind("customer.accountnumber")));
         add(new Label("bankcode", requestModel.<String>bind("customer.bankcode")));
-        add(new Label("consultant", requestModel.<String>bind("consultantId")));
+        add(new Label("consultant", new AbstractReadOnlyModel<String>() {
+            @Override
+            public String getObject() {
+                return DatabaseConnector.getInstance().getConsultantNameById(requestModel.getObject().getConsultantId());
+            }
+        }));
 
         repaymentPlan = new RepaymentPlanPanel("repaymentPlan", new AbstractReadOnlyModel<List<RepaymentPlan.Entry>>() {
             @Override
