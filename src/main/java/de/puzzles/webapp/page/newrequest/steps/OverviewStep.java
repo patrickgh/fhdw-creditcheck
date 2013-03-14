@@ -25,7 +25,6 @@ public class OverviewStep extends WizardStep {
     private CompoundPropertyModel<List<Transaction>> incomeModel;
     private CompoundPropertyModel<List<Transaction>> spendingsModel;
     private TextField<Double> rateField;
-    private TextField<Double> durationField;
     private RepaymentPlanPanel repaymentPlan;
     private Label rateLabel;
     private Label totalLabel;
@@ -53,15 +52,8 @@ public class OverviewStep extends WizardStep {
         amount.setRequired(true);
         add(amount);
 
-        durationField = new TextField<Double>("creditDuration", requestModel.<Double>bind("repaymentPlan.duration"));
-        durationField.setRequired(true);
+        Label durationField = new Label("creditDuration", requestModel.<Double>bind("repaymentPlan.duration"));
         durationField.setOutputMarkupId(true);
-        durationField.add(new AjaxFormComponentUpdatingBehavior("onchange") {
-            @Override
-            protected void onUpdate(AjaxRequestTarget target) {
-                updateFields(target);
-            }
-        });
         add(durationField);
 
         rateField = new TextField<Double>("creditRate", new AbstractReadOnlyModel<Double>() {

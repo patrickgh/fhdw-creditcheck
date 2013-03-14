@@ -53,8 +53,8 @@
 
                         <table border="0" cellpadding="6" class="offset1">
                             <tr>
-                                <td>Kreditstatus</td>
-                                <td><input type="text" id="StatusCredit" disabled wicket:id="state"></td>
+                                <td>Kreditstatus:</td>
+                                <td><input class="span2" type="text" id="StatusCredit" disabled wicket:id="state"></td>
                             </tr>
                             <tr>
                                 <td>Kontonummer:</td>
@@ -104,28 +104,34 @@
 
                 <p>Kreditsumme:</p>
 
-                <br><br>
+                <br>
 
                 <p>Laufzeit:</p>
 
                 <p>Monatliche Tilgungsrate:</p>
             </div>
 
-            <div class="offset3">
-                <input type="text" disabled wicket:id="interest">
+            <div class="offset3" align="left">
+                <input class="span2" type="text" disabled wicket:id="interest">
                 <br><br>
 
-                <div>
-                    <input type="text" id="inputCreditSum2" placeholder="Kreditsumme" wicket:id="amount">
+
+                    <div class="input-append">
+                        <input class="span2" type="text" id="inputCreditSum2" placeholder="Kreditsumme" wicket:id="amount">
+                        <span class="add-on">€</span>
+                    </div>
 
                     <br>
                     <br>
-                    <input type="text" id="inputRumtime" placeholder="Laufzeit" wicket:id="duration">
+                    <span wicket:id="duration"> ?? </span> Jahre
+                <br>
+                    <br>
 
-                    <br>
-                    <br>
-                    <input type="text" id="inputMonthlyAmortisation" placeholder="Monatliche Tilgungsrate" wicket:id="rate">
-                </div>
+                    <div class="input-append">
+                    <input class="span2" type="text" id="inputMonthlyAmortisation" placeholder="Monatliche Tilgungsrate" wicket:id="rate">
+                        <span class="add-on">€</span>
+                    </div>
+
             </div>
 
         </div>

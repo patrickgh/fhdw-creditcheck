@@ -72,7 +72,7 @@ public class CreditDetailsPage extends RequiresLoginPage {
                 add(new TextField<String>("state", model.<String>bind("state")));
                 add(new TextField<String>("interest", model.<String>bind("repaymentPlan.interest")));
                 add(new TextField<String>("amount", model.<String>bind("repaymentPlan.amount")));
-                add(new TextField<String>("duration", model.<String>bind("repaymentPlan.duration")));
+                add(new Label("duration", model.<String>bind("repaymentPlan.duration")));
                 add(new TextField<String>("rate", model.<String>bind("repaymentPlan.rate")));
                 WebMarkupContainer buttonContainer = new WebMarkupContainer("buttonContainer") {
                     @Override

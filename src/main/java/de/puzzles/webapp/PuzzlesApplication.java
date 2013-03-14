@@ -43,6 +43,7 @@ public class PuzzlesApplication extends WebApplication {
             getMarkupSettings().setCompressWhitespace(true);
         }
         getMarkupSettings().setDefaultMarkupEncoding("utf-8");
+
     }
 
     @Override
