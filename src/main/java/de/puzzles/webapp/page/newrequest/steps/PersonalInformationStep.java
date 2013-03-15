@@ -4,7 +4,6 @@ import com.vaynberg.wicket.select2.Select2Choice;
 import de.puzzles.core.domain.CreditRequest;
 import de.puzzles.core.domain.Customer;
 import de.puzzles.webapp.components.choiceprovider.ConsultantChoiceProvider;
-import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.extensions.markup.html.form.DateTextField;
 import org.apache.wicket.extensions.wizard.WizardStep;
 import org.apache.wicket.markup.head.IHeaderResponse;

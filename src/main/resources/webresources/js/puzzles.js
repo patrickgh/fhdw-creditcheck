@@ -8,10 +8,9 @@ function shake() {
 function updateResultField() {
     var valueElements = $('.transaction-value');
     var sum = 0;
-    for (var i =0; i< valueElements.length; i++)
-    {
+    for (var i = 0; i < valueElements.length; i++) {
         var temp = parseFloat(valueElements[i].value);
-        if(!isNaN(temp)) {
+        if (!isNaN(temp)) {
             sum += temp;
         }
     }

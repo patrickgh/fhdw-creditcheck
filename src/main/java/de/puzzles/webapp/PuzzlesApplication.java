@@ -76,7 +76,7 @@ public class PuzzlesApplication extends WebApplication {
 
             @Override
             public String convertToString(CreditState value, Locale locale) {
-                return new ResourceModel("state."+value.toString(), value.toString()).getObject();
+                return new ResourceModel("state." + value.toString(), value.toString()).getObject();
             }
         });
         return locator;

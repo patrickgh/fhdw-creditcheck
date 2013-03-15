@@ -41,7 +41,7 @@ public class NewCreditRequestPage extends BasePage {
                 if (newStep instanceof SpendingsStep) { percent = 60; }
                 if (newStep instanceof InsuranceStep) { percent = 80; }
                 if (newStep instanceof OverviewStep) { percent = 99; }
-                if (newStep instanceof ConfirmationStep) {percent= 100;}
+                if (newStep instanceof ConfirmationStep) {percent = 100;}
                 updateProgressBar(percent);
             }
         });

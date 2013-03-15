@@ -197,13 +197,14 @@ public class DatabaseConnector {
         try {
             String sql = "SELECT CONCAT(firstname, ' ', lastname) AS name, id FROM consultants WHERE id = ?";
             PreparedStatement stmt = dbConnection.prepareStatement(sql);
-            stmt.setInt(1,id);
+            stmt.setInt(1, id);
             stmt.execute();
             ResultSet result = stmt.getResultSet();
-            if(result.next() && result.isLast()) {
+            if (result.next() && result.isLast()) {
                 name = result.getString("name");
             }
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) {
             e.printStackTrace();
         }
         return name;

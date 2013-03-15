@@ -30,11 +30,11 @@ public class RepaymentPlanPanel extends GenericPanel<List<RepaymentPlan.Entry>> 
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        add(new ListView<RepaymentPlan.Entry>("table",getModel()) {
+        add(new ListView<RepaymentPlan.Entry>("table", getModel()) {
             @Override
             protected void populateItem(ListItem<RepaymentPlan.Entry> item) {
                 CompoundPropertyModel<RepaymentPlan.Entry> model = new CompoundPropertyModel<RepaymentPlan.Entry>(item.getModel());
-                item.add(new Label("year",item.getIndex()));
+                item.add(new Label("year", item.getIndex()));
                 item.add(new Label("rate", model.<Double>bind("rate")));
                 item.add(new Label("intrest", model.<Double>bind("interestPayment")));
                 item.add(new Label("restdebt", model.<Double>bind("restDebt")));

@@ -44,7 +44,7 @@ public class CreditDetailsPage extends RequiresLoginPage {
             }
             else {
                 final CompoundPropertyModel<CreditRequest> model = new CompoundPropertyModel<CreditRequest>(request);
-                add(new Link("back"){
+                add(new Link("back") {
                     @Override
                     public void onClick() {
                         setResponsePage(DashboardPage.class);
@@ -60,7 +60,7 @@ public class CreditDetailsPage extends RequiresLoginPage {
                 add(new Label("adress", new AbstractReadOnlyModel<String>() {
                     @Override
                     public String getObject() {
-                        return model.getObject().getCustomer().getStreet() + ", "+ model.getObject().getCustomer().getZipcode() + " " + model.getObject().getCustomer().getCity();
+                        return model.getObject().getCustomer().getStreet() + ", " + model.getObject().getCustomer().getZipcode() + " " + model.getObject().getCustomer().getCity();
                     }
                 }));
                 add(new Label("birthdate", model.<Date>bind("customer.birthday")));
@@ -125,10 +125,10 @@ public class CreditDetailsPage extends RequiresLoginPage {
                             public String getObject() {
                                 String s = item.getModelObject().getDescription();
                                 if (item.getModelObject().getDescription1() != null && item.getModelObject().getDescription1().length() > 0) {
-                                    s+=", "+ item.getModelObject().getDescription1();
+                                    s += ", " + item.getModelObject().getDescription1();
                                 }
                                 if (item.getModelObject().getDescription2() != null && item.getModelObject().getDescription2().length() > 0) {
-                                    s+=", "+ item.getModelObject().getDescription2();
+                                    s += ", " + item.getModelObject().getDescription2();
                                 }
                                 return s;
                             }
@@ -192,10 +192,10 @@ public class CreditDetailsPage extends RequiresLoginPage {
                             public String getObject() {
                                 String s = item.getModelObject().getDescription();
                                 if (item.getModelObject().getDescription1() != null && item.getModelObject().getDescription1().length() > 0) {
-                                    s+=", "+ item.getModelObject().getDescription1();
+                                    s += ", " + item.getModelObject().getDescription1();
                                 }
                                 if (item.getModelObject().getDescription2() != null && item.getModelObject().getDescription2().length() > 0) {
-                                    s+=", "+ item.getModelObject().getDescription2();
+                                    s += ", " + item.getModelObject().getDescription2();
                                 }
                                 return s;
                             }
@@ -210,7 +210,6 @@ public class CreditDetailsPage extends RequiresLoginPage {
                         item.add(value);
                     }
                 });
-
 
                 add(new Label("incomeTotal", resultField.getModel()));
                 add(new Label("spendingTotal", resultSpendings.getModel()));

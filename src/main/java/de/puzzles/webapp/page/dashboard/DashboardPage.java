@@ -1,7 +1,6 @@
 package de.puzzles.webapp.page.dashboard;
 
 import de.puzzles.core.domain.CreditRequest;
-import de.puzzles.core.domain.CreditState;
 import de.puzzles.webapp.components.CreditRequestDataProvider;
 import de.puzzles.webapp.components.InfoButtonPanel;
 import de.puzzles.webapp.page.RequiresLoginPage;
@@ -12,7 +11,6 @@ import org.apache.wicket.extensions.markup.html.form.DateTextField;
 import org.apache.wicket.extensions.markup.html.repeater.data.grid.ICellPopulator;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.ISortState;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.ISortStateLocator;
-import org.apache.wicket.extensions.markup.html.repeater.data.table.AbstractColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.DataTable;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.PropertyColumn;
@@ -79,10 +77,10 @@ public class DashboardPage extends RequiresLoginPage {
 
     private List<? extends IColumn<CreditRequest, String>> generateColumns() {
         List<IColumn<CreditRequest, String>> list = new ArrayList<IColumn<CreditRequest, String>>();
-        list.add(new PropertyColumn<CreditRequest, String>(new Model<String>(""),"id"){
+        list.add(new PropertyColumn<CreditRequest, String>(new Model<String>(""), "id") {
             @Override
             public void populateItem(Item<ICellPopulator<CreditRequest>> item, String componentId, final IModel<CreditRequest> rowModel) {
-                item.add(new InfoButtonPanel(componentId,rowModel.getObject().getId()));
+                item.add(new InfoButtonPanel(componentId, rowModel.getObject().getId()));
             }
         });
         list.add(new PropertyColumn<CreditRequest, String>(new Model<String>("Vorname"), "customer.firstname", "customer.firstname"));

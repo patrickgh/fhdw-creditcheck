@@ -109,8 +109,8 @@ public class RepaymentPlan implements Serializable {
         repaymentRates[0] = 0.0;
         for (int i = 1; i <= getTableSize(); i++) {
             repaymentRates[i] = rate;
-            if((restDebtAmount[i-1] + interestPayments[i]) < rate) {
-                repaymentRates[i] = restDebtAmount[i-1] + interestPayments[i];
+            if ((restDebtAmount[i - 1] + interestPayments[i]) < rate) {
+                repaymentRates[i] = restDebtAmount[i - 1] + interestPayments[i];
             }
         }
         return repaymentRates;
@@ -127,14 +127,14 @@ public class RepaymentPlan implements Serializable {
         calculateInterestPayments();
         calculateRepaymentRates();
         List<Entry> list = new ArrayList<Entry>();
-        for (int i=0; i<getTableSize();i++) {
-            list.add(new Entry(getRestDebtAmount()[i],getInterestPayments()[i],getRepaymentRates()[i]));
+        for (int i = 0; i < getTableSize(); i++) {
+            list.add(new Entry(getRestDebtAmount()[i], getInterestPayments()[i], getRepaymentRates()[i]));
         }
         return list;
     }
 
+    public class Entry implements Serializable {
 
-    public class Entry implements Serializable{
         Double restDebt;
         Double interestPayment;
         Double rate;

@@ -119,7 +119,7 @@ public class OverviewStep extends WizardStep {
         add(new Label("adress", new AbstractReadOnlyModel<String>() {
             @Override
             public String getObject() {
-                return requestModel.getObject().getCustomer().getStreet() + ", "+ requestModel.getObject().getCustomer().getZipcode() + " " + requestModel.getObject().getCustomer().getCity();
+                return requestModel.getObject().getCustomer().getStreet() + ", " + requestModel.getObject().getCustomer().getZipcode() + " " + requestModel.getObject().getCustomer().getCity();
             }
         }));
         add(new Label("phone", requestModel.<String>bind("customer.telephone")));

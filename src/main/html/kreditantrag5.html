@@ -99,7 +99,6 @@
                 <legend>Schritt 5 von 5 - Zusammenfassung</legend>
 
 
-
                 <p><b>Persönliche Daten:</b></p>
 
                 <div class="span6 offset3">
@@ -167,7 +166,7 @@
 
                 <br><br><br><br>
 
-               <p><b>Geben Sie Ihre gewünschte Kreditbedingungen ein:</b></p>
+                <p><b>Geben Sie Ihre gewünschte Kreditbedingungen ein:</b></p>
 
                 <br>
 
@@ -184,7 +183,8 @@
                         <tr>
                             <td colspan="3" valign="top">Kreditart:</td>
                             <td colspan="3"><input type="checkbox" name="typeOfCredit"> Feste Tilgungssumme<br>
-                                <input type="checkbox" name="typeOfCredit"> Feste Laufzeit</td>
+                                <input type="checkbox" name="typeOfCredit"> Feste Laufzeit
+                            </td>
                         </tr>
                         <tr>
                             <td colspan="3">Laufzeit:</td>
@@ -242,26 +242,28 @@
 
 
                         <!-- Modal -->
-                                    <div id="lastStepModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                            <h3 id="myModalLabel">Kreditantrag abgesendet</h3>
-                                        </div>
-                                        <div class="modal-body">
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <p>Ihr Kreditantrag wurde erfolgreich abgesendet.</p>
-                                            <br>
-                                            <p>Ihr Bankberater wird sich in Kürze mit Ihnen in Verbindung setzten, um den Kreditantrag persönlich zu besprechen.</p>
-                                            <br>
-                                            <br>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                                            <button class="btn btn-primary">Fertig</button>
-                                        </div>
-                                    </div>
+                        <div id="lastStepModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h3 id="myModalLabel">Kreditantrag abgesendet</h3>
+                            </div>
+                            <div class="modal-body">
+                                <br>
+                                <br>
+                                <br>
+
+                                <p>Ihr Kreditantrag wurde erfolgreich abgesendet.</p>
+                                <br>
+
+                                <p>Ihr Bankberater wird sich in Kürze mit Ihnen in Verbindung setzten, um den Kreditantrag persönlich zu besprechen.</p>
+                                <br>
+                                <br>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                                <button class="btn btn-primary">Fertig</button>
+                            </div>
+                        </div>
                     </div>
 
         </form>

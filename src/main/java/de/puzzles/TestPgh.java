@@ -19,11 +19,11 @@ public class TestPgh {
 
         plan.generateRepaymentPlan();
 
-        for (int i = 0; i<= plan.getTableSize(); i++){
-            System.out.print("jahr: "+i);
+        for (int i = 0; i <= plan.getTableSize(); i++) {
+            System.out.print("jahr: " + i);
             System.out.print("\t rate: " + plan.getRepaymentRates()[i]);
             System.out.print("\t zinsen: " + plan.getInterestPayments()[i]);
-            System.out.println("\t rest: "+ plan.getRestDebtAmount()[i]);
+            System.out.println("\t rest: " + plan.getRestDebtAmount()[i]);
         }
 
     }
