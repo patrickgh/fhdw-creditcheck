@@ -1,5 +1,6 @@
-package de.puzzles.webapp.page.newrequest;
+package de.puzzles.webapp.components.panel;
 
+import de.puzzles.core.domain.RepaymentEntry;
 import de.puzzles.core.domain.RepaymentPlan;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -15,25 +16,25 @@ import java.util.List;
  * @author Patrick Groß-Holtwick
  *         Date: 13.03.13
  */
-public class RepaymentPlanPanel extends GenericPanel<List<RepaymentPlan.Entry>> {
+public class RepaymentPlanPanel extends GenericPanel<List<RepaymentEntry>> {
 
     public RepaymentPlanPanel(String id) {
         super(id);
         RepaymentPlan plan = new RepaymentPlan();
-        setModel(new ListModel<RepaymentPlan.Entry>(plan.generateRepaymentPlan()));
+        setModel(new ListModel<RepaymentEntry>(plan.generateRepaymentPlan()));
     }
 
-    public RepaymentPlanPanel(String id, IModel<List<RepaymentPlan.Entry>> model) {
+    public RepaymentPlanPanel(String id, IModel<List<RepaymentEntry>> model) {
         super(id, model);
     }
 
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        add(new ListView<RepaymentPlan.Entry>("table", getModel()) {
+        add(new ListView<RepaymentEntry>("table", getModel()) {
             @Override
-            protected void populateItem(ListItem<RepaymentPlan.Entry> item) {
-                CompoundPropertyModel<RepaymentPlan.Entry> model = new CompoundPropertyModel<RepaymentPlan.Entry>(item.getModel());
+            protected void populateItem(ListItem<RepaymentEntry> item) {
+                CompoundPropertyModel<RepaymentEntry> model = new CompoundPropertyModel<RepaymentEntry>(item.getModel());
                 item.add(new Label("year", item.getIndex()));
                 item.add(new Label("rate", model.<Double>bind("rate")));
                 item.add(new Label("intrest", model.<Double>bind("interestPayment")));

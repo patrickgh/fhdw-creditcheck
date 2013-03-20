@@ -1,4 +1,4 @@
-package de.puzzles.webapp.components;
+package de.puzzles.webapp.components.panel;
 
 import de.puzzles.webapp.page.dashboard.CreditDetailsPage;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;

@@ -21,19 +21,18 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created with IntelliJ IDEA.
+ * This class handles the database connection and provides the methods for accessing the data. It is build as a java singleton
+ * so that there is only one database connection open at any time.
  *
  * @author Patrick Groß-Holtwick
- *         Date: 28.02.13
- *         Time: 12:15
- *         To change this template use File | Settings | File Templates.
  */
-public class DatabaseConnector {
+public final class DatabaseConnector {
 
     public static final String DEFAULT_URL = "jdbc:mysql://localhost/puzzles";
     public static final String DEFAULT_USER = "root";
     public static final String DEFAULT_PASSWORD = "";
-    private static DatabaseConnector INSTANCE = new DatabaseConnector();
+    public static final String VALUE = "value";
+    private static final DatabaseConnector INSTANCE = new DatabaseConnector();
     private Connection dbConnection; // prepare connection
 
     private DatabaseConnector() {
@@ -49,11 +48,11 @@ public class DatabaseConnector {
         }
         catch (ClassNotFoundException err) {
             System.out.println("DB-Driver nicht gefunden!");
-            System.out.println(err);
+            err.printStackTrace();
         }
         catch (SQLException err) {
             System.out.println("Connect nicht möglich");
-            System.out.println(err);
+            err.printStackTrace();
         }
     }
 
@@ -152,7 +151,7 @@ public class DatabaseConnector {
                                                  result.getString("description"),
                                                  result.getString("description1"),
                                                  result.getString("description2"),
-                                                 result.getDouble("value")));
+                                                 result.getDouble(VALUE)));
             }
         }
         catch (SQLException e) {
@@ -287,7 +286,7 @@ public class DatabaseConnector {
                 stmt.execute();
                 resultSet = stmt.getResultSet();
                 if (resultSet.next() && resultSet.isLast()) {
-                    result += Double.valueOf(resultSet.getString("value"));
+                    result += Double.valueOf(resultSet.getString(VALUE));
                 }
             }
             else if (persons > 1) {
@@ -296,7 +295,7 @@ public class DatabaseConnector {
                 stmt.execute();
                 resultSet = stmt.getResultSet();
                 if (resultSet.next() && resultSet.isLast()) {
-                    result += Double.valueOf(resultSet.getString("value"));
+                    result += Double.valueOf(resultSet.getString(VALUE));
                 }
                 if (persons > 2) {
                     stmt = dbConnection.prepareStatement(sql);
@@ -304,7 +303,7 @@ public class DatabaseConnector {
                     stmt.execute();
                     resultSet = stmt.getResultSet();
                     if (resultSet.next() && resultSet.isLast()) {
-                        result += (Double.valueOf(resultSet.getString("value")) * (persons - 2));
+                        result += (Double.valueOf(resultSet.getString(VALUE)) * (persons - 2));
                     }
                 }
             }
@@ -323,7 +322,7 @@ public class DatabaseConnector {
             stmt.execute(sql);
             ResultSet resultSet = stmt.getResultSet();
             while (resultSet.next()) {
-                result.put(resultSet.getString("description"), Double.valueOf(resultSet.getString("value")));
+                result.put(resultSet.getString("description"), Double.valueOf(resultSet.getString(VALUE)));
             }
         }
         catch (SQLException e) {
@@ -339,7 +338,7 @@ public class DatabaseConnector {
             stmt.execute("SELECT value FROM config WHERE category LIKE 'BASE_INTEREST'");
             ResultSet result = stmt.getResultSet();
             if (result.next() && result.isLast()) {
-                String temp = result.getString("value");
+                String temp = result.getString(VALUE);
                 interest = Double.valueOf(temp) / 100.0;
             }
         }

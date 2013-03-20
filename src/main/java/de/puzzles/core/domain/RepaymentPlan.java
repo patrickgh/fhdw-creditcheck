@@ -2,6 +2,7 @@ package de.puzzles.core.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -57,25 +58,23 @@ public class RepaymentPlan implements Serializable {
     }
 
     public double[] getRepaymentRates() {
-        return repaymentRates;
+        return Arrays.copyOf(repaymentRates, repaymentRates.length);
     }
 
     public double[] getRestDebtAmount() {
-        return restDebtAmount;
+        return Arrays.copyOf(restDebtAmount, restDebtAmount.length);
     }
 
     public double[] getInterestPayments() {
-        return interestPayments;
+        return Arrays.copyOf(interestPayments, interestPayments.length);
     }
 
     private double calculateRate() {
-        double rate = amount * ((interest * Math.pow(interest + 1, duration)) / (Math.pow(1 + interest, duration) - 1));
-        return rate;
+        return amount * ((interest * Math.pow(interest + 1, duration)) / (Math.pow(1 + interest, duration) - 1));
     }
 
     private double calculateDuration() {
-        double tempDuration = -1 * (Math.log(1 - ((interest * amount) / rate)) / Math.log(1 + interest));
-        return tempDuration;
+        return -1 * (Math.log(1 - ((interest * amount) / rate)) / Math.log(1 + interest));
     }
 
     public int getTableSize() {
@@ -116,7 +115,7 @@ public class RepaymentPlan implements Serializable {
         return repaymentRates;
     }
 
-    public List<Entry> generateRepaymentPlan() {
+    public List<RepaymentEntry> generateRepaymentPlan() {
         if (rate == null && duration != null) {
             rate = calculateRate();
         }
@@ -126,48 +125,11 @@ public class RepaymentPlan implements Serializable {
         calculateRestDebtAmount();
         calculateInterestPayments();
         calculateRepaymentRates();
-        List<Entry> list = new ArrayList<Entry>();
+        List<RepaymentEntry> list = new ArrayList<RepaymentEntry>();
         for (int i = 0; i < getTableSize(); i++) {
-            list.add(new Entry(getRestDebtAmount()[i], getInterestPayments()[i], getRepaymentRates()[i]));
+            list.add(new RepaymentEntry(getRestDebtAmount()[i], getInterestPayments()[i], getRepaymentRates()[i]));
         }
         return list;
-    }
-
-    public class Entry implements Serializable {
-
-        Double restDebt;
-        Double interestPayment;
-        Double rate;
-
-        public Entry(Double restDebt, Double interestPayment, Double rate) {
-            this.restDebt = restDebt;
-            this.interestPayment = interestPayment;
-            this.rate = rate;
-        }
-
-        public Double getRestDebt() {
-            return restDebt;
-        }
-
-        public void setRestDebt(Double restDebt) {
-            this.restDebt = restDebt;
-        }
-
-        public Double getInterestPayment() {
-            return interestPayment;
-        }
-
-        public void setInterestPayment(Double interestPayment) {
-            this.interestPayment = interestPayment;
-        }
-
-        public Double getRate() {
-            return rate;
-        }
-
-        public void setRate(Double rate) {
-            this.rate = rate;
-        }
     }
 }
 

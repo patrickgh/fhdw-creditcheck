@@ -1,4 +1,4 @@
-package de.puzzles.webapp.components.choiceprovider;
+package de.puzzles.webapp.components.provider;
 
 import com.vaynberg.wicket.select2.Response;
 import com.vaynberg.wicket.select2.TextChoiceProvider;
@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public class CarCostChoiceProvider extends TextChoiceProvider<Double> {
 
-    Map<String, Double> data = new HashMap<String, Double>();
+    private Map<String, Double> data = new HashMap<String, Double>();
 
     public CarCostChoiceProvider() {
         data = DatabaseConnector.getInstance().getCarCostTypes();

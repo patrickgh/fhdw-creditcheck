@@ -1,10 +1,10 @@
-package de.puzzles.webapp.page.newrequest.steps;
+package de.puzzles.webapp.page.newrequest.wizard.steps;
 
 import de.puzzles.core.DatabaseConnector;
 import de.puzzles.core.domain.CreditRequest;
-import de.puzzles.core.domain.RepaymentPlan;
+import de.puzzles.core.domain.RepaymentEntry;
 import de.puzzles.core.domain.Transaction;
-import de.puzzles.webapp.page.newrequest.RepaymentPlanPanel;
+import de.puzzles.webapp.components.panel.RepaymentPlanPanel;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.extensions.wizard.WizardStep;
@@ -134,9 +134,9 @@ public class OverviewStep extends WizardStep {
             }
         }));
 
-        repaymentPlan = new RepaymentPlanPanel("repaymentPlan", new AbstractReadOnlyModel<List<RepaymentPlan.Entry>>() {
+        repaymentPlan = new RepaymentPlanPanel("repaymentPlan", new AbstractReadOnlyModel<List<RepaymentEntry>>() {
             @Override
-            public List<RepaymentPlan.Entry> getObject() {
+            public List<RepaymentEntry> getObject() {
                 return requestModel.getObject().getRepaymentPlan().generateRepaymentPlan();
             }
         });

@@ -3,11 +3,11 @@ package de.puzzles.webapp.page.dashboard;
 import de.puzzles.core.DatabaseConnector;
 import de.puzzles.core.domain.CreditRequest;
 import de.puzzles.core.domain.CreditState;
-import de.puzzles.core.domain.RepaymentPlan;
+import de.puzzles.core.domain.RepaymentEntry;
 import de.puzzles.core.domain.Transaction;
 import de.puzzles.core.util.PuzzlesUtils;
+import de.puzzles.webapp.components.panel.RepaymentPlanPanel;
 import de.puzzles.webapp.page.RequiresLoginPage;
-import de.puzzles.webapp.page.newrequest.RepaymentPlanPanel;
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -31,7 +31,7 @@ import java.util.List;
  */
 public class CreditDetailsPage extends RequiresLoginPage {
 
-    CreditRequest request;
+    private CreditRequest request;
 
     public CreditDetailsPage() {
         super();
@@ -221,9 +221,9 @@ public class CreditDetailsPage extends RequiresLoginPage {
                     }
                 }));
 
-                add(new RepaymentPlanPanel("repaymentPlan", new AbstractReadOnlyModel<List<RepaymentPlan.Entry>>() {
+                add(new RepaymentPlanPanel("repaymentPlan", new AbstractReadOnlyModel<List<RepaymentEntry>>() {
                     @Override
-                    public List<RepaymentPlan.Entry> getObject() {
+                    public List<RepaymentEntry> getObject() {
                         return model.getObject().getRepaymentPlan().generateRepaymentPlan();
                     }
                 }));

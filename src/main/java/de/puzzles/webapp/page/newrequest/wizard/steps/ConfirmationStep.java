@@ -1,4 +1,4 @@
-package de.puzzles.webapp.page.newrequest.steps;
+package de.puzzles.webapp.page.newrequest.wizard.steps;
 
 import org.apache.wicket.extensions.wizard.WizardStep;
 

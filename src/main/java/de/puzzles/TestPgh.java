@@ -10,6 +10,9 @@ import de.puzzles.core.domain.RepaymentPlan;
  */
 public class TestPgh {
 
+    private TestPgh() {
+    }
+
     public static void main(String[] args) {
         RepaymentPlan plan = new RepaymentPlan();
 

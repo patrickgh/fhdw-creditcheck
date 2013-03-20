@@ -1,13 +1,13 @@
 package de.puzzles.webapp.page.newrequest;
 
 import de.puzzles.webapp.page.BasePage;
-import de.puzzles.webapp.page.newrequest.steps.ConfirmationStep;
-import de.puzzles.webapp.page.newrequest.steps.EarningsStep;
-import de.puzzles.webapp.page.newrequest.steps.InsuranceStep;
-import de.puzzles.webapp.page.newrequest.steps.OverviewStep;
-import de.puzzles.webapp.page.newrequest.steps.PersonalInformationStep;
-import de.puzzles.webapp.page.newrequest.steps.SpendingsStep;
 import de.puzzles.webapp.page.newrequest.wizard.NewCreditRequestWizard;
+import de.puzzles.webapp.page.newrequest.wizard.steps.ConfirmationStep;
+import de.puzzles.webapp.page.newrequest.wizard.steps.EarningsStep;
+import de.puzzles.webapp.page.newrequest.wizard.steps.InsuranceStep;
+import de.puzzles.webapp.page.newrequest.wizard.steps.OverviewStep;
+import de.puzzles.webapp.page.newrequest.wizard.steps.PersonalInformationStep;
+import de.puzzles.webapp.page.newrequest.wizard.steps.SpendingsStep;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.extensions.wizard.IWizardStep;
@@ -23,7 +23,7 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
  */
 public class NewCreditRequestPage extends BasePage {
 
-    WebMarkupContainer progressBar = new WebMarkupContainer("progress");
+    private WebMarkupContainer progressBar = new WebMarkupContainer("progress");
 
     public NewCreditRequestPage() {
         super();

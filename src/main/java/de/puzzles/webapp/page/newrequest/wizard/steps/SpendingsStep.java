@@ -1,10 +1,10 @@
-package de.puzzles.webapp.page.newrequest.steps;
+package de.puzzles.webapp.page.newrequest.wizard.steps;
 
 import com.vaynberg.wicket.select2.Select2Choice;
 import de.puzzles.core.DatabaseConnector;
 import de.puzzles.core.domain.Transaction;
 import de.puzzles.core.util.PuzzlesUtils;
-import de.puzzles.webapp.components.choiceprovider.CarCostChoiceProvider;
+import de.puzzles.webapp.components.provider.CarCostChoiceProvider;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.extensions.wizard.WizardStep;
@@ -21,19 +21,20 @@ import java.util.List;
  */
 public class SpendingsStep extends WizardStep {
 
-    Transaction rent = new Transaction(null, null, "Miete", "", "", null);
-    Transaction incidentials = new Transaction(null, null, "Wohnnebenkosten", "", "", null);
-    Transaction phone = new Transaction(null, null, "Telefon/Internet/Handy", "", "", null);
-    Transaction savingplans = new Transaction(null, null, "Sparverträge", "", "", null);
-    Transaction livingcosts = new Transaction(null, null, "Lebenshaltungskosten", "0 Personen", "", 0.0);
-    Transaction carcosts = new Transaction(null, null, "KFZ-Kosten", "", "", null);
-    Transaction additional = new Transaction(null, null, "", "", "", null);
-    TextField<Double> resultField;
+    public static final String ONCHANGE = "onchange";
+    private Transaction rent = new Transaction(null, null, "Miete", "", "", null);
+    private Transaction incidentials = new Transaction(null, null, "Wohnnebenkosten", "", "", null);
+    private Transaction phone = new Transaction(null, null, "Telefon/Internet/Handy", "", "", null);
+    private Transaction savingplans = new Transaction(null, null, "Sparverträge", "", "", null);
+    private Transaction livingcosts = new Transaction(null, null, "Lebenshaltungskosten", "0 Personen", "", 0.0);
+    private Transaction carcosts = new Transaction(null, null, "KFZ-Kosten", "", "", null);
+    private Transaction additional = new Transaction(null, null, "", "", "", null);
+    private TextField<Double> resultField;
 
     public SpendingsStep() {
         super();
         TextField<Double> rent = new TextField<Double>("rent", new PropertyModel<Double>(this, "rent.value"));
-        rent.add(new AjaxFormComponentUpdatingBehavior("onchange") {
+        rent.add(new AjaxFormComponentUpdatingBehavior(ONCHANGE) {
             @Override
             protected void onUpdate(AjaxRequestTarget ajaxRequestTarget) {
                 updateResultField(ajaxRequestTarget);

@@ -1,8 +1,8 @@
 package de.puzzles.webapp.page.dashboard;
 
 import de.puzzles.core.domain.CreditRequest;
-import de.puzzles.webapp.components.CreditRequestDataProvider;
-import de.puzzles.webapp.components.InfoButtonPanel;
+import de.puzzles.webapp.components.panel.InfoButtonPanel;
+import de.puzzles.webapp.components.provider.CreditRequestDataProvider;
 import de.puzzles.webapp.page.RequiresLoginPage;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
@@ -37,7 +37,7 @@ import java.util.List;
  */
 public class DashboardPage extends RequiresLoginPage {
 
-    public static int ROWS_PER_PAGE = 15;
+    public static final int ROWS_PER_PAGE = 15;
 
     private DateTextField startDate;
     private DateTextField endDate;

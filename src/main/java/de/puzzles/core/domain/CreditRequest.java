@@ -51,7 +51,7 @@ public class CreditRequest implements Serializable {
     }
 
     public Date getCreationDate() {
-        return creationDate;
+        return new Date(creationDate.getTime());
     }
 
     public void setCreationDate(Date creationDate) {
@@ -71,7 +71,7 @@ public class CreditRequest implements Serializable {
     /**
      * This method adds a transaction to the list of the transactions, which are related to the creditrequest.
      *
-     * @param trans
+     * @param trans the transaction object which should be added
      */
     public void addTransaction(Transaction trans) {
         if (trans != null) {

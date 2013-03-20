@@ -1,4 +1,4 @@
-package de.puzzles.webapp.components;
+package de.puzzles.webapp.components.provider;
 
 import de.puzzles.core.DatabaseConnector;
 import de.puzzles.core.domain.CreditRequest;

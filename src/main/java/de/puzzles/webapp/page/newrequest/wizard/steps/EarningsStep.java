@@ -1,4 +1,4 @@
-package de.puzzles.webapp.page.newrequest.steps;
+package de.puzzles.webapp.page.newrequest.wizard.steps;
 
 import de.puzzles.core.domain.Transaction;
 import de.puzzles.webapp.components.listeditor.ListEditor;
@@ -22,10 +22,8 @@ import java.util.List;
  */
 public class EarningsStep extends WizardStep {
 
-    List<Transaction> incomeList = new ArrayList<Transaction>();
-    List<Transaction> additionalList = new ArrayList<Transaction>();
-
-    private TextField<Double> resultField;
+    private List<Transaction> incomeList = new ArrayList<Transaction>();
+    private List<Transaction> additionalList = new ArrayList<Transaction>();
 
     public EarningsStep() {
         super();
@@ -78,7 +76,7 @@ public class EarningsStep extends WizardStep {
             }
         }.setDefaultFormProcessing(false));
 
-        resultField = new TextField<Double>("total", new AbstractReadOnlyModel<Double>() {
+        TextField<Double> resultField = new TextField<Double>("total", new AbstractReadOnlyModel<Double>() {
             @Override
             public Double getObject() {
                 Double sum = 0.0;

@@ -6,7 +6,11 @@ import java.util.List;
 
 /**
  * Wicket ListEditor Component
+ * Enables the user to add/edit/delete data to a list object.
  * Source: http://wicketinaction.com/2008/10/building-a-listeditor-form-component/
+ *
+ * @author Martijn Dashorst
+ * @author Eelco Hillenius
  */
 public abstract class EditorButton extends Button {
 

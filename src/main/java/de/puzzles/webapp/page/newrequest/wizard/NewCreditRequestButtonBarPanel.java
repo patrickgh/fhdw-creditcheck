@@ -14,11 +14,11 @@ import org.apache.wicket.markup.html.panel.Panel;
  * @author Patrick Groß-Holtwick
  *         Date: 08.03.13
  */
-public class NewCreditRequestButtonBar extends Panel implements IDefaultButtonProvider {
+public class NewCreditRequestButtonBarPanel extends Panel implements IDefaultButtonProvider {
 
     private static final long serialVersionUID = 1L;
 
-    public NewCreditRequestButtonBar(final String id, final IWizard wizard) {
+    public NewCreditRequestButtonBarPanel(final String id, final IWizard wizard) {
         super(id);
         add(new PreviousButton("previous", wizard));
 

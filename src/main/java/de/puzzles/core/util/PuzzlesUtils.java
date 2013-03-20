@@ -34,17 +34,17 @@ public final class PuzzlesUtils {
         }
         catch (java.security.NoSuchAlgorithmException e) {
             System.out.println("NoSuchAlgorithmException while creating MD5 hash");
-            System.out.println(e);
+            e.printStackTrace();
         }
         return null;
     }
 
     /**
-     * This Method returns the enum value from a given integer value.
-     * This method also checks if the integer is related to a enum value.
+     * This Method returns the CreditState enum value from a given integer value.
+     * If there is no suitable CreditState it returns null.
      *
-     * @param value
-     * @return enum value
+     * @param value the integer value
+     * @return the enum value
      */
     public static CreditState getCreditStateByValue(Integer value) {
         if (value != null) {
@@ -56,6 +56,13 @@ public final class PuzzlesUtils {
         return null;
     }
 
+    /**
+     * This method is similar to Integer.valueOf(), but instead of throwing an NumberFormatException it returns null
+     * if there is an error.
+     *
+     * @param number the string which contains the number
+     * @return the integer value (or null)
+     */
     public static Integer parseInt(String number) {
         try {
             return Integer.valueOf(number);

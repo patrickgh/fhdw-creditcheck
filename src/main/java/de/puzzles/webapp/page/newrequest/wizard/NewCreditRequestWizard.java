@@ -3,12 +3,12 @@ package de.puzzles.webapp.page.newrequest.wizard;
 import de.puzzles.core.DatabaseConnector;
 import de.puzzles.core.domain.CreditRequest;
 import de.puzzles.core.domain.Transaction;
-import de.puzzles.webapp.page.newrequest.steps.ConfirmationStep;
-import de.puzzles.webapp.page.newrequest.steps.EarningsStep;
-import de.puzzles.webapp.page.newrequest.steps.InsuranceStep;
-import de.puzzles.webapp.page.newrequest.steps.OverviewStep;
-import de.puzzles.webapp.page.newrequest.steps.PersonalInformationStep;
-import de.puzzles.webapp.page.newrequest.steps.SpendingsStep;
+import de.puzzles.webapp.page.newrequest.wizard.steps.ConfirmationStep;
+import de.puzzles.webapp.page.newrequest.wizard.steps.EarningsStep;
+import de.puzzles.webapp.page.newrequest.wizard.steps.InsuranceStep;
+import de.puzzles.webapp.page.newrequest.wizard.steps.OverviewStep;
+import de.puzzles.webapp.page.newrequest.wizard.steps.PersonalInformationStep;
+import de.puzzles.webapp.page.newrequest.wizard.steps.SpendingsStep;
 import org.apache.wicket.Component;
 import org.apache.wicket.extensions.wizard.Wizard;
 import org.apache.wicket.extensions.wizard.WizardModel;
@@ -108,6 +108,6 @@ public class NewCreditRequestWizard extends Wizard {
 
     @Override
     protected Component newButtonBar(String id) {
-        return new NewCreditRequestButtonBar(id, this);
+        return new NewCreditRequestButtonBarPanel(id, this);
     }
 }

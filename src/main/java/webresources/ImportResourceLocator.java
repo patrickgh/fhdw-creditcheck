@@ -1,13 +1,14 @@
 package webresources;
 
 /**
- * Created with IntelliJ IDEA.
+ * Marker class for web-resource locations.
+ * Wicket looks for the resource paths (css, js, images,..) relative to this class via a PackageResourceReference.
+ * Contains only default constructor with no operations.
  *
  * @author Patrick Groß-Holtwick
- *         Date: 02.03.13
- *         Time: 13:48
- *         To change this template use File | Settings | File Templates.
  */
 public class ImportResourceLocator {
 
+    public ImportResourceLocator() {
+    }
 }
