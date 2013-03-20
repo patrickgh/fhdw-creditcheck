@@ -51,11 +51,18 @@ public class CreditRequest implements Serializable {
     }
 
     public Date getCreationDate() {
-        return new Date(creationDate.getTime());
+        if (creationDate != null) {
+            return new Date(creationDate.getTime());
+        }
+        return null;
     }
 
     public void setCreationDate(Date creationDate) {
-        this.creationDate = new Date(creationDate.getTime());
+        if (creationDate != null) {
+            this.creationDate = new Date(creationDate.getTime());
+        } else {
+            this.creationDate = null;
+        }
     }
 
     public CreditState getState() {

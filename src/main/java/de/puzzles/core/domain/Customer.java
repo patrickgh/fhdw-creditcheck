@@ -54,7 +54,10 @@ public class Customer implements Serializable {
     }
 
     public Date getBirthday() {
-        return new Date(birthday.getTime());
+        if (birthday != null) {
+            return new Date(birthday.getTime());
+        }
+        return null;
     }
 
     public void setBirthday(Date birthday) {
