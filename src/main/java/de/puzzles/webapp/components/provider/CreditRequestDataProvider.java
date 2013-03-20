@@ -11,6 +11,9 @@ import java.util.Date;
 import java.util.Iterator;
 
 /**
+ * DataProvider for the table in DashboardPage. Queries the Database with the sort & search params every time the user does a request.
+ * The DataProvider is used by Wickets' DataTable component.
+ *
  * @author Patrick Groß-Holtwick
  *         Date: 10.03.13
  */
@@ -52,19 +55,19 @@ public class CreditRequestDataProvider extends SortableDataProvider<CreditReques
     }
 
     public Date getStartDate() {
-        return startDate;
+        return new Date(startDate.getTime());
     }
 
     public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+        this.startDate = new Date(startDate.getTime());
     }
 
     public Date getEndDate() {
-        return endDate;
+        return new Date(endDate.getTime());
     }
 
     public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+        this.endDate = new Date(endDate.getTime());
     }
 
     public String getSearchString() {

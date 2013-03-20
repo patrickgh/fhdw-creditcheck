@@ -8,7 +8,7 @@ import de.puzzles.core.domain.RepaymentPlan;
  * @author Patrick Groß-Holtwick
  *         Date: 12.03.13
  */
-public class TestPgh {
+public final class TestPgh {
 
     private TestPgh() {
     }

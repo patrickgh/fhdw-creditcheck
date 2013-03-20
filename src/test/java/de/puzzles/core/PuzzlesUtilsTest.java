@@ -5,12 +5,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
- * Created with IntelliJ IDEA.
- *
- * @author pgh
- *         Date: 05.03.13
- *         Time: 16:59
- *         To change this template use File | Settings | File Templates.
+ * Test-Class for the PuzzlesUtils unit tests.
+ * @author Patrick Groß-Holtwick
  */
 public class PuzzlesUtilsTest {
 

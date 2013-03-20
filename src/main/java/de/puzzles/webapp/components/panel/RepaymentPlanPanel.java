@@ -13,6 +13,8 @@ import org.apache.wicket.model.util.ListModel;
 import java.util.List;
 
 /**
+ * Panel for a RepaymentPlan table. Expects a given list with RepaymentEntry objects and renders the table (for example on CreditDetailsPage)
+ *
  * @author Patrick Groß-Holtwick
  *         Date: 13.03.13
  */

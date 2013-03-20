@@ -12,14 +12,17 @@ import java.nio.charset.Charset;
  */
 public final class PuzzlesUtils {
 
+    /**
+     * private constructor, because every method is static
+     */
     private PuzzlesUtils() {
     }
 
     /**
      * This Method generates a md5 hash of a given String.
      *
-     * @param input (String)
-     * @return (String)
+     * @param input String that should get hashed
+     * @return md5 String
      */
     public static String md5(String input) {
         String md5 = (input == null) ? "" : input;

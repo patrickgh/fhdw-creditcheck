@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Choice provider for the consultant field (during PersonalInformationStep). Queries the database for available choices and returns auto-complete values.
+ *
  * @author Patrick Groß-Holtwick
  *         Date: 06.03.13
  */

@@ -28,6 +28,8 @@ import java.util.Map;
  */
 public final class DatabaseConnector {
 
+    //TODO: refactor methods and call stmt.close() and result.close() at the end of every method
+
     public static final String DEFAULT_URL = "jdbc:mysql://localhost/puzzles";
     public static final String DEFAULT_USER = "root";
     public static final String DEFAULT_PASSWORD = "";

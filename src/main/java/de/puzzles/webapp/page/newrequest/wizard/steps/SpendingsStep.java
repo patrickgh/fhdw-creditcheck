@@ -43,7 +43,7 @@ public class SpendingsStep extends WizardStep {
         add(rent);
 
         TextField<Double> incidentials = new TextField<Double>("incidentials", new PropertyModel<Double>(this, "incidentials.value"));
-        incidentials.add(new AjaxFormComponentUpdatingBehavior("onchange") {
+        incidentials.add(new AjaxFormComponentUpdatingBehavior(ONCHANGE) {
             @Override
             protected void onUpdate(AjaxRequestTarget ajaxRequestTarget) {
                 updateResultField(ajaxRequestTarget);
@@ -52,7 +52,7 @@ public class SpendingsStep extends WizardStep {
         add(incidentials);
 
         TextField<Double> phone = new TextField<Double>("phone", new PropertyModel<Double>(this, "phone.value"));
-        phone.add(new AjaxFormComponentUpdatingBehavior("onchange") {
+        phone.add(new AjaxFormComponentUpdatingBehavior(ONCHANGE) {
             @Override
             protected void onUpdate(AjaxRequestTarget ajaxRequestTarget) {
                 updateResultField(ajaxRequestTarget);
@@ -61,7 +61,7 @@ public class SpendingsStep extends WizardStep {
         add(phone);
 
         TextField<Double> savingplans = new TextField<Double>("savingplans", new PropertyModel<Double>(this, "savingplans.value"));
-        savingplans.add(new AjaxFormComponentUpdatingBehavior("onchange") {
+        savingplans.add(new AjaxFormComponentUpdatingBehavior(ONCHANGE) {
             @Override
             protected void onUpdate(AjaxRequestTarget ajaxRequestTarget) {
                 updateResultField(ajaxRequestTarget);
@@ -70,7 +70,7 @@ public class SpendingsStep extends WizardStep {
         add(savingplans);
 
         TextField<Double> additional = new TextField<Double>("additionalValue", new PropertyModel<Double>(this, "additional.value"));
-        additional.add(new AjaxFormComponentUpdatingBehavior("onchange") {
+        additional.add(new AjaxFormComponentUpdatingBehavior(ONCHANGE) {
             @Override
             protected void onUpdate(AjaxRequestTarget ajaxRequestTarget) {
                 updateResultField(ajaxRequestTarget);
@@ -92,7 +92,7 @@ public class SpendingsStep extends WizardStep {
                 return "number";
             }
         };
-        persons.add(new AjaxFormComponentUpdatingBehavior("onchange") {
+        persons.add(new AjaxFormComponentUpdatingBehavior(ONCHANGE) {
             @Override
             protected void onUpdate(AjaxRequestTarget ajaxRequestTarget) {
                 Integer personCount = PuzzlesUtils.parseInt(persons.getModelObject());
@@ -113,7 +113,7 @@ public class SpendingsStep extends WizardStep {
         add(carcostLabel);
 
         Select2Choice<Double> carcost = new Select2Choice<Double>("carcost", new PropertyModel<Double>(this, "carcosts.value"), new CarCostChoiceProvider());
-        carcost.add(new AjaxFormComponentUpdatingBehavior("onchange") {
+        carcost.add(new AjaxFormComponentUpdatingBehavior(ONCHANGE) {
             @Override
             protected void onUpdate(AjaxRequestTarget ajaxRequestTarget) {
                 ajaxRequestTarget.add(carcostLabel);

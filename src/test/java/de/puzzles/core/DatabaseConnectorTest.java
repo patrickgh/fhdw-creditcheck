@@ -10,11 +10,8 @@ import org.testng.annotations.Test;
 import java.util.Date;
 
 /**
- * Created with IntelliJ IDEA.
- * User: pgh
- * Date: 28.02.13
- * Time: 13:31
- * To change this template use File | Settings | File Templates.
+ * Test-Class for the DatabaseConnector unit tests.
+ * @author Patrick Groß-Holtwick
  */
 public class DatabaseConnectorTest {
 

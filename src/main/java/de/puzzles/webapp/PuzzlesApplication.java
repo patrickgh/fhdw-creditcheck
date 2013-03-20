@@ -71,7 +71,7 @@ public class PuzzlesApplication extends WebApplication {
         locator.set(CreditState.class, new IConverter<CreditState>() {
             @Override
             public CreditState convertToObject(String value, Locale locale) {
-                return null;  //To change body of implemented methods use File | Settings | File Templates.
+                return null;
             }
 
             @Override
