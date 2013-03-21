@@ -138,7 +138,7 @@ LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
 INSERT INTO `customer` (`id`,`firstname`,`lastname`,`birthdate`,`street`,`city`,`zipcode`,`telephone`,`email`,`accountnumber`,`bankcode`)
 VALUES
-	(1,'Patrick','Groß-Holtwick','1991-04-26','Ehlentruper Weg 87','Bielefeld','33477','017691403382','patrickgh@web.de','1234','12123324'),
+	(1,'Patrick','Groß-Holtwick','1991-01-01','Teststraße 87','Bielefeld','12345','017600110011','patrickgh@web.de','1234','12123324'),
 	(2,'Hermann','Mels','2013-02-14','Burloer Straße 125','Borken','46325','0900123456','h.mels@gmx.de','123455','543211'),
 	(3,'Peter','Pan','2000-01-01','Sperber Straße 12','Bonn','46663','0174/35473893','p.pan@wunderland.de','00782345340000','1237632'),
 	(4,NULL,NULL,'2013-03-14',NULL,NULL,NULL,NULL,NULL,NULL,NULL),

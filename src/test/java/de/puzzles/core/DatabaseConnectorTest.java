@@ -33,10 +33,10 @@ public class DatabaseConnectorTest {
         customer.setAccountnumber("22334545");
         customer.setBankcode("blz");
         customer.setBirthday(new Date());
-        customer.setCity("Bocholt");
-        customer.setZipcode("46399");
+        customer.setCity("Bielefeld");
+        customer.setZipcode("12345");
         customer.setEmail("patrickgh@web.de");
-        customer.setStreet("Richterstraße 10");
+        customer.setStreet("Teststraße 10");
         customer.setTelephone("0000000");
 
         req.setCustomer(customer);
@@ -45,7 +45,7 @@ public class DatabaseConnectorTest {
         req.setState(CreditState.PENDING);
         req.getRepaymentPlan().setRate(100.0);
 
-        req.addTransaction(new Transaction(null, null, "Lohn/Gehalt", "Laudert Gmbh+Co KG", "", 450.0));
+        req.addTransaction(new Transaction(null, null, "Lohn/Gehalt", "FHDW", "", 450.0));
         req.addTransaction(new Transaction(null, null, "Miete", "Wohnung Bielefeld", "", -300.0));
 
         Integer resultId = conn.saveCreditrequest(req);
