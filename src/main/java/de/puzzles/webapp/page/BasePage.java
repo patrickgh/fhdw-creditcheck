@@ -16,12 +16,10 @@ import org.apache.wicket.resource.JQueryPluginResourceReference;
 import webresources.ImportResourceLocator;
 
 /**
- * Created with IntelliJ IDEA.
+ * Abstract Base page. Every page in this application extend this class. Contains markup & components which are on every page (for example the logout link, if a user is logged in). Also integrates the resource paths (css, images & javascript)
  *
  * @author Patrick Groß-Holtwick
  *         Date: 25.01.13
- *         Time: 14:06
- *         To change this template use File | Settings | File Templates.
  */
 public abstract class BasePage extends WebPage implements IAjaxIndicatorAware {
 

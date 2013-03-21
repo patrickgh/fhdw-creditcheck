@@ -18,6 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * Wizard step for the credit details. Contains an overview of the data (including repayment plan & creditworthiness) and form fields for the credit details (e.g. credit amount & credit duration).
  * @author Patrick Groß-Holtwick
  *         Date: 07.03.13
  */

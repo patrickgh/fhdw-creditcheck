@@ -13,12 +13,10 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.Model;
 
 /**
- * Created with IntelliJ IDEA.
+ * Login page or "home" page. Contains the login form & link to the NewCreditRequestPage.
  *
  * @author Patrick Groß-Holtwick
  *         Date: 02.03.13
- *         Time: 13:34
- *         To change this template use File | Settings | File Templates.
  */
 public class LoginPage extends BasePage {
 

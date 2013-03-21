@@ -16,6 +16,8 @@ import org.apache.wicket.validation.validator.EmailAddressValidator;
 import java.util.Date;
 
 /**
+ * Wizard step for the personal informations. Contains all form components for the personal informations (e.g. firstname, lastname, birthday,...)
+ *
  * @author Patrick Groß-Holtwick
  *         Date: 06.03.13
  */

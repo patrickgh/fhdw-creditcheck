@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Wizard for a new credit request. This class defines the order of the steps and handles the insertion in the database.
+ *
  * @author Patrick Groß-Holtwick
  *         Date: 06.03.13
  */
@@ -75,7 +77,7 @@ public class NewCreditRequestWizard extends Wizard {
         super.onFinish();
         if (!submitted) {
             List<Transaction> transactions = new ArrayList<Transaction>();
-            for (Transaction t : earningsStep.getTransactions()) {
+            for (Transaction t : getIncomes().getObject()) {
                 Transaction t1 = new Transaction();
                 t1.setDescription(t.getDescription());
                 t1.setDescription1(t.getDescription1());
@@ -83,15 +85,7 @@ public class NewCreditRequestWizard extends Wizard {
                 t1.setValue(Math.abs(t.getValue()));
                 transactions.add(t1);
             }
-            for (Transaction t : spendingsStep.getTransactions()) {
-                Transaction t1 = new Transaction();
-                t1.setDescription(t.getDescription());
-                t1.setDescription1(t.getDescription1());
-                t1.setDescription2(t.getDescription2());
-                t1.setValue(Math.abs(t.getValue()) * -1);
-                transactions.add(t1);
-            }
-            for (Transaction t : insuranceStep.getTransactions()) {
+            for (Transaction t : getSpendings().getObject()) {
                 Transaction t1 = new Transaction();
                 t1.setDescription(t.getDescription());
                 t1.setDescription1(t.getDescription1());

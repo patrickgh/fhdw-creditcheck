@@ -14,12 +14,10 @@ import org.apache.wicket.extensions.wizard.IWizardStep;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 
 /**
- * Created with IntelliJ IDEA.
+ * A page for a new credit request. The multi-page-form is realised via a wicket wizard.
  *
  * @author Patrick Groß-Holtwick
  *         Date: 02.03.13
- *         Time: 14:20
- *         To change this template use File | Settings | File Templates.
  */
 public class NewCreditRequestPage extends BasePage {
 

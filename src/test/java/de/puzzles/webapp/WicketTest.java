@@ -16,7 +16,7 @@ public class WicketTest {
     private WicketTester tester;
 
     /**
-     * constructor which creates a Wicket-Tester instance for the PuzzlesApplication
+     * constructor which creates a Wicket-Tester instance with the PuzzlesApplication loaded
      */
     public WicketTest() {
         tester = new WicketTester(new PuzzlesApplication());

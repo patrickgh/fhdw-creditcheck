@@ -19,6 +19,8 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * Wizard step for the insurances and credits. Contains all form components for the insurances and credits.
+ *
  * @author Patrick Groß-Holtwick
  *         Date: 07.03.13
  */

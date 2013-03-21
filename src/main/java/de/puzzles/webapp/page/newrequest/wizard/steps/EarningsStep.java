@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Wizard step for the earnings. Contains all form components for the earnings (income & additional income)
  * @author Patrick Groß-Holtwick
  *         Date: 06.03.13
  */

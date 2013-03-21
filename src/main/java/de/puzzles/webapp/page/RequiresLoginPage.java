@@ -1,12 +1,10 @@
 package de.puzzles.webapp.page;
 
 /**
- * Created with IntelliJ IDEA.
+ * Abstract page which requires a login. Every page which extends this page is only accessible when the user is logged in. If the user is not logged in he gets redirected to the login page.
  *
  * @author Patrick Groß-Holtwick
  *         Date: 02.03.13
- *         Time: 14:48
- *         To change this template use File | Settings | File Templates.
  */
 public abstract class RequiresLoginPage extends BasePage {
 

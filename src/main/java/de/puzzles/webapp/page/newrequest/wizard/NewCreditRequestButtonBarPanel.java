@@ -11,6 +11,8 @@ import org.apache.wicket.markup.html.form.IFormSubmittingComponent;
 import org.apache.wicket.markup.html.panel.Panel;
 
 /**
+ * A panel for the button bar which is used in the NewCreditRequestWizard. We use this instead of the default implementation to style the buttons with css & remove uneccesary buttons (e.g. cancel button).
+ *
  * @author Patrick Groß-Holtwick
  *         Date: 08.03.13
  */

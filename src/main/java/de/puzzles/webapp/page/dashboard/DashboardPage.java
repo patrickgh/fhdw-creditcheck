@@ -28,12 +28,10 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
+ * Dashboard page for the consultants. Contains a table with the creditrequest informations and a search form. Every search request ist handled via AJAX.
  *
  * @author Patrick Groß-Holtwick
  *         Date: 02.03.13
- *         Time: 14:50
- *         To change this template use File | Settings | File Templates.
  */
 public class DashboardPage extends RequiresLoginPage {
 

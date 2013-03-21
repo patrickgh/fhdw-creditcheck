@@ -58,6 +58,10 @@ public final class DatabaseConnector {
         }
     }
 
+    /**
+     * Returns an instance of this class. Since the constructor is private, this is the only way to use this class.
+     * @return instance of the DatabaseConnector
+     */
     public static DatabaseConnector getInstance() {
         return INSTANCE;
     }

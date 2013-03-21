@@ -26,6 +26,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * Credit details page. Contains detailed information (including repayment plan & creditworthiness) to a specific credit request. Also contains the ability to accept/decline a creditrequest if it is not yet handled (in CreditState PENDING).
+ *
  * @author Patrick Groß-Holtwick
  *         Date: 13.03.13
  */

@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Wizard step for the spendings. Contains all form components for the general spendings (e.g. rent, car costs, telephone costs,...)
+ *
  * @author Patrick Groß-Holtwick
  *         Date: 07.03.13
  */
