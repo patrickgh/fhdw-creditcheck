@@ -28,15 +28,16 @@ import java.util.Map;
  */
 public final class DatabaseConnector {
 
-    //TODO: refactor methods and call stmt.close() and result.close() at the end of every method
-
     public static final String DEFAULT_URL = "jdbc:mysql://localhost/puzzles";
     public static final String DEFAULT_USER = "root";
     public static final String DEFAULT_PASSWORD = "";
     public static final String VALUE = "value";
     private static final DatabaseConnector INSTANCE = new DatabaseConnector();
-    private Connection dbConnection; // prepare connection
+    private Connection dbConnection;
 
+    /**
+     * Constructor which creates the Connection object. It is private so you can not create an own instance.
+     */
     private DatabaseConnector() {
         try {
             //use credentials from properties, if available, otherwise use defaults
@@ -88,6 +89,11 @@ public final class DatabaseConnector {
         return null;
     }
 
+    /**
+     * gets an Customer object from the database with a given id
+      * @param id id of the customer
+     * @return customer object
+     */
     public Customer getCustomerById(int id) {
         String sql = "SELECT * FROM customer WHERE id=?";
         try {
@@ -116,6 +122,11 @@ public final class DatabaseConnector {
         return null;
     }
 
+    /**
+     * reads a credit-request object from the database.
+     * @param id id of the request
+     * @return CreditRequest object
+     */
     public CreditRequest getCreditRequestById(int id) {
         String sql = "SELECT * FROM creditrequests WHERE id=?";
         try {
@@ -143,7 +154,12 @@ public final class DatabaseConnector {
         return null;
     }
 
-    public List<Transaction> getTransactionsByRequestId(int id) {
+    /**
+     * gets a list of all transactions (incomes & spendings) of a credit-request
+     * @param id id of the request
+     * @return a list with Transaction objects
+     */
+    private List<Transaction> getTransactionsByRequestId(int id) {
         List<Transaction> transactions = new ArrayList<Transaction>();
         String sql = "SELECT * FROM transactions WHERE request_id=?";
         try {
@@ -166,6 +182,11 @@ public final class DatabaseConnector {
         return transactions;
     }
 
+    /**
+     * changes the state of a credit request in the database
+     * @param id id of the request
+     * @param state the new state
+     */
     public void changeRequestState(int id, CreditState state) {
         try {
             String sql = "UPDATE creditrequests SET state=? WHERE id =?";
@@ -179,6 +200,10 @@ public final class DatabaseConnector {
         }
     }
 
+    /**
+     * gets all available consultant names and their ids.
+     * @return a map with the name as keys and the id as values.
+     */
     public Map<String, Integer> getConsultantNames() {
         Map<String, Integer> names = new HashMap<String, Integer>();
         try {
@@ -197,6 +222,11 @@ public final class DatabaseConnector {
         return names;
     }
 
+    /**
+     * gets the consultant name of a given consultant id.
+     * @param id the id of the consultant
+     * @return a string with the name
+     */
     public String getConsultantNameById(Integer id) {
         String name = "";
         try {
@@ -215,6 +245,17 @@ public final class DatabaseConnector {
         return name;
     }
 
+    /**
+     * gets all credit requests which match the given conditions
+     * @param id the consultant id
+     * @param customer the customer name (or a part of it)
+     * @param start the start date
+     * @param end the end date
+     * @param skip the number of entries which should be skipped
+     * @param limit the maximum number of entries which should be returned
+     * @param sort the sort field
+     * @return a List with CreditRequest objects
+     */
     public List<CreditRequest> getCreditRequest(int id, String customer, java.util.Date start, java.util.Date end, Integer skip, Integer limit, String sort) {
         List<CreditRequest> resultList = new ArrayList<CreditRequest>();
         if (start == null) {
@@ -280,6 +321,11 @@ public final class DatabaseConnector {
         return resultList;
     }
 
+    /**
+     * calculates the living costs for a given number of persons in a household
+     * @param persons the number of persons
+     * @return the living costs
+     */
     public Double getLivingCosts(Integer persons) {
         Double result = 0.0;
         try {
@@ -320,6 +366,10 @@ public final class DatabaseConnector {
         return result;
     }
 
+    /**
+     * returns all available car cost types.
+     * @return a map with the description as keys and the costs as values
+     */
     public Map<String, Double> getCarCostTypes() {
         LinkedHashMap<String, Double> result = new LinkedHashMap<String, Double>();
         String sql = "SELECT * FROM config WHERE category LIKE 'KFZ'";
@@ -354,6 +404,11 @@ public final class DatabaseConnector {
         return interest;
     }
 
+    /**
+     * inserts a new CreditRequest object in the database.
+     * @param req the CreditRequest object.
+     * @return the generated id of the entry
+     */
     public Integer saveCreditrequest(CreditRequest req) {
         Customer customer = req.getCustomer();
         try {
