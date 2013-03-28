@@ -55,19 +55,19 @@ public class CreditRequestDataProvider extends SortableDataProvider<CreditReques
     }
 
     public Date getStartDate() {
-        return new Date(startDate.getTime());
+        return startDate;
     }
 
     public void setStartDate(Date startDate) {
-        this.startDate = new Date(startDate.getTime());
+        this.startDate = endDate;
     }
 
     public Date getEndDate() {
-        return new Date(endDate.getTime());
+        return endDate;
     }
 
     public void setEndDate(Date endDate) {
-        this.endDate = new Date(endDate.getTime());
+        this.endDate = endDate;
     }
 
     public String getSearchString() {

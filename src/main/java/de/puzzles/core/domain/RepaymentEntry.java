@@ -3,6 +3,7 @@ package de.puzzles.core.domain;
 import java.io.Serializable;
 
 /**
+ * This class represents an entry in the repayment-plan table. It contains the rest-debt, the interest payment, the rate and getter/setter methods.
  * @author Patrick Groß-Holtwick
  *         Date: 20.03.13
  */

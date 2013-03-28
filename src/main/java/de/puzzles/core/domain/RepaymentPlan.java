@@ -6,11 +6,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: hm
- * Date: 08.03.13
- * Time: 15:29
- * To change this template use File | Settings | File Templates.
+ * This class contains all information for a repayment plan and provides methods for generating the repayment-plan table.
+ *
+ * @author Hermann Mels
  */
 public class RepaymentPlan implements Serializable {
 
@@ -69,18 +67,35 @@ public class RepaymentPlan implements Serializable {
         return Arrays.copyOf(interestPayments, interestPayments.length);
     }
 
+    /**
+     * This method calculates the rate if the duration is given.
+     * @return the rate as a double.
+     */
     private double calculateRate() {
         return amount * ((interest * Math.pow(interest + 1, duration)) / (Math.pow(1 + interest, duration) - 1));
     }
 
+    /**
+     * This method calculates the duration if the rate is given.
+     *
+     * @return the duration as a double.
+     */
     private double calculateDuration() {
         return -1 * (Math.log(1 - ((interest * amount) / rate)) / Math.log(1 + interest));
     }
 
+    /**
+     * This method returns the number of rows (size of the list/arrays) which are in the repayment-plan table.
+     * @return the size as an int.
+     */
     public int getTableSize() {
         return ((int) ((double) duration)) + 1;
     }
 
+    /**
+     * This method calculates the rest-debt column in the table.
+     * @return the rest-debt as an double array.
+     */
     private double[] calculateRestDebtAmount() {
         restDebtAmount = new double[getTableSize() + 1];
         restDebtAmount[0] = amount;
@@ -93,6 +108,10 @@ public class RepaymentPlan implements Serializable {
         return restDebtAmount;
     }
 
+    /**
+     * This method calculates the interest payment column in the repayment plan.
+     * @return the interest payments as a double array.
+     */
     private double[] calculateInterestPayments() {
         interestPayments = new double[getTableSize() + 1];
         interestPayments[0] = 0.0;
@@ -103,6 +122,10 @@ public class RepaymentPlan implements Serializable {
 
     }
 
+    /**
+     * This method calculates the repayment rate column of the table.
+     * @return the repayment rates as a double array.
+     */
     private double[] calculateRepaymentRates() {
         repaymentRates = new double[getTableSize() + 1];
         repaymentRates[0] = 0.0;
@@ -115,6 +138,10 @@ public class RepaymentPlan implements Serializable {
         return repaymentRates;
     }
 
+    /**
+     * This method generates the repayment plan. It uses the private methods for generating the columns and returns the whole table as a list of RepaymentEntry objects.
+     * @return a list with RepaymentEntry objects.
+     */
     public List<RepaymentEntry> generateRepaymentPlan() {
         if (rate == null && duration != null) {
             rate = calculateRate();

@@ -76,7 +76,8 @@ public class CreditRequest implements Serializable {
     }
 
     /**
-     * This method adds a transaction to the list of the transactions, which are related to the creditrequest.
+     * This method adds a single transaction to the list of the transactions, which are related to the creditrequest.
+     * For replacing all transactions use setTransaction().
      *
      * @param trans the transaction object which should be added
      */
