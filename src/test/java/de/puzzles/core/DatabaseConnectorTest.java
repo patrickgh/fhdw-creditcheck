@@ -15,6 +15,9 @@ import java.util.Date;
  */
 public class DatabaseConnectorTest {
 
+    /**
+     * This Test checks the login method. it tests valid credentials and wrong credentials analyses the results.
+     */
     @Test
     public void testLogin() {
         DatabaseConnector conn = DatabaseConnector.getInstance();
@@ -22,6 +25,9 @@ public class DatabaseConnectorTest {
         Assert.assertNull(conn.checkLogin("bstinson", "legendary"));
     }
 
+    /**
+     * This test saves a new CreditRequest and reads the request back from the database.
+     */
     @Test
     public void testSaveCreditrequest() {
         DatabaseConnector conn = DatabaseConnector.getInstance();
@@ -60,7 +66,9 @@ public class DatabaseConnectorTest {
         Assert.assertEquals(req.getTransactions().size(), 2);
     }
 
-
+    /**
+     * This test tests the getLivingCosts method with testdata. It compares the result with the expected results.
+     */
     @Test
     public void testGetLivingCost() {
         Assert.assertEquals(DatabaseConnector.getInstance().getLivingCosts(0),0.0);
@@ -70,6 +78,9 @@ public class DatabaseConnectorTest {
         Assert.assertEquals(DatabaseConnector.getInstance().getLivingCosts(5),1150.0);
     }
 
+    /**
+     * This test tests the getBaseInterest() method and analyses the result.
+     */
     @Test
     public void testGetBaseInterest() {
         Assert.assertNotNull(DatabaseConnector.getInstance().getBaseInterest());

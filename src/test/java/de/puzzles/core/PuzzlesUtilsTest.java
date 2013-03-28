@@ -10,6 +10,9 @@ import org.testng.annotations.Test;
  */
 public class PuzzlesUtilsTest {
 
+    /**
+     * This test checks the MD5 Hash Method and compares the generated results with the expected results.
+     */
     @Test
     public void testMd5() {
         Assert.assertEquals(PuzzlesUtils.md5(""), PuzzlesUtils.md5(null));
